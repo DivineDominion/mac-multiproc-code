@@ -228,6 +228,7 @@
 				507D52EF1A6D02C2008F44D1 /* Sources */,
 				507D52F01A6D02C2008F44D1 /* Frameworks */,
 				507D52F11A6D02C2008F44D1 /* Resources */,
+				50F98BCF1A71023C00426FD8 /* Remove old helper */,
 			);
 			buildRules = (
 			);
@@ -322,6 +323,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		50F98BCF1A71023C00426FD8 /* Remove old helper */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Remove old helper";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if launchctl list | grep de.christiantietze.multiproc; then\n    echo \"Removing Helper…\"\n    launchctl remove FRMDA3XRGC.de.christiantietze.multiproc.Helper\nelse\n    echo \"No Helper was Running.\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		507D52C81A6D0252008F44D1 /* Sources */ = {
