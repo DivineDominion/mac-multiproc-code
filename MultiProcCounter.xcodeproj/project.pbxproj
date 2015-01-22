@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5050E7541A715B1D009BE1C4 /* HelperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5050E7531A715B1D009BE1C4 /* HelperService.swift */; };
+		5050E7551A715B1D009BE1C4 /* HelperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5050E7531A715B1D009BE1C4 /* HelperService.swift */; };
 		507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D52D11A6D0252008F44D1 /* AppDelegate.swift */; };
 		507D52D51A6D0252008F44D1 /* MultiProcCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 507D52D31A6D0252008F44D1 /* MultiProcCounter.xcdatamodeld */; };
 		507D52D71A6D0252008F44D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D61A6D0252008F44D1 /* Images.xcassets */; };
 		507D52DA1A6D0252008F44D1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D81A6D0252008F44D1 /* MainMenu.xib */; };
 		507D52E61A6D0252008F44D1 /* MultiProcCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D52E51A6D0252008F44D1 /* MultiProcCounterTests.swift */; };
-		507D52FA1A6D02C2008F44D1 /* MultiProcCounterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 507D52F91A6D02C2008F44D1 /* MultiProcCounterHelper.m */; };
-		507D52FC1A6D02C2008F44D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 507D52FB1A6D02C2008F44D1 /* main.m */; };
 		50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.multiproc.Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.multiproc.Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50F98BD21A714C1800426FD8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F98BD11A714C1800426FD8 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5050E7531A715B1D009BE1C4 /* HelperService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperService.swift; sourceTree = "<group>"; };
 		507D52CC1A6D0252008F44D1 /* MultiProcCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiProcCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D52D01A6D0252008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		507D52D11A6D0252008F44D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,13 +61,9 @@
 		507D52E51A6D0252008F44D1 /* MultiProcCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiProcCounterTests.swift; sourceTree = "<group>"; };
 		507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.multiproc.Helper.app */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = FRMDA3XRGC.de.christiantietze.multiproc.Helper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D52F61A6D02C2008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		507D52F71A6D02C2008F44D1 /* ProvidesCounts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProvidesCounts.h; path = Shared/ProvidesCounts.h; sourceTree = "<group>"; };
-		507D52F81A6D02C2008F44D1 /* MultiProcCounterHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiProcCounterHelper.h; sourceTree = "<group>"; };
-		507D52F91A6D02C2008F44D1 /* MultiProcCounterHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiProcCounterHelper.m; sourceTree = "<group>"; };
-		507D52FB1A6D02C2008F44D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		507D53041A6D02F9008F44D1 /* MultiProcCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MultiProcCounter.entitlements; sourceTree = "<group>"; };
 		507D53051A6D031C008F44D1 /* MultiProcCounterHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MultiProcCounterHelper.entitlements; sourceTree = "<group>"; };
-		507D53081A6D083C008F44D1 /* MultiProcCounter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MultiProcCounter-Bridging-Header.h"; sourceTree = "<group>"; };
+		50F98BD11A714C1800426FD8 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +91,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5050E7561A715B20009BE1C4 /* Shared Sources */ = {
+			isa = PBXGroup;
+			children = (
+				5050E7531A715B1D009BE1C4 /* HelperService.swift */,
+			);
+			name = "Shared Sources";
+			path = SharedSources;
+			sourceTree = "<group>";
+		};
 		507D52C31A6D0252008F44D1 = {
 			isa = PBXGroup;
 			children = (
-				507D53061A6D03F8008F44D1 /* Shared Sources */,
+				5050E7561A715B20009BE1C4 /* Shared Sources */,
 				507D52CE1A6D0252008F44D1 /* MultiProcCounter */,
 				507D52E21A6D0252008F44D1 /* MultiProcCounterTests */,
 				507D52F41A6D02C2008F44D1 /* MultiProcCounterHelper */,
@@ -123,7 +130,6 @@
 				507D52D81A6D0252008F44D1 /* MainMenu.xib */,
 				507D52D31A6D0252008F44D1 /* MultiProcCounter.xcdatamodeld */,
 				507D52CF1A6D0252008F44D1 /* Supporting Files */,
-				507D53081A6D083C008F44D1 /* MultiProcCounter-Bridging-Header.h */,
 			);
 			path = MultiProcCounter;
 			sourceTree = "<group>";
@@ -157,9 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				507D53051A6D031C008F44D1 /* MultiProcCounterHelper.entitlements */,
-				507D52F81A6D02C2008F44D1 /* MultiProcCounterHelper.h */,
-				507D52F91A6D02C2008F44D1 /* MultiProcCounterHelper.m */,
-				507D52FB1A6D02C2008F44D1 /* main.m */,
+				50F98BD11A714C1800426FD8 /* main.swift */,
 				507D52F51A6D02C2008F44D1 /* Supporting Files */,
 			);
 			path = MultiProcCounterHelper;
@@ -171,14 +175,6 @@
 				507D52F61A6D02C2008F44D1 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		507D53061A6D03F8008F44D1 /* Shared Sources */ = {
-			isa = PBXGroup;
-			children = (
-				507D52F71A6D02C2008F44D1 /* ProvidesCounts.h */,
-			);
-			name = "Shared Sources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				507D52D51A6D0252008F44D1 /* MultiProcCounter.xcdatamodeld in Sources */,
+				5050E7541A715B1D009BE1C4 /* HelperService.swift in Sources */,
 				507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,8 +360,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				507D52FC1A6D02C2008F44D1 /* main.m in Sources */,
-				507D52FA1A6D02C2008F44D1 /* MultiProcCounterHelper.m in Sources */,
+				50F98BD21A714C1800426FD8 /* main.swift in Sources */,
+				5050E7551A715B1D009BE1C4 /* HelperService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +482,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "MultiProcCounter/MultiProcCounter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -503,7 +500,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "MultiProcCounter/MultiProcCounter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -546,18 +543,24 @@
 		507D53001A6D02C2008F44D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MultiProcCounterHelper/MultiProcCounterHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = MultiProcCounterHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = FRMDA3XRGC.de.christiantietze.multiproc.Helper;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -565,14 +568,19 @@
 		507D53011A6D02C2008F44D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MultiProcCounterHelper/MultiProcCounterHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MultiProcCounterHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = FRMDA3XRGC.de.christiantietze.multiproc.Helper;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

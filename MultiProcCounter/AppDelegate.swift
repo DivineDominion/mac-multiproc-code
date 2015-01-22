@@ -105,18 +105,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             dispatch_async(dispatch_get_main_queue()) {
                 NSLog("Failed to query oracle: %@\n\n", err.description)
             }
-        } as? MultiProcCounterHelperProtocol
+        } as? ProvidesCounts
         
         if helper == nil {
             NSLog("No helper")
         }
         
-        helper!.currentCountWithReply() { (result) -> Void in
+        helper!.currentCount() { (result) -> Void in
             NSLog("The result is: \(result)")
         }
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
+        //helper = nil
+        //connection.invalidate()
     }
 
     func applicationShouldTerminate(sender: NSApplication) -> NSApplicationTerminateReply {
