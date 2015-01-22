@@ -1,5 +1,5 @@
 //
-//  MultiProcCounterHelperProtocol.h
+//  ProvidesCounts.h
 //  MultiProcCounterHelper
 //
 //  Created by Christian Tietze on 19/01/15.
@@ -8,12 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-// The protocol that this service will vend as its API. This header file will also need to be visible to the process hosting the service.
-@protocol MultiProcCounterHelperProtocol
-
-// Replace the API of this protocol with an API appropriate to the service you are vending.
-- (void)upperCaseString:(NSString *)aString withReply:(void (^)(NSString *))reply;
-    
+@protocol ProvidesCounts
+- (void)currentCountWithReply:(void (^)(NSUInteger))reply;
 @end
 
 /*

@@ -82,7 +82,7 @@ func createXPCConnection(loginItemURL: NSURL, error: NSErrorPointer) -> NSXPCCon
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-    var helper: MultiProcCounterHelperProtocol?
+    var helper: ProvidesCounts?
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         var error: NSError?
@@ -93,7 +93,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         let connection = maybeConnection!
         
-        connection.remoteObjectInterface = NSXPCInterface(`protocol`: MultiProcCounterHelperProtocol.self)
+        connection.remoteObjectInterface = NSXPCInterface(`protocol`: ProvidesCounts.self)
         connection.resume()
         
         // Get a proxy DecisionAgent object for the connection.
@@ -111,7 +111,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSLog("No helper")
         }
         
-        helper!.upperCaseString("the string") { (result) -> Void in
+        helper!.currentCountWithReply() { (result) -> Void in
             NSLog("The result is: \(result)")
         }
     }

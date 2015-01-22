@@ -59,7 +59,7 @@
 		507D52E51A6D0252008F44D1 /* MultiProcCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiProcCounterTests.swift; sourceTree = "<group>"; };
 		507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.multiproc.Helper.app */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = FRMDA3XRGC.de.christiantietze.multiproc.Helper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D52F61A6D02C2008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		507D52F71A6D02C2008F44D1 /* MultiProcCounterHelperProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MultiProcCounterHelperProtocol.h; path = Shared/MultiProcCounterHelperProtocol.h; sourceTree = "<group>"; };
+		507D52F71A6D02C2008F44D1 /* ProvidesCounts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProvidesCounts.h; path = Shared/ProvidesCounts.h; sourceTree = "<group>"; };
 		507D52F81A6D02C2008F44D1 /* MultiProcCounterHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiProcCounterHelper.h; sourceTree = "<group>"; };
 		507D52F91A6D02C2008F44D1 /* MultiProcCounterHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiProcCounterHelper.m; sourceTree = "<group>"; };
 		507D52FB1A6D02C2008F44D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 		507D53061A6D03F8008F44D1 /* Shared Sources */ = {
 			isa = PBXGroup;
 			children = (
-				507D52F71A6D02C2008F44D1 /* MultiProcCounterHelperProtocol.h */,
+				507D52F71A6D02C2008F44D1 /* ProvidesCounts.h */,
 			);
 			name = "Shared Sources";
 			sourceTree = "<group>";
