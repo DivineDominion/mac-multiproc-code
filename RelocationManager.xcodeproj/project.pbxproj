@@ -7,18 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5019FE7F1A8A1463007D5A09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FE7E1A8A1463007D5A09 /* AppDelegate.swift */; };
+		5019FE811A8A1463007D5A09 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5019FE801A8A1463007D5A09 /* Images.xcassets */; };
+		5019FE841A8A1463007D5A09 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5019FE821A8A1463007D5A09 /* MainMenu.xib */; };
+		5019FE901A8A1463007D5A09 /* RelocationManagerHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FE8F1A8A1463007D5A09 /* RelocationManagerHelperTests.swift */; };
 		5050E7541A715B1D009BE1C4 /* HelperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5050E7531A715B1D009BE1C4 /* HelperService.swift */; };
 		5050E7551A715B1D009BE1C4 /* HelperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5050E7531A715B1D009BE1C4 /* HelperService.swift */; };
 		507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D52D11A6D0252008F44D1 /* AppDelegate.swift */; };
-		507D52D51A6D0252008F44D1 /* MultiProcCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 507D52D31A6D0252008F44D1 /* MultiProcCounter.xcdatamodeld */; };
+		507D52D51A6D0252008F44D1 /* RelocationManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 507D52D31A6D0252008F44D1 /* RelocationManager.xcdatamodeld */; };
 		507D52D71A6D0252008F44D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D61A6D0252008F44D1 /* Images.xcassets */; };
 		507D52DA1A6D0252008F44D1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D81A6D0252008F44D1 /* MainMenu.xib */; };
-		507D52E61A6D0252008F44D1 /* MultiProcCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D52E51A6D0252008F44D1 /* MultiProcCounterTests.swift */; };
-		50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.multiproc.Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.multiproc.Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50F98BD21A714C1800426FD8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F98BD11A714C1800426FD8 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5019FE8A1A8A1463007D5A09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 507D52C41A6D0252008F44D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5019FE791A8A1463007D5A09;
+			remoteInfo = RelocationManagerHelper;
+		};
 		507D52E01A6D0252008F44D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 507D52C41A6D0252008F44D1 /* Project object */;
@@ -42,31 +52,52 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.multiproc.Helper.app in CopyFiles */,
+				50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5019FE7A1A8A1463007D5A09 /* RelocationManagerHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelocationManagerHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5019FE7D1A8A1463007D5A09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5019FE7E1A8A1463007D5A09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5019FE801A8A1463007D5A09 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5019FE831A8A1463007D5A09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5019FE891A8A1463007D5A09 /* RelocationManagerHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RelocationManagerHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5019FE8E1A8A1463007D5A09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5019FE8F1A8A1463007D5A09 /* RelocationManagerHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelocationManagerHelperTests.swift; sourceTree = "<group>"; };
 		5050E7531A715B1D009BE1C4 /* HelperService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperService.swift; sourceTree = "<group>"; };
 		507D52CC1A6D0252008F44D1 /* MultiProcCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiProcCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D52D01A6D0252008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		507D52D11A6D0252008F44D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		507D52D41A6D0252008F44D1 /* MultiProcCounter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MultiProcCounter.xcdatamodel; sourceTree = "<group>"; };
+		507D52D41A6D0252008F44D1 /* RelocationManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RelocationManager.xcdatamodel; sourceTree = "<group>"; };
 		507D52D61A6D0252008F44D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		507D52D91A6D0252008F44D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		507D52DF1A6D0252008F44D1 /* MultiProcCounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultiProcCounterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D52E41A6D0252008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		507D52E51A6D0252008F44D1 /* MultiProcCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiProcCounterTests.swift; sourceTree = "<group>"; };
-		507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.multiproc.Helper.app */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = FRMDA3XRGC.de.christiantietze.multiproc.Helper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		507D52F61A6D02C2008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		507D53041A6D02F9008F44D1 /* MultiProcCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MultiProcCounter.entitlements; sourceTree = "<group>"; };
-		507D53051A6D031C008F44D1 /* MultiProcCounterHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MultiProcCounterHelper.entitlements; sourceTree = "<group>"; };
-		50F98BD11A714C1800426FD8 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = FRMDA3XRGC.de.christiantietze.relocman.Service.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		507D52F61A6D02C2008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../RelocationManagerService/Info.plist; sourceTree = "<group>"; };
+		507D53041A6D02F9008F44D1 /* RelocationManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RelocationManager.entitlements; sourceTree = "<group>"; };
+		507D53051A6D031C008F44D1 /* RelocationManagerService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = RelocationManagerService.entitlements; path = ../RelocationManagerService/RelocationManagerService.entitlements; sourceTree = "<group>"; };
+		50F98BD11A714C1800426FD8 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../RelocationManagerService/main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5019FE771A8A1463007D5A09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5019FE861A8A1463007D5A09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		507D52C91A6D0252008F44D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,6 +122,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5019FE7B1A8A1463007D5A09 /* RelocationManagerHelper */ = {
+			isa = PBXGroup;
+			children = (
+				5019FE7E1A8A1463007D5A09 /* AppDelegate.swift */,
+				5019FE801A8A1463007D5A09 /* Images.xcassets */,
+				5019FE821A8A1463007D5A09 /* MainMenu.xib */,
+				5019FE7C1A8A1463007D5A09 /* Supporting Files */,
+			);
+			path = RelocationManagerHelper;
+			sourceTree = "<group>";
+		};
+		5019FE7C1A8A1463007D5A09 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5019FE7D1A8A1463007D5A09 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5019FE8C1A8A1463007D5A09 /* RelocationManagerHelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				5019FE8F1A8A1463007D5A09 /* RelocationManagerHelperTests.swift */,
+				5019FE8D1A8A1463007D5A09 /* Supporting Files */,
+			);
+			path = RelocationManagerHelperTests;
+			sourceTree = "<group>";
+		};
+		5019FE8D1A8A1463007D5A09 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5019FE8E1A8A1463007D5A09 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		5050E7561A715B20009BE1C4 /* Shared Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,9 +171,11 @@
 			isa = PBXGroup;
 			children = (
 				5050E7561A715B20009BE1C4 /* Shared Sources */,
-				507D52CE1A6D0252008F44D1 /* MultiProcCounter */,
-				507D52E21A6D0252008F44D1 /* MultiProcCounterTests */,
-				507D52F41A6D02C2008F44D1 /* MultiProcCounterHelper */,
+				507D52CE1A6D0252008F44D1 /* RelocationManager */,
+				507D52E21A6D0252008F44D1 /* RelocationManagerTests */,
+				507D52F41A6D02C2008F44D1 /* RelocationManagerService */,
+				5019FE7B1A8A1463007D5A09 /* RelocationManagerHelper */,
+				5019FE8C1A8A1463007D5A09 /* RelocationManagerHelperTests */,
 				507D52CD1A6D0252008F44D1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,22 +185,24 @@
 			children = (
 				507D52CC1A6D0252008F44D1 /* MultiProcCounter.app */,
 				507D52DF1A6D0252008F44D1 /* MultiProcCounterTests.xctest */,
-				507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.multiproc.Helper.app */,
+				507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */,
+				5019FE7A1A8A1463007D5A09 /* RelocationManagerHelper.app */,
+				5019FE891A8A1463007D5A09 /* RelocationManagerHelperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		507D52CE1A6D0252008F44D1 /* MultiProcCounter */ = {
+		507D52CE1A6D0252008F44D1 /* RelocationManager */ = {
 			isa = PBXGroup;
 			children = (
-				507D53041A6D02F9008F44D1 /* MultiProcCounter.entitlements */,
+				507D53041A6D02F9008F44D1 /* RelocationManager.entitlements */,
 				507D52D11A6D0252008F44D1 /* AppDelegate.swift */,
 				507D52D61A6D0252008F44D1 /* Images.xcassets */,
 				507D52D81A6D0252008F44D1 /* MainMenu.xib */,
-				507D52D31A6D0252008F44D1 /* MultiProcCounter.xcdatamodeld */,
+				507D52D31A6D0252008F44D1 /* RelocationManager.xcdatamodeld */,
 				507D52CF1A6D0252008F44D1 /* Supporting Files */,
 			);
-			path = MultiProcCounter;
+			path = RelocationManager;
 			sourceTree = "<group>";
 		};
 		507D52CF1A6D0252008F44D1 /* Supporting Files */ = {
@@ -142,12 +213,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		507D52E21A6D0252008F44D1 /* MultiProcCounterTests */ = {
+		507D52E21A6D0252008F44D1 /* RelocationManagerTests */ = {
 			isa = PBXGroup;
 			children = (
-				507D52E51A6D0252008F44D1 /* MultiProcCounterTests.swift */,
 				507D52E31A6D0252008F44D1 /* Supporting Files */,
 			);
+			name = RelocationManagerTests;
 			path = MultiProcCounterTests;
 			sourceTree = "<group>";
 		};
@@ -159,13 +230,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		507D52F41A6D02C2008F44D1 /* MultiProcCounterHelper */ = {
+		507D52F41A6D02C2008F44D1 /* RelocationManagerService */ = {
 			isa = PBXGroup;
 			children = (
-				507D53051A6D031C008F44D1 /* MultiProcCounterHelper.entitlements */,
+				507D53051A6D031C008F44D1 /* RelocationManagerService.entitlements */,
 				50F98BD11A714C1800426FD8 /* main.swift */,
 				507D52F51A6D02C2008F44D1 /* Supporting Files */,
 			);
+			name = RelocationManagerService;
 			path = MultiProcCounterHelper;
 			sourceTree = "<group>";
 		};
@@ -180,9 +252,44 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		507D52CB1A6D0252008F44D1 /* MultiProcCounter */ = {
+		5019FE791A8A1463007D5A09 /* RelocationManagerHelper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 507D52E91A6D0252008F44D1 /* Build configuration list for PBXNativeTarget "MultiProcCounter" */;
+			buildConfigurationList = 5019FE951A8A1463007D5A09 /* Build configuration list for PBXNativeTarget "RelocationManagerHelper" */;
+			buildPhases = (
+				5019FE761A8A1463007D5A09 /* Sources */,
+				5019FE771A8A1463007D5A09 /* Frameworks */,
+				5019FE781A8A1463007D5A09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RelocationManagerHelper;
+			productName = RelocationManagerHelper;
+			productReference = 5019FE7A1A8A1463007D5A09 /* RelocationManagerHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5019FE881A8A1463007D5A09 /* RelocationManagerHelperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5019FE961A8A1463007D5A09 /* Build configuration list for PBXNativeTarget "RelocationManagerHelperTests" */;
+			buildPhases = (
+				5019FE851A8A1463007D5A09 /* Sources */,
+				5019FE861A8A1463007D5A09 /* Frameworks */,
+				5019FE871A8A1463007D5A09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5019FE8B1A8A1463007D5A09 /* PBXTargetDependency */,
+			);
+			name = RelocationManagerHelperTests;
+			productName = RelocationManagerHelperTests;
+			productReference = 5019FE891A8A1463007D5A09 /* RelocationManagerHelperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		507D52CB1A6D0252008F44D1 /* RelocationManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 507D52E91A6D0252008F44D1 /* Build configuration list for PBXNativeTarget "RelocationManager" */;
 			buildPhases = (
 				507D52C81A6D0252008F44D1 /* Sources */,
 				507D52C91A6D0252008F44D1 /* Frameworks */,
@@ -194,14 +301,14 @@
 			dependencies = (
 				507D52FE1A6D02C2008F44D1 /* PBXTargetDependency */,
 			);
-			name = MultiProcCounter;
+			name = RelocationManager;
 			productName = MultiProcCounter;
 			productReference = 507D52CC1A6D0252008F44D1 /* MultiProcCounter.app */;
 			productType = "com.apple.product-type.application";
 		};
-		507D52DE1A6D0252008F44D1 /* MultiProcCounterTests */ = {
+		507D52DE1A6D0252008F44D1 /* RelocationManagerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 507D52EC1A6D0252008F44D1 /* Build configuration list for PBXNativeTarget "MultiProcCounterTests" */;
+			buildConfigurationList = 507D52EC1A6D0252008F44D1 /* Build configuration list for PBXNativeTarget "RelocationManagerTests" */;
 			buildPhases = (
 				507D52DB1A6D0252008F44D1 /* Sources */,
 				507D52DC1A6D0252008F44D1 /* Frameworks */,
@@ -212,14 +319,14 @@
 			dependencies = (
 				507D52E11A6D0252008F44D1 /* PBXTargetDependency */,
 			);
-			name = MultiProcCounterTests;
+			name = RelocationManagerTests;
 			productName = MultiProcCounterTests;
 			productReference = 507D52DF1A6D0252008F44D1 /* MultiProcCounterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		507D52F21A6D02C2008F44D1 /* MultiProcCounterHelper */ = {
+		507D52F21A6D02C2008F44D1 /* RelocationManagerService */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 507D53021A6D02C2008F44D1 /* Build configuration list for PBXNativeTarget "MultiProcCounterHelper" */;
+			buildConfigurationList = 507D53021A6D02C2008F44D1 /* Build configuration list for PBXNativeTarget "RelocationManagerService" */;
 			buildPhases = (
 				507D52EF1A6D02C2008F44D1 /* Sources */,
 				507D52F01A6D02C2008F44D1 /* Frameworks */,
@@ -230,9 +337,9 @@
 			);
 			dependencies = (
 			);
-			name = MultiProcCounterHelper;
+			name = RelocationManagerService;
 			productName = MultiProcCounterHelper;
-			productReference = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.multiproc.Helper.app */;
+			productReference = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */;
 			productType = "com.apple.product-type.xpc-service";
 		};
 /* End PBXNativeTarget section */
@@ -244,6 +351,13 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Christian Tietze";
 				TargetAttributes = {
+					5019FE791A8A1463007D5A09 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					5019FE881A8A1463007D5A09 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 5019FE791A8A1463007D5A09;
+					};
 					507D52CB1A6D0252008F44D1 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = FRMDA3XRGC;
@@ -274,7 +388,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 507D52C71A6D0252008F44D1 /* Build configuration list for PBXProject "MultiProcCounter" */;
+			buildConfigurationList = 507D52C71A6D0252008F44D1 /* Build configuration list for PBXProject "RelocationManager" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -287,14 +401,32 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				507D52CB1A6D0252008F44D1 /* MultiProcCounter */,
-				507D52DE1A6D0252008F44D1 /* MultiProcCounterTests */,
-				507D52F21A6D02C2008F44D1 /* MultiProcCounterHelper */,
+				507D52CB1A6D0252008F44D1 /* RelocationManager */,
+				507D52DE1A6D0252008F44D1 /* RelocationManagerTests */,
+				507D52F21A6D02C2008F44D1 /* RelocationManagerService */,
+				5019FE791A8A1463007D5A09 /* RelocationManagerHelper */,
+				5019FE881A8A1463007D5A09 /* RelocationManagerHelperTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5019FE781A8A1463007D5A09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5019FE811A8A1463007D5A09 /* Images.xcassets in Resources */,
+				5019FE841A8A1463007D5A09 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5019FE871A8A1463007D5A09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		507D52CA1A6D0252008F44D1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -333,16 +465,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if launchctl list | grep de.christiantietze.multiproc; then\n    echo \"Removing Helper…\"\n    launchctl remove FRMDA3XRGC.de.christiantietze.multiproc.Helper\nelse\n    echo \"No Helper was Running.\"\nfi";
+			shellScript = "if launchctl list | grep de.christiantietze.relocman; then\n    echo \"Removing Helper…\"\n    launchctl remove FRMDA3XRGC.de.christiantietze.relocman.Helper\nelse\n    echo \"No Helper was Running.\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5019FE761A8A1463007D5A09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5019FE7F1A8A1463007D5A09 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5019FE851A8A1463007D5A09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5019FE901A8A1463007D5A09 /* RelocationManagerHelperTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		507D52C81A6D0252008F44D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				507D52D51A6D0252008F44D1 /* MultiProcCounter.xcdatamodeld in Sources */,
+				507D52D51A6D0252008F44D1 /* RelocationManager.xcdatamodeld in Sources */,
 				5050E7541A715B1D009BE1C4 /* HelperService.swift in Sources */,
 				507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */,
 			);
@@ -352,7 +500,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				507D52E61A6D0252008F44D1 /* MultiProcCounterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,19 +515,32 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5019FE8B1A8A1463007D5A09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5019FE791A8A1463007D5A09 /* RelocationManagerHelper */;
+			targetProxy = 5019FE8A1A8A1463007D5A09 /* PBXContainerItemProxy */;
+		};
 		507D52E11A6D0252008F44D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 507D52CB1A6D0252008F44D1 /* MultiProcCounter */;
+			target = 507D52CB1A6D0252008F44D1 /* RelocationManager */;
 			targetProxy = 507D52E01A6D0252008F44D1 /* PBXContainerItemProxy */;
 		};
 		507D52FE1A6D02C2008F44D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 507D52F21A6D02C2008F44D1 /* MultiProcCounterHelper */;
+			target = 507D52F21A6D02C2008F44D1 /* RelocationManagerService */;
 			targetProxy = 507D52FD1A6D02C2008F44D1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5019FE821A8A1463007D5A09 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5019FE831A8A1463007D5A09 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		507D52D81A6D0252008F44D1 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -392,6 +552,68 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5019FE911A8A1463007D5A09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RelocationManagerHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5019FE921A8A1463007D5A09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RelocationManagerHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5019FE931A8A1463007D5A09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RelocationManagerHelperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RelocationManagerHelper.app/Contents/MacOS/RelocationManagerHelper";
+			};
+			name = Debug;
+		};
+		5019FE941A8A1463007D5A09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RelocationManagerHelperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RelocationManagerHelper.app/Contents/MacOS/RelocationManagerHelper";
+			};
+			name = Release;
+		};
 		507D52E71A6D0252008F44D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -474,11 +696,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = MultiProcCounter/MultiProcCounter.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RelocationManager/RelocationManager.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MultiProcCounter/Info.plist;
+				INFOPLIST_FILE = RelocationManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -492,11 +714,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = MultiProcCounter/MultiProcCounter.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RelocationManager/RelocationManager.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MultiProcCounter/Info.plist;
+				INFOPLIST_FILE = RelocationManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -544,7 +766,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = MultiProcCounterHelper/MultiProcCounterHelper.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RelocationManagerService/RelocationManagerService.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -553,10 +775,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = MultiProcCounterHelper/Info.plist;
+				INFOPLIST_FILE = RelocationManagerService/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_NAME = FRMDA3XRGC.de.christiantietze.multiproc.Helper;
+				PRODUCT_NAME = FRMDA3XRGC.de.christiantietze.relocman.Service;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -569,15 +791,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = MultiProcCounterHelper/MultiProcCounterHelper.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RelocationManagerService/RelocationManagerService.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				INFOPLIST_FILE = MultiProcCounterHelper/Info.plist;
+				INFOPLIST_FILE = RelocationManagerService/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_NAME = FRMDA3XRGC.de.christiantietze.multiproc.Helper;
+				PRODUCT_NAME = FRMDA3XRGC.de.christiantietze.relocman.Service;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -588,7 +810,23 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		507D52C71A6D0252008F44D1 /* Build configuration list for PBXProject "MultiProcCounter" */ = {
+		5019FE951A8A1463007D5A09 /* Build configuration list for PBXNativeTarget "RelocationManagerHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5019FE911A8A1463007D5A09 /* Debug */,
+				5019FE921A8A1463007D5A09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5019FE961A8A1463007D5A09 /* Build configuration list for PBXNativeTarget "RelocationManagerHelperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5019FE931A8A1463007D5A09 /* Debug */,
+				5019FE941A8A1463007D5A09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		507D52C71A6D0252008F44D1 /* Build configuration list for PBXProject "RelocationManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				507D52E71A6D0252008F44D1 /* Debug */,
@@ -597,7 +835,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		507D52E91A6D0252008F44D1 /* Build configuration list for PBXNativeTarget "MultiProcCounter" */ = {
+		507D52E91A6D0252008F44D1 /* Build configuration list for PBXNativeTarget "RelocationManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				507D52EA1A6D0252008F44D1 /* Debug */,
@@ -606,7 +844,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		507D52EC1A6D0252008F44D1 /* Build configuration list for PBXNativeTarget "MultiProcCounterTests" */ = {
+		507D52EC1A6D0252008F44D1 /* Build configuration list for PBXNativeTarget "RelocationManagerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				507D52ED1A6D0252008F44D1 /* Debug */,
@@ -615,7 +853,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		507D53021A6D02C2008F44D1 /* Build configuration list for PBXNativeTarget "MultiProcCounterHelper" */ = {
+		507D53021A6D02C2008F44D1 /* Build configuration list for PBXNativeTarget "RelocationManagerService" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				507D53001A6D02C2008F44D1 /* Debug */,
@@ -627,13 +865,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		507D52D31A6D0252008F44D1 /* MultiProcCounter.xcdatamodeld */ = {
+		507D52D31A6D0252008F44D1 /* RelocationManager.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				507D52D41A6D0252008F44D1 /* MultiProcCounter.xcdatamodel */,
+				507D52D41A6D0252008F44D1 /* RelocationManager.xcdatamodel */,
 			);
-			currentVersion = 507D52D41A6D0252008F44D1 /* MultiProcCounter.xcdatamodel */;
-			path = MultiProcCounter.xcdatamodeld;
+			currentVersion = 507D52D41A6D0252008F44D1 /* RelocationManager.xcdatamodel */;
+			path = RelocationManager.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

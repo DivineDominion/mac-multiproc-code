@@ -23,11 +23,8 @@ class ServiceDelegate : NSObject, NSXPCListenerDelegate {
         
         var valid = true
         
-        newConnection.interruptionHandler = {
-            valid = false
-            NSLog("interrupted")
-        }
         newConnection.invalidationHandler = {
+            //valid = false
             NSLog("invalidated")
         }
         NSLog("accepting connection")
@@ -35,18 +32,19 @@ class ServiceDelegate : NSObject, NSXPCListenerDelegate {
         
         
         dispatch_async(dispatch_get_global_queue(0, 0)) {
-            let listener = newConnection.remoteObjectProxyWithErrorHandler({ (error) -> Void in
+            let listener = newConnection.remoteObjectProxyWithErrorHandler({ error in
                 dispatch_async(dispatch_get_main_queue()) {
                     NSLog("error happened")
                 }
             }) as Listener
             
             for (var i = 0; i < 10; i++) {
-                NSThread.sleepForTimeInterval(5)
+                NSThread.sleepForTimeInterval(3)
                 if (!valid) {
                     NSLog("aborting")
                     break
                 }
+                
                 listener.updateTicker(i)
             }
         }

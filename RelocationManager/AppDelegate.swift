@@ -90,7 +90,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate, Listener {
         var error: NSError?
         connect(&error)
         
-        if (self.connection == nil) {
+        if (connection == nil) {
             NSLog("conn failed %@", error!.description)
             return
         }
@@ -98,10 +98,16 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate, Listener {
         connection!.remoteObjectInterface = NSXPCInterface(`protocol`: ProvidesCounts.self)
         connection!.exportedInterface = NSXPCInterface(`protocol`: Listener.self)
         connection!.exportedObject = self
+        connection!.invalidationHandler = {
+            NSLog("invalidated")
+        }
+        connection!.interruptionHandler = {
+            NSLog("interrupted")
+        }
         connection!.resume()
         
         // Get a proxy DecisionAgent object for the connection.
-        helper = connection!.remoteObjectProxyWithErrorHandler() { (err) -> Void in
+        helper = connection!.remoteObjectProxyWithErrorHandler() { err in
             // This block is run when an error occurs communicating with
             // the launch item service.  This will not be invoked on the
             // main queue, so re-schedule a block on the main queue to
@@ -121,7 +127,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate, Listener {
     }
     
     func connect(error: NSErrorPointer) {
-        connection = createXPCConnection("FRMDA3XRGC.de.christiantietze.multiproc.Helper.app", error)
+        connection = createXPCConnection("FRMDA3XRGC.de.christiantietze.relocman.Service.app", error)
     }
     
     func windowWillClose(notification: NSNotification) {
