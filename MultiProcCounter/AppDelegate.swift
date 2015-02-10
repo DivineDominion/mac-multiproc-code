@@ -9,7 +9,6 @@
 import Cocoa
 import ServiceManagement
 
-
 func createXPCConnection(loginItemName: NSString, error: NSErrorPointer) -> NSXPCConnection? {
     let mainBundleURL = NSBundle.mainBundle().bundleURL
     let loginItemDirURL = mainBundleURL.URLByAppendingPathComponent("Contents/Library/LoginItems", isDirectory: true)
@@ -79,25 +78,30 @@ func createXPCConnection(loginItemURL: NSURL, error: NSErrorPointer) -> NSXPCCon
 }
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate, Listener {
 
     @IBOutlet weak var window: NSWindow!
+    var connection: NSXPCConnection?
     var helper: ProvidesCounts?
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        window.delegate = self
+        
         var error: NSError?
-        let maybeConnection = createXPCConnection("FRMDA3XRGC.de.christiantietze.multiproc.Helper.app", &error)
-        if (maybeConnection == nil) {
+        connect(&error)
+        
+        if (self.connection == nil) {
             NSLog("conn failed %@", error!.description)
             return
         }
-        let connection = maybeConnection!
         
-        connection.remoteObjectInterface = NSXPCInterface(`protocol`: ProvidesCounts.self)
-        connection.resume()
+        connection!.remoteObjectInterface = NSXPCInterface(`protocol`: ProvidesCounts.self)
+        connection!.exportedInterface = NSXPCInterface(`protocol`: Listener.self)
+        connection!.exportedObject = self
+        connection!.resume()
         
         // Get a proxy DecisionAgent object for the connection.
-        helper = connection.remoteObjectProxyWithErrorHandler() { (err) -> Void in
+        helper = connection!.remoteObjectProxyWithErrorHandler() { (err) -> Void in
             // This block is run when an error occurs communicating with
             // the launch item service.  This will not be invoked on the
             // main queue, so re-schedule a block on the main queue to
@@ -115,13 +119,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSLog("The result is: \(result)")
         }
     }
+    
+    func connect(error: NSErrorPointer) {
+        connection = createXPCConnection("FRMDA3XRGC.de.christiantietze.multiproc.Helper.app", error)
+    }
+    
+    func windowWillClose(notification: NSNotification) {
+        NSApplication.sharedApplication().terminate(self)
+    }
+    
+    func updateTicker(tick: Int) {
+        NSLog("Tick #\(tick)")
+    }
 
     func applicationWillTerminate(aNotification: NSNotification) {
+        let object = connection!.remoteObjectProxyWithErrorHandler { (error) -> Void in
+            dispatch_async(dispatch_get_main_queue()) {
+                NSLog("Failed to query oracle: %@\n\n", error.description)
+            }
+        } as ProvidesCounts
+        object.currentCount() { (result) -> Void in
+            NSLog("The result is: \(result)")
+        }
         //helper = nil
-        //connection.invalidate()
+        connection?.invalidate()
     }
 
     func applicationShouldTerminate(sender: NSApplication) -> NSApplicationTerminateReply {
+        let object = connection!.remoteObjectProxyWithErrorHandler { (error) -> Void in
+            dispatch_async(dispatch_get_main_queue()) {
+                NSLog("Failed to query oracle: %@\n\n", error.description)
+            }
+        } as ProvidesCounts
+        object.currentCount() { (result) -> Void in
+            NSLog("The result is: \(result)")
+        }
         return .TerminateNow
     }
 

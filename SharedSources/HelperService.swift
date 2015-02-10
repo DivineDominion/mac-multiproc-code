@@ -12,3 +12,8 @@ import Foundation
 protocol ProvidesCounts {
     func currentCount(reply: ((UInt) -> Void)!)
 }
+
+@objc(Listener)
+protocol Listener {
+    func updateTicker(tick: Int)
+}
