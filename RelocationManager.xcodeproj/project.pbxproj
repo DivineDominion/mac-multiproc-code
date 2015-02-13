@@ -38,6 +38,7 @@
 		50FAC0891A8DE944001A2EF1 /* BoxAndItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FAC0881A8DE944001A2EF1 /* BoxAndItemData.swift */; };
 		50FAC08B1A8DE976001A2EF1 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FAC08A1A8DE975001A2EF1 /* Utilities.swift */; };
 		50FAC08D1A8DF039001A2EF1 /* BoxAndItemTreeNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FAC08C1A8DF039001A2EF1 /* BoxAndItemTreeNodes.swift */; };
+		50FAC08F1A8DF34B001A2EF1 /* DisplayBoxesAndItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FAC08E1A8DF34B001A2EF1 /* DisplayBoxesAndItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		50FAC0881A8DE944001A2EF1 /* BoxAndItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxAndItemData.swift; sourceTree = "<group>"; };
 		50FAC08A1A8DE975001A2EF1 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		50FAC08C1A8DF039001A2EF1 /* BoxAndItemTreeNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxAndItemTreeNodes.swift; sourceTree = "<group>"; };
+		50FAC08E1A8DF34B001A2EF1 /* DisplayBoxesAndItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayBoxesAndItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				5019FE9E1A8A1983007D5A09 /* ManageBoxesAndItems.swift */,
+				50FAC08E1A8DF34B001A2EF1 /* DisplayBoxesAndItems.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				5019FE991A8A1744007D5A09 /* BoxManagementWindowController.swift in Sources */,
 				5019FEA41A8CC97C007D5A09 /* ServiceCommunication.swift in Sources */,
 				5019FEB11A8CCAFC007D5A09 /* Identifiable.swift in Sources */,
+				50FAC08F1A8DF34B001A2EF1 /* DisplayBoxesAndItems.swift in Sources */,
 				5019FEA91A8CCAE3007D5A09 /* Item.swift in Sources */,
 				50FAC0891A8DE944001A2EF1 /* BoxAndItemData.swift in Sources */,
 				50FAC08D1A8DF039001A2EF1 /* BoxAndItemTreeNodes.swift in Sources */,

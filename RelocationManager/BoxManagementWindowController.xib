@@ -200,9 +200,9 @@
         <viewController id="WbT-pQ-G1W" customClass="BoxViewController" customModule="RelocationManager" customModuleProvider="target">
             <connections>
                 <outlet property="addItemButton" destination="GMe-gJ-6y0" id="QQr-kb-7Mr"/>
-                <outlet property="itemsController" destination="aK8-3g-iwH" id="lHQ-ij-r1Z"/>
                 <outlet property="orderBoxButton" destination="lVC-cl-9YF" id="gKn-RT-t90"/>
                 <outlet property="removeSelectionButton" destination="mvz-1P-HTc" id="AwR-FR-lXg"/>
+                <outlet property="treeController" destination="aK8-3g-iwH" id="5Pa-zP-9tK"/>
                 <outlet property="view" destination="OvO-Cn-mzI" id="Q7t-Qn-GLN"/>
             </connections>
         </viewController>

@@ -10,7 +10,7 @@ import Foundation
 
 public protocol HandlesItemListEvents: class {
     func createBox()
-    func createItem(boxId: BoxId)
+    func createItem()
     
     func changeBoxTitle(boxId: BoxId, title: String)
     func changeItemTitle(itemId: ItemId, title: String, inBox boxId: BoxId)
