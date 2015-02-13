@@ -1,6 +1,6 @@
 //
 //  ManageBoxesAndItems.swift
-//  DDDViewDataExample
+//  RelocationManager
 //
 //  Created by Christian Tietze on 28.11.14.
 //  Copyright (c) 2014 Christian Tietze. All rights reserved.

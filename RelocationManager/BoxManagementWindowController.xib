@@ -39,6 +39,7 @@
                         </buttonCell>
                         <connections>
                             <action selector="addItem:" target="WbT-pQ-G1W" id="zPV-0E-Yrc"/>
+                            <binding destination="aK8-3g-iwH" name="enabled" keyPath="canAddChild" id="zNO-0C-NR2"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mvz-1P-HTc">
@@ -46,14 +47,26 @@
                         <buttonCell key="cell" type="push" title="Remove" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ppr-r0-j7E">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <connections>
+                                <binding destination="aK8-3g-iwH" name="enabled" keyPath="selectionIndexPath" id="IMd-7U-4Mn">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSIsNotNil</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
                         </buttonCell>
                         <connections>
-                            <action selector="remove:" target="WbT-pQ-G1W" id="zTS-1f-XKH"/>
+                            <action selector="removeSelectedObject:" target="WbT-pQ-G1W" id="BoN-Am-rag"/>
+                            <binding destination="aK8-3g-iwH" name="enabled" keyPath="selectionIndexPath" id="4qj-z6-CUG">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                </dictionary>
+                            </binding>
                         </connections>
                     </button>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="36" horizontalPageScroll="10" verticalLineScroll="36" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKy-GU-GyL">
                         <rect key="frame" x="20" y="61" width="440" height="189"/>
-                        <clipView key="contentView" id="prx-Ks-rrH">
+                        <clipView key="contentView" misplaced="YES" id="prx-Ks-rrH">
                             <rect key="frame" x="1" y="17" width="238" height="117"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -63,7 +76,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="Title" width="300" minWidth="40" maxWidth="1000" id="fe5-Wa-qJq">
+                                        <tableColumn identifier="Label" width="300" minWidth="40" maxWidth="1000" id="fe5-Wa-qJq">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Label/Name">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -101,8 +114,11 @@
                                                     </connections>
                                                 </tableCellView>
                                             </prototypeCellViews>
+                                            <connections>
+                                                <binding destination="aK8-3g-iwH" name="value" keyPath="arrangedObjects.title" id="HuK-xK-eC4"/>
+                                            </connections>
                                         </tableColumn>
-                                        <tableColumn identifier="Count" editable="NO" width="131.5" minWidth="40" maxWidth="1000" id="6ZV-AL-szH">
+                                        <tableColumn identifier="Capacity" editable="NO" width="131.5" minWidth="40" maxWidth="1000" id="6ZV-AL-szH">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Capacity">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -127,7 +143,7 @@
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <connections>
-                                                                <binding destination="xeL-if-OYQ" name="value" keyPath="objectValue.count" id="rvk-um-Vch"/>
+                                                                <binding destination="xeL-if-OYQ" name="value" keyPath="objectValue.capacity" id="ozq-eM-KW9"/>
                                                             </connections>
                                                         </textField>
                                                     </subviews>
@@ -136,6 +152,13 @@
                                                     </connections>
                                                 </tableCellView>
                                             </prototypeCellViews>
+                                            <connections>
+                                                <binding destination="aK8-3g-iwH" name="value" keyPath="arrangedObjects.capacity" id="0z5-mm-Fiw">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </tableColumn>
                                     </tableColumns>
                                 </outlineView>
@@ -146,7 +169,7 @@
                             <rect key="frame" x="1" y="119" width="223" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Qik-IP-Or3">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Qik-IP-Or3">
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -177,10 +200,22 @@
         <viewController id="WbT-pQ-G1W" customClass="BoxViewController" customModule="RelocationManager" customModuleProvider="target">
             <connections>
                 <outlet property="addItemButton" destination="GMe-gJ-6y0" id="QQr-kb-7Mr"/>
+                <outlet property="itemsController" destination="aK8-3g-iwH" id="lHQ-ij-r1Z"/>
                 <outlet property="orderBoxButton" destination="lVC-cl-9YF" id="gKn-RT-t90"/>
                 <outlet property="removeSelectionButton" destination="mvz-1P-HTc" id="AwR-FR-lXg"/>
                 <outlet property="view" destination="OvO-Cn-mzI" id="Q7t-Qn-GLN"/>
             </connections>
         </viewController>
+        <treeController objectClassName="ItemNode" childrenKeyPath="children" leafKeyPath="isLeaf" id="aK8-3g-iwH">
+            <declaredKeys>
+                <string>capacity</string>
+                <string>title</string>
+                <string>isLeaf</string>
+                <string>children</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="WbT-pQ-G1W" name="sortDescriptors" keyPath="self.itemsSortDescriptors" id="s2l-2a-n2p"/>
+            </connections>
+        </treeController>
     </objects>
 </document>
