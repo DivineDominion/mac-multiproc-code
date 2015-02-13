@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  MultiProcCounter
+//  RelocationManager
 //
 //  Created by Christian Tietze on 19/01/15.
 //  Copyright (c) 2015 Christian Tietze. All rights reserved.
@@ -78,15 +78,13 @@ func createXPCConnection(loginItemURL: NSURL, error: NSErrorPointer) -> NSXPCCon
 }
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate, Listener {
+class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     var connection: NSXPCConnection?
-    var helper: ProvidesCounts?
+    var helper: ManagesBoxesAndItems?
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        window.delegate = self
-        
         var error: NSError?
         connect(&error)
         
@@ -95,9 +93,9 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate, Listener {
             return
         }
         
-        connection!.remoteObjectInterface = NSXPCInterface(`protocol`: ProvidesCounts.self)
-        connection!.exportedInterface = NSXPCInterface(`protocol`: Listener.self)
-        connection!.exportedObject = self
+        connection!.remoteObjectInterface = NSXPCInterface(`protocol`: ManagesBoxesAndItems.self)
+//        connection!.exportedInterface = NSXPCInterface(`protocol`: UsesBoxesAndItems.self)
+//        connection!.exportedObject = self
         connection!.invalidationHandler = {
             NSLog("invalidated")
         }
@@ -115,14 +113,10 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate, Listener {
             dispatch_async(dispatch_get_main_queue()) {
                 NSLog("Failed to query oracle: %@\n\n", err.description)
             }
-        } as? ProvidesCounts
+        } as? ManagesBoxesAndItems
         
         if helper == nil {
             NSLog("No helper")
-        }
-        
-        helper!.currentCount() { (result) -> Void in
-            NSLog("The result is: \(result)")
         }
     }
     
@@ -139,27 +133,11 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate, Listener {
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        let object = connection!.remoteObjectProxyWithErrorHandler { (error) -> Void in
-            dispatch_async(dispatch_get_main_queue()) {
-                NSLog("Failed to query oracle: %@\n\n", error.description)
-            }
-        } as ProvidesCounts
-        object.currentCount() { (result) -> Void in
-            NSLog("The result is: \(result)")
-        }
         //helper = nil
         connection?.invalidate()
     }
 
     func applicationShouldTerminate(sender: NSApplication) -> NSApplicationTerminateReply {
-        let object = connection!.remoteObjectProxyWithErrorHandler { (error) -> Void in
-            dispatch_async(dispatch_get_main_queue()) {
-                NSLog("Failed to query oracle: %@\n\n", error.description)
-            }
-        } as ProvidesCounts
-        object.currentCount() { (result) -> Void in
-            NSLog("The result is: \(result)")
-        }
         return .TerminateNow
     }
 

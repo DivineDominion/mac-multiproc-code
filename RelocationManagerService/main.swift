@@ -8,18 +8,30 @@
 
 import Cocoa
 
-class TheHelper : NSObject, ProvidesCounts {
-    func currentCount(reply: ((UInt) -> Void)!) {
-        reply(4455)
+class TheHelper : NSObject, ManagesBoxesAndItems {
+    func provisionBox() {
+        
+    }
+    
+    func provisionItem(boxIdentifier: IntegerId) {
+        
+    }
+    
+    func removeBox(boxIdentifier: IntegerId) {
+        
+    }
+    
+    func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId) {
+        
     }
 }
 
 class ServiceDelegate : NSObject, NSXPCListenerDelegate {
     func listener(listener: NSXPCListener!, shouldAcceptNewConnection newConnection: NSXPCConnection!) -> Bool {
-        newConnection.exportedInterface = NSXPCInterface(`protocol`: ProvidesCounts.self)
+        newConnection.exportedInterface = NSXPCInterface(`protocol`: ManagesBoxesAndItems.self)
         var exportedObject = TheHelper()
         newConnection.exportedObject = exportedObject
-        newConnection.remoteObjectInterface = NSXPCInterface(`protocol`: Listener.self)
+        newConnection.remoteObjectInterface = NSXPCInterface(`protocol`: UsesBoxesAndItems.self)
         
         var valid = true
         
@@ -36,17 +48,8 @@ class ServiceDelegate : NSObject, NSXPCListenerDelegate {
                 dispatch_async(dispatch_get_main_queue()) {
                     NSLog("error happened")
                 }
-            }) as Listener
-            
-            for (var i = 0; i < 10; i++) {
-                NSThread.sleepForTimeInterval(3)
-                if (!valid) {
-                    NSLog("aborting")
-                    break
-                }
-                
-                listener.updateTicker(i)
-            }
+            }) as UsesBoxesAndItems
+            // work with the client
         }
         
         return true
