@@ -9,11 +9,11 @@
 import Cocoa
 
 class TheHelper : NSObject, ManagesBoxesAndItems {
-    func provisionBox() {
-        
+    func provisionBox(label: String, capacity: Int) {
+
     }
     
-    func provisionItem(boxIdentifier: IntegerId) {
+    func provisionItem(name: String, inBoxWithIdentifier boxIdentifier: IntegerId) {
         
     }
     

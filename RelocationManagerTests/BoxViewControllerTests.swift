@@ -49,7 +49,7 @@ class TestItemNode: ItemNode {
     }
 }
 
-class EventHandlerStub: HandlesItemListEvents {
+class HandlesItemListEventsStub: HandlesItemListEvents {
     var createBoxClosure: ()->() = {}
     func createBox() {
         createBoxClosure()
@@ -81,7 +81,7 @@ class EventHandlerStub: HandlesItemListEvents {
 
 class BoxViewControllerTests: XCTestCase {
     var viewController: BoxViewController!
-    var testEventHandler: EventHandlerStub! = EventHandlerStub()
+    var testEventHandler: HandlesItemListEventsStub! = HandlesItemListEventsStub()
     
     override func setUp() {
         super.setUp()

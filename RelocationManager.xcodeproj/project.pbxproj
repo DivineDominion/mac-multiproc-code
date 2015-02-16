@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500925C21A91EE09007BE727 /* CreateBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500925C11A91EE09007BE727 /* CreateBox.swift */; };
+		500925C61A91FDA1007BE727 /* BoxCreationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500925C41A91FDA1007BE727 /* BoxCreationWindowController.swift */; };
+		500925C71A91FDA1007BE727 /* BoxCreationWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 500925C51A91FDA1007BE727 /* BoxCreationWindowController.xib */; };
 		5019FE7F1A8A1463007D5A09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FE7E1A8A1463007D5A09 /* AppDelegate.swift */; };
 		5019FE811A8A1463007D5A09 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5019FE801A8A1463007D5A09 /* Images.xcassets */; };
 		5019FE841A8A1463007D5A09 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5019FE821A8A1463007D5A09 /* MainMenu.xib */; };
@@ -30,6 +33,10 @@
 		507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D52D11A6D0252008F44D1 /* AppDelegate.swift */; };
 		507D52D71A6D0252008F44D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D61A6D0252008F44D1 /* Images.xcassets */; };
 		507D52DA1A6D0252008F44D1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D81A6D0252008F44D1 /* MainMenu.xib */; };
+		509CD15C1A92012C00EDEABD /* BoxCreationWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509CD15B1A92012C00EDEABD /* BoxCreationWindowControllerTests.swift */; };
+		509CD15E1A9208E000EDEABD /* BoxOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509CD15D1A9208E000EDEABD /* BoxOrder.swift */; };
+		509CD1601A9209D100EDEABD /* CreateBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509CD15F1A9209D100EDEABD /* CreateBoxTests.swift */; };
+		50ABEA641A92185E00E573E5 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEA631A92185E00E573E5 /* TestHelpers.swift */; };
 		50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50F98BD21A714C1800426FD8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F98BD11A714C1800426FD8 /* main.swift */; };
 		50FAC0831A8DE579001A2EF1 /* BoxViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FAC0821A8DE579001A2EF1 /* BoxViewControllerTests.swift */; };
@@ -79,6 +86,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		500925C11A91EE09007BE727 /* CreateBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBox.swift; sourceTree = "<group>"; };
+		500925C41A91FDA1007BE727 /* BoxCreationWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxCreationWindowController.swift; sourceTree = "<group>"; };
+		500925C51A91FDA1007BE727 /* BoxCreationWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoxCreationWindowController.xib; sourceTree = "<group>"; };
 		5019FE7A1A8A1463007D5A09 /* RelocationManagerHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelocationManagerHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5019FE7D1A8A1463007D5A09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5019FE7E1A8A1463007D5A09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +116,10 @@
 		507D52F61A6D02C2008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../RelocationManagerService/Info.plist; sourceTree = "<group>"; };
 		507D53041A6D02F9008F44D1 /* RelocationManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RelocationManager.entitlements; sourceTree = "<group>"; };
 		507D53051A6D031C008F44D1 /* RelocationManagerService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = RelocationManagerService.entitlements; path = ../RelocationManagerService/RelocationManagerService.entitlements; sourceTree = "<group>"; };
+		509CD15B1A92012C00EDEABD /* BoxCreationWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxCreationWindowControllerTests.swift; sourceTree = "<group>"; };
+		509CD15D1A9208E000EDEABD /* BoxOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxOrder.swift; sourceTree = "<group>"; };
+		509CD15F1A9209D100EDEABD /* CreateBoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBoxTests.swift; sourceTree = "<group>"; };
+		50ABEA631A92185E00E573E5 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		50F98BD11A714C1800426FD8 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../RelocationManagerService/main.swift; sourceTree = "<group>"; };
 		50FAC0811A8DE578001A2EF1 /* RelocationManagerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RelocationManagerTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		50FAC0821A8DE579001A2EF1 /* BoxViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxViewControllerTests.swift; sourceTree = "<group>"; };
@@ -156,6 +170,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		500925C31A91FD78007BE727 /* Box Management */ = {
+			isa = PBXGroup;
+			children = (
+				5019FE971A8A1744007D5A09 /* BoxManagementWindowController.swift */,
+				5019FE981A8A1744007D5A09 /* BoxManagementWindowController.xib */,
+				5019FEA11A8A1A1E007D5A09 /* BoxViewController.swift */,
+				50FAC0841A8DE672001A2EF1 /* NonNilStringValueTransformer.swift */,
+				50FAC08C1A8DF039001A2EF1 /* BoxAndItemTreeNodes.swift */,
+				50FAC0881A8DE944001A2EF1 /* BoxAndItemData.swift */,
+			);
+			name = "Box Management";
+			sourceTree = "<group>";
+		};
+		5015E4581A92130F00B16A39 /* New Box Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				500925C41A91FDA1007BE727 /* BoxCreationWindowController.swift */,
+				500925C51A91FDA1007BE727 /* BoxCreationWindowController.xib */,
+			);
+			name = "New Box Dialog";
+			sourceTree = "<group>";
+		};
 		5019FE7B1A8A1463007D5A09 /* RelocationManagerHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,12 +231,8 @@
 		5019FE9B1A8A18B4007D5A09 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				5019FE971A8A1744007D5A09 /* BoxManagementWindowController.swift */,
-				5019FE981A8A1744007D5A09 /* BoxManagementWindowController.xib */,
-				5019FEA11A8A1A1E007D5A09 /* BoxViewController.swift */,
-				50FAC0841A8DE672001A2EF1 /* NonNilStringValueTransformer.swift */,
-				50FAC08C1A8DF039001A2EF1 /* BoxAndItemTreeNodes.swift */,
-				50FAC0881A8DE944001A2EF1 /* BoxAndItemData.swift */,
+				500925C31A91FD78007BE727 /* Box Management */,
+				5015E4581A92130F00B16A39 /* New Box Dialog */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -228,6 +260,8 @@
 			children = (
 				5019FE9E1A8A1983007D5A09 /* ManageBoxesAndItems.swift */,
 				50FAC08E1A8DF34B001A2EF1 /* DisplayBoxesAndItems.swift */,
+				500925C11A91EE09007BE727 /* CreateBox.swift */,
+				509CD15D1A9208E000EDEABD /* BoxOrder.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -303,6 +337,8 @@
 			children = (
 				507D52E31A6D0252008F44D1 /* Supporting Files */,
 				50FAC0821A8DE579001A2EF1 /* BoxViewControllerTests.swift */,
+				509CD15B1A92012C00EDEABD /* BoxCreationWindowControllerTests.swift */,
+				509CD15F1A9209D100EDEABD /* CreateBoxTests.swift */,
 				50FAC0811A8DE578001A2EF1 /* RelocationManagerTests-Bridging-Header.h */,
 			);
 			path = RelocationManagerTests;
@@ -313,6 +349,7 @@
 			children = (
 				50FAC0861A8DE872001A2EF1 /* XCTestCase+CocoaBindings.swift */,
 				507D52E41A6D0252008F44D1 /* Info.plist */,
+				50ABEA631A92185E00E573E5 /* TestHelpers.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -520,6 +557,7 @@
 			files = (
 				507D52D71A6D0252008F44D1 /* Images.xcassets in Resources */,
 				5019FE9A1A8A1744007D5A09 /* BoxManagementWindowController.xib in Resources */,
+				500925C71A91FDA1007BE727 /* BoxCreationWindowController.xib in Resources */,
 				507D52DA1A6D0252008F44D1 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,15 +623,18 @@
 				50FAC0851A8DE672001A2EF1 /* NonNilStringValueTransformer.swift in Sources */,
 				5019FEA21A8A1A1E007D5A09 /* BoxViewController.swift in Sources */,
 				50FAC08B1A8DE976001A2EF1 /* Utilities.swift in Sources */,
+				500925C61A91FDA1007BE727 /* BoxCreationWindowController.swift in Sources */,
 				5019FE991A8A1744007D5A09 /* BoxManagementWindowController.swift in Sources */,
 				5019FEA41A8CC97C007D5A09 /* ServiceCommunication.swift in Sources */,
 				5019FEB11A8CCAFC007D5A09 /* Identifiable.swift in Sources */,
 				50FAC08F1A8DF34B001A2EF1 /* DisplayBoxesAndItems.swift in Sources */,
 				5019FEA91A8CCAE3007D5A09 /* Item.swift in Sources */,
 				50FAC0891A8DE944001A2EF1 /* BoxAndItemData.swift in Sources */,
+				500925C21A91EE09007BE727 /* CreateBox.swift in Sources */,
 				50FAC08D1A8DF039001A2EF1 /* BoxAndItemTreeNodes.swift in Sources */,
 				5019FEAC1A8CCAE3007D5A09 /* Box.swift in Sources */,
 				507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */,
+				509CD15E1A9208E000EDEABD /* BoxOrder.swift in Sources */,
 				5019FE9F1A8A1983007D5A09 /* ManageBoxesAndItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,8 +643,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				509CD15C1A92012C00EDEABD /* BoxCreationWindowControllerTests.swift in Sources */,
+				50ABEA641A92185E00E573E5 /* TestHelpers.swift in Sources */,
 				50FAC0871A8DE872001A2EF1 /* XCTestCase+CocoaBindings.swift in Sources */,
 				50FAC0831A8DE579001A2EF1 /* BoxViewControllerTests.swift in Sources */,
+				509CD1601A9209D100EDEABD /* CreateBoxTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

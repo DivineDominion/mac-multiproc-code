@@ -9,15 +9,18 @@
 import Foundation
 
 @objc(ManagesBoxesAndItems)
-protocol ManagesBoxesAndItems {
-    func provisionBox()
-    func provisionItem(boxIdentifier: IntegerId)
+public protocol ManagesBoxesAndItems {
+    func provisionBox(label: String, capacity: Int)
+    func provisionItem(name: String, inBoxWithIdentifier boxIdentifier: IntegerId)
     func removeBox(boxIdentifier: IntegerId)
     func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId)
 }
 
 @objc(UsesBoxesAndItems)
-protocol UsesBoxesAndItems {
+public protocol UsesBoxesAndItems {
+    func receiveBox(boxData: NSDictionary)
+    func receiveItem(itemData: NSDictionary)
+    
     func allowAddingItems()
     func forbidAddingItems()
 }
