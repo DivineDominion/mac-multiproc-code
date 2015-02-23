@@ -30,6 +30,26 @@
 		5019FEB11A8CCAFC007D5A09 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */; };
 		5019FEB21A8CCAFC007D5A09 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */; };
 		5019FEB31A8CCAFC007D5A09 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */; };
+		50208E691A9B2CBA00F39A88 /* CoreDataBoxRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE1D1A9B244000F94449 /* CoreDataBoxRepositoryTests.swift */; };
+		5063CE001A9B237900F94449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5063CDFF1A9B237900F94449 /* MainMenu.xib */; };
+		5063CE071A9B23D000F94449 /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE021A9B23D000F94449 /* PersistentStack.swift */; };
+		5063CE081A9B23D100F94449 /* ManagedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE031A9B23D000F94449 /* ManagedEntity.swift */; };
+		5063CE091A9B23D100F94449 /* CoreDataBoxRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE041A9B23D000F94449 /* CoreDataBoxRepository.swift */; };
+		5063CE0A1A9B23D100F94449 /* ManagedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE051A9B23D000F94449 /* ManagedBox.swift */; };
+		5063CE0B1A9B23D100F94449 /* ManagedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE061A9B23D000F94449 /* ManagedItem.swift */; };
+		5063CE151A9B240400F94449 /* ProvisioningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE0F1A9B240400F94449 /* ProvisioningService.swift */; };
+		5063CE161A9B240400F94449 /* DomainEventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE101A9B240400F94449 /* DomainEventPublisher.swift */; };
+		5063CE171A9B240400F94449 /* DomainEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE111A9B240400F94449 /* DomainEvents.swift */; };
+		5063CE181A9B240400F94449 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE121A9B240400F94449 /* Identifiable.swift */; };
+		5063CE191A9B240400F94449 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE131A9B240400F94449 /* Item.swift */; };
+		5063CE1A1A9B240400F94449 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE141A9B240400F94449 /* Box.swift */; };
+		5063CE201A9B244000F94449 /* PersistentStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE1C1A9B244000F94449 /* PersistentStackTests.swift */; };
+		5063CE221A9B244000F94449 /* ManagedBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE1E1A9B244000F94449 /* ManagedBoxTests.swift */; };
+		5063CE231A9B244000F94449 /* ProvisioningServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE1F1A9B244000F94449 /* ProvisioningServiceTests.swift */; };
+		5063CE251A9B250100F94449 /* RelocationManager.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE241A9B250100F94449 /* RelocationManager.xcdatamodel */; };
+		5063CE261A9B255E00F94449 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FAC08A1A8DE975001A2EF1 /* Utilities.swift */; };
+		5063CE281A9B260100F94449 /* TestDomainEventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE271A9B260100F94449 /* TestDomainEventPublisher.swift */; };
+		5063CE2A1A9B262E00F94449 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE291A9B262E00F94449 /* CoreDataTestCase.swift */; };
 		507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D52D11A6D0252008F44D1 /* AppDelegate.swift */; };
 		507D52D71A6D0252008F44D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D61A6D0252008F44D1 /* Images.xcassets */; };
 		507D52DA1A6D0252008F44D1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D81A6D0252008F44D1 /* MainMenu.xib */; };
@@ -37,6 +57,7 @@
 		509CD15E1A9208E000EDEABD /* BoxOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509CD15D1A9208E000EDEABD /* BoxOrder.swift */; };
 		509CD1601A9209D100EDEABD /* CreateBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509CD15F1A9209D100EDEABD /* CreateBoxTests.swift */; };
 		50ABEA641A92185E00E573E5 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEA631A92185E00E573E5 /* TestHelpers.swift */; };
+		50ABEA8F1A9B21E600E573E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEA8E1A9B21E600E573E5 /* AppDelegate.swift */; };
 		50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50F98BD21A714C1800426FD8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F98BD11A714C1800426FD8 /* main.swift */; };
 		50FAC0831A8DE579001A2EF1 /* BoxViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FAC0821A8DE579001A2EF1 /* BoxViewControllerTests.swift */; };
@@ -69,6 +90,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 507D52F21A6D02C2008F44D1;
 			remoteInfo = MultiProcCounterHelper;
+		};
+		50ABEA9A1A9B21E600E573E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 507D52C41A6D0252008F44D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50ABEA891A9B21E600E573E5;
+			remoteInfo = RelocationManagerServiceDomain;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -105,6 +133,25 @@
 		5019FEA71A8CCAE3007D5A09 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5019FEA81A8CCAE3007D5A09 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		5063CDFF1A9B237900F94449 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		5063CE021A9B23D000F94449 /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStack.swift; sourceTree = "<group>"; };
+		5063CE031A9B23D000F94449 /* ManagedEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedEntity.swift; sourceTree = "<group>"; };
+		5063CE041A9B23D000F94449 /* CoreDataBoxRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataBoxRepository.swift; sourceTree = "<group>"; };
+		5063CE051A9B23D000F94449 /* ManagedBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedBox.swift; sourceTree = "<group>"; };
+		5063CE061A9B23D000F94449 /* ManagedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedItem.swift; sourceTree = "<group>"; };
+		5063CE0F1A9B240400F94449 /* ProvisioningService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningService.swift; sourceTree = "<group>"; };
+		5063CE101A9B240400F94449 /* DomainEventPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainEventPublisher.swift; sourceTree = "<group>"; };
+		5063CE111A9B240400F94449 /* DomainEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainEvents.swift; sourceTree = "<group>"; };
+		5063CE121A9B240400F94449 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		5063CE131A9B240400F94449 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		5063CE141A9B240400F94449 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		5063CE1C1A9B244000F94449 /* PersistentStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStackTests.swift; sourceTree = "<group>"; };
+		5063CE1D1A9B244000F94449 /* CoreDataBoxRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataBoxRepositoryTests.swift; sourceTree = "<group>"; };
+		5063CE1E1A9B244000F94449 /* ManagedBoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedBoxTests.swift; sourceTree = "<group>"; };
+		5063CE1F1A9B244000F94449 /* ProvisioningServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningServiceTests.swift; sourceTree = "<group>"; };
+		5063CE241A9B250100F94449 /* RelocationManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RelocationManager.xcdatamodel; sourceTree = "<group>"; };
+		5063CE271A9B260100F94449 /* TestDomainEventPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDomainEventPublisher.swift; sourceTree = "<group>"; };
+		5063CE291A9B262E00F94449 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
 		507D52CC1A6D0252008F44D1 /* RelocationManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelocationManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D52D01A6D0252008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		507D52D11A6D0252008F44D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,20 +160,25 @@
 		507D52DF1A6D0252008F44D1 /* RelocationManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RelocationManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D52E41A6D0252008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = FRMDA3XRGC.de.christiantietze.relocman.Service.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		507D52F61A6D02C2008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../RelocationManagerService/Info.plist; sourceTree = "<group>"; };
+		507D52F61A6D02C2008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		507D53041A6D02F9008F44D1 /* RelocationManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RelocationManager.entitlements; sourceTree = "<group>"; };
-		507D53051A6D031C008F44D1 /* RelocationManagerService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = RelocationManagerService.entitlements; path = ../RelocationManagerService/RelocationManagerService.entitlements; sourceTree = "<group>"; };
+		507D53051A6D031C008F44D1 /* RelocationManagerService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RelocationManagerService.entitlements; sourceTree = "<group>"; };
 		509CD15B1A92012C00EDEABD /* BoxCreationWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxCreationWindowControllerTests.swift; sourceTree = "<group>"; };
 		509CD15D1A9208E000EDEABD /* BoxOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxOrder.swift; sourceTree = "<group>"; };
 		509CD15F1A9209D100EDEABD /* CreateBoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBoxTests.swift; sourceTree = "<group>"; };
 		50ABEA631A92185E00E573E5 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
-		50F98BD11A714C1800426FD8 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../RelocationManagerService/main.swift; sourceTree = "<group>"; };
+		50ABEA8A1A9B21E600E573E5 /* RelocationManagerServiceDomain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelocationManagerServiceDomain.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50ABEA8D1A9B21E600E573E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50ABEA8E1A9B21E600E573E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		50ABEA991A9B21E600E573E5 /* RelocationManagerServiceDomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RelocationManagerServiceDomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50ABEA9E1A9B21E600E573E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50F98BD11A714C1800426FD8 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50FAC0811A8DE578001A2EF1 /* RelocationManagerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RelocationManagerTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		50FAC0821A8DE579001A2EF1 /* BoxViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxViewControllerTests.swift; sourceTree = "<group>"; };
 		50FAC0841A8DE672001A2EF1 /* NonNilStringValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonNilStringValueTransformer.swift; sourceTree = "<group>"; };
 		50FAC0861A8DE872001A2EF1 /* XCTestCase+CocoaBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+CocoaBindings.swift"; sourceTree = "<group>"; };
 		50FAC0881A8DE944001A2EF1 /* BoxAndItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxAndItemData.swift; sourceTree = "<group>"; };
-		50FAC08A1A8DE975001A2EF1 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		50FAC08A1A8DE975001A2EF1 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = ../RelocationManager/Utilities.swift; sourceTree = "<group>"; };
 		50FAC08C1A8DF039001A2EF1 /* BoxAndItemTreeNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxAndItemTreeNodes.swift; sourceTree = "<group>"; };
 		50FAC08E1A8DF34B001A2EF1 /* DisplayBoxesAndItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayBoxesAndItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +213,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		507D52F01A6D02C2008F44D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50ABEA871A9B21E600E573E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50ABEA961A9B21E600E573E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -281,9 +347,62 @@
 			children = (
 				5019FEAF1A8CCAF1007D5A09 /* Domain Model */,
 				5019FEA31A8CC97C007D5A09 /* ServiceCommunication.swift */,
+				50FAC08A1A8DE975001A2EF1 /* Utilities.swift */,
 			);
 			name = "Shared Sources";
 			path = SharedSources;
+			sourceTree = "<group>";
+		};
+		5063CE011A9B239A00F94449 /* Cocoa Target Overhead */ = {
+			isa = PBXGroup;
+			children = (
+				50ABEA8E1A9B21E600E573E5 /* AppDelegate.swift */,
+				5063CDFF1A9B237900F94449 /* MainMenu.xib */,
+				50ABEA8D1A9B21E600E573E5 /* Info.plist */,
+			);
+			name = "Cocoa Target Overhead";
+			sourceTree = "<group>";
+		};
+		5063CE0C1A9B23D700F94449 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				5063CE031A9B23D000F94449 /* ManagedEntity.swift */,
+				5063CE041A9B23D000F94449 /* CoreDataBoxRepository.swift */,
+				5063CE051A9B23D000F94449 /* ManagedBox.swift */,
+				5063CE061A9B23D000F94449 /* ManagedItem.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		5063CE0D1A9B23E200F94449 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				5063CE241A9B250100F94449 /* RelocationManager.xcdatamodel */,
+				5063CE021A9B23D000F94449 /* PersistentStack.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		5063CE0E1A9B23F400F94449 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				5063CE0D1A9B23E200F94449 /* Core Data */,
+				5063CE0C1A9B23D700F94449 /* Entities */,
+			);
+			name = Infrastructure;
+			sourceTree = "<group>";
+		};
+		5063CE1B1A9B240900F94449 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5063CE0F1A9B240400F94449 /* ProvisioningService.swift */,
+				5063CE101A9B240400F94449 /* DomainEventPublisher.swift */,
+				5063CE111A9B240400F94449 /* DomainEvents.swift */,
+				5063CE121A9B240400F94449 /* Identifiable.swift */,
+				5063CE131A9B240400F94449 /* Item.swift */,
+				5063CE141A9B240400F94449 /* Box.swift */,
+			);
+			name = Domain;
 			sourceTree = "<group>";
 		};
 		507D52C31A6D0252008F44D1 = {
@@ -295,6 +414,8 @@
 				5019FE7B1A8A1463007D5A09 /* RelocationManagerHelper */,
 				5019FE8C1A8A1463007D5A09 /* RelocationManagerHelperTests */,
 				507D52F41A6D02C2008F44D1 /* RelocationManagerService */,
+				50ABEA8B1A9B21E600E573E5 /* RelocationManagerServiceDomain */,
+				50ABEA9C1A9B21E600E573E5 /* RelocationManagerServiceDomainTests */,
 				507D52CD1A6D0252008F44D1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -307,6 +428,8 @@
 				507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */,
 				5019FE7A1A8A1463007D5A09 /* RelocationManagerHelper.app */,
 				5019FE891A8A1463007D5A09 /* RelocationManagerHelperTests.xctest */,
+				50ABEA8A1A9B21E600E573E5 /* RelocationManagerServiceDomain.app */,
+				50ABEA991A9B21E600E573E5 /* RelocationManagerServiceDomainTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,7 +441,6 @@
 				5019FEA01A8A1987007D5A09 /* Application */,
 				5019FE9B1A8A18B4007D5A09 /* User Interface */,
 				5019FE9C1A8A18BD007D5A09 /* Resources */,
-				50FAC08A1A8DE975001A2EF1 /* Utilities.swift */,
 				507D52CF1A6D0252008F44D1 /* Supporting Files */,
 			);
 			path = RelocationManager;
@@ -361,14 +483,45 @@
 				50F98BD11A714C1800426FD8 /* main.swift */,
 				507D52F51A6D02C2008F44D1 /* Supporting Files */,
 			);
-			name = RelocationManagerService;
-			path = MultiProcCounterHelper;
+			path = RelocationManagerService;
 			sourceTree = "<group>";
 		};
 		507D52F51A6D02C2008F44D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				507D52F61A6D02C2008F44D1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		50ABEA8B1A9B21E600E573E5 /* RelocationManagerServiceDomain */ = {
+			isa = PBXGroup;
+			children = (
+				5063CE0E1A9B23F400F94449 /* Infrastructure */,
+				5063CE1B1A9B240900F94449 /* Domain */,
+				5063CE011A9B239A00F94449 /* Cocoa Target Overhead */,
+			);
+			path = RelocationManagerServiceDomain;
+			sourceTree = "<group>";
+		};
+		50ABEA9C1A9B21E600E573E5 /* RelocationManagerServiceDomainTests */ = {
+			isa = PBXGroup;
+			children = (
+				5063CE1C1A9B244000F94449 /* PersistentStackTests.swift */,
+				5063CE1D1A9B244000F94449 /* CoreDataBoxRepositoryTests.swift */,
+				5063CE1E1A9B244000F94449 /* ManagedBoxTests.swift */,
+				5063CE1F1A9B244000F94449 /* ProvisioningServiceTests.swift */,
+				50ABEA9D1A9B21E600E573E5 /* Supporting Files */,
+			);
+			path = RelocationManagerServiceDomainTests;
+			sourceTree = "<group>";
+		};
+		50ABEA9D1A9B21E600E573E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5063CE291A9B262E00F94449 /* CoreDataTestCase.swift */,
+				5063CE271A9B260100F94449 /* TestDomainEventPublisher.swift */,
+				50ABEA9E1A9B21E600E573E5 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -466,6 +619,41 @@
 			productReference = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */;
 			productType = "com.apple.product-type.xpc-service";
 		};
+		50ABEA891A9B21E600E573E5 /* RelocationManagerServiceDomain */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50ABEAA11A9B21E600E573E5 /* Build configuration list for PBXNativeTarget "RelocationManagerServiceDomain" */;
+			buildPhases = (
+				50ABEA861A9B21E600E573E5 /* Sources */,
+				50ABEA871A9B21E600E573E5 /* Frameworks */,
+				50ABEA881A9B21E600E573E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RelocationManagerServiceDomain;
+			productName = RelocationManagerServiceDomain;
+			productReference = 50ABEA8A1A9B21E600E573E5 /* RelocationManagerServiceDomain.app */;
+			productType = "com.apple.product-type.application";
+		};
+		50ABEA981A9B21E600E573E5 /* RelocationManagerServiceDomainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50ABEAA41A9B21E600E573E5 /* Build configuration list for PBXNativeTarget "RelocationManagerServiceDomainTests" */;
+			buildPhases = (
+				50ABEA951A9B21E600E573E5 /* Sources */,
+				50ABEA961A9B21E600E573E5 /* Frameworks */,
+				50ABEA971A9B21E600E573E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50ABEA9B1A9B21E600E573E5 /* PBXTargetDependency */,
+			);
+			name = RelocationManagerServiceDomainTests;
+			productName = RelocationManagerServiceDomainTests;
+			productReference = 50ABEA991A9B21E600E573E5 /* RelocationManagerServiceDomainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -510,6 +698,13 @@
 							};
 						};
 					};
+					50ABEA891A9B21E600E573E5 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					50ABEA981A9B21E600E573E5 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 50ABEA891A9B21E600E573E5;
+					};
 				};
 			};
 			buildConfigurationList = 507D52C71A6D0252008F44D1 /* Build configuration list for PBXProject "RelocationManager" */;
@@ -527,9 +722,11 @@
 			targets = (
 				507D52CB1A6D0252008F44D1 /* RelocationManager */,
 				507D52DE1A6D0252008F44D1 /* RelocationManagerTests */,
-				507D52F21A6D02C2008F44D1 /* RelocationManagerService */,
 				5019FE791A8A1463007D5A09 /* RelocationManagerHelper */,
 				5019FE881A8A1463007D5A09 /* RelocationManagerHelperTests */,
+				507D52F21A6D02C2008F44D1 /* RelocationManagerService */,
+				50ABEA891A9B21E600E573E5 /* RelocationManagerServiceDomain */,
+				50ABEA981A9B21E600E573E5 /* RelocationManagerServiceDomainTests */,
 			);
 		};
 /* End PBXProject section */
@@ -570,6 +767,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		507D52F11A6D02C2008F44D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50ABEA881A9B21E600E573E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5063CE001A9B237900F94449 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50ABEA971A9B21E600E573E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -663,6 +875,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50ABEA861A9B21E600E573E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5063CE0B1A9B23D100F94449 /* ManagedItem.swift in Sources */,
+				5063CE171A9B240400F94449 /* DomainEvents.swift in Sources */,
+				5063CE261A9B255E00F94449 /* Utilities.swift in Sources */,
+				5063CE251A9B250100F94449 /* RelocationManager.xcdatamodel in Sources */,
+				50ABEA8F1A9B21E600E573E5 /* AppDelegate.swift in Sources */,
+				5063CE181A9B240400F94449 /* Identifiable.swift in Sources */,
+				5063CE081A9B23D100F94449 /* ManagedEntity.swift in Sources */,
+				5063CE091A9B23D100F94449 /* CoreDataBoxRepository.swift in Sources */,
+				5063CE191A9B240400F94449 /* Item.swift in Sources */,
+				5063CE151A9B240400F94449 /* ProvisioningService.swift in Sources */,
+				5063CE161A9B240400F94449 /* DomainEventPublisher.swift in Sources */,
+				5063CE1A1A9B240400F94449 /* Box.swift in Sources */,
+				5063CE071A9B23D000F94449 /* PersistentStack.swift in Sources */,
+				5063CE0A1A9B23D100F94449 /* ManagedBox.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50ABEA951A9B21E600E573E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5063CE231A9B244000F94449 /* ProvisioningServiceTests.swift in Sources */,
+				5063CE221A9B244000F94449 /* ManagedBoxTests.swift in Sources */,
+				5063CE201A9B244000F94449 /* PersistentStackTests.swift in Sources */,
+				5063CE2A1A9B262E00F94449 /* CoreDataTestCase.swift in Sources */,
+				50208E691A9B2CBA00F39A88 /* CoreDataBoxRepositoryTests.swift in Sources */,
+				5063CE281A9B260100F94449 /* TestDomainEventPublisher.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -680,6 +926,11 @@
 			isa = PBXTargetDependency;
 			target = 507D52F21A6D02C2008F44D1 /* RelocationManagerService */;
 			targetProxy = 507D52FD1A6D02C2008F44D1 /* PBXContainerItemProxy */;
+		};
+		50ABEA9B1A9B21E600E573E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50ABEA891A9B21E600E573E5 /* RelocationManagerServiceDomain */;
+			targetProxy = 50ABEA9A1A9B21E600E573E5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -963,6 +1214,71 @@
 			};
 			name = Release;
 		};
+		50ABEAA21A9B21E600E573E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RelocationManagerServiceDomain/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		50ABEAA31A9B21E600E573E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RelocationManagerServiceDomain/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		50ABEAA51A9B21E600E573E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RelocationManagerServiceDomainTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RelocationManagerServiceDomain.app/Contents/MacOS/RelocationManagerServiceDomain";
+			};
+			name = Debug;
+		};
+		50ABEAA61A9B21E600E573E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RelocationManagerServiceDomainTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RelocationManagerServiceDomain.app/Contents/MacOS/RelocationManagerServiceDomain";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1016,6 +1332,24 @@
 			buildConfigurations = (
 				507D53001A6D02C2008F44D1 /* Debug */,
 				507D53011A6D02C2008F44D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50ABEAA11A9B21E600E573E5 /* Build configuration list for PBXNativeTarget "RelocationManagerServiceDomain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50ABEAA21A9B21E600E573E5 /* Debug */,
+				50ABEAA31A9B21E600E573E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50ABEAA41A9B21E600E573E5 /* Build configuration list for PBXNativeTarget "RelocationManagerServiceDomainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50ABEAA51A9B21E600E573E5 /* Debug */,
+				50ABEAA61A9B21E600E573E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
