@@ -258,7 +258,7 @@
 			name = "New Box Dialog";
 			sourceTree = "<group>";
 		};
-		5019FE7B1A8A1463007D5A09 /* RelocationManagerHelper */ = {
+		5019FE7B1A8A1463007D5A09 /* Status Bar App */ = {
 			isa = PBXGroup;
 			children = (
 				5019FE7E1A8A1463007D5A09 /* AppDelegate.swift */,
@@ -266,6 +266,7 @@
 				5019FE821A8A1463007D5A09 /* MainMenu.xib */,
 				5019FE7C1A8A1463007D5A09 /* Supporting Files */,
 			);
+			name = "Status Bar App";
 			path = RelocationManagerHelper;
 			sourceTree = "<group>";
 		};
@@ -277,12 +278,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5019FE8C1A8A1463007D5A09 /* RelocationManagerHelperTests */ = {
+		5019FE8C1A8A1463007D5A09 /* Status Bar App Tests */ = {
 			isa = PBXGroup;
 			children = (
 				5019FE8F1A8A1463007D5A09 /* RelocationManagerHelperTests.swift */,
 				5019FE8D1A8A1463007D5A09 /* Supporting Files */,
 			);
+			name = "Status Bar App Tests";
 			path = RelocationManagerHelperTests;
 			sourceTree = "<group>";
 		};
@@ -409,13 +411,13 @@
 			isa = PBXGroup;
 			children = (
 				5050E7561A715B20009BE1C4 /* Shared Sources */,
-				507D52CE1A6D0252008F44D1 /* RelocationManager */,
-				507D52E21A6D0252008F44D1 /* RelocationManagerTests */,
-				5019FE7B1A8A1463007D5A09 /* RelocationManagerHelper */,
-				5019FE8C1A8A1463007D5A09 /* RelocationManagerHelperTests */,
-				507D52F41A6D02C2008F44D1 /* RelocationManagerService */,
-				50ABEA8B1A9B21E600E573E5 /* RelocationManagerServiceDomain */,
-				50ABEA9C1A9B21E600E573E5 /* RelocationManagerServiceDomainTests */,
+				507D52CE1A6D0252008F44D1 /* Main App */,
+				507D52E21A6D0252008F44D1 /* Main App Tests */,
+				5019FE7B1A8A1463007D5A09 /* Status Bar App */,
+				5019FE8C1A8A1463007D5A09 /* Status Bar App Tests */,
+				507D52F41A6D02C2008F44D1 /* XPC Service */,
+				50ABEA8B1A9B21E600E573E5 /* XPC Service Core */,
+				50ABEA9C1A9B21E600E573E5 /* XPC Service Core Tests */,
 				507D52CD1A6D0252008F44D1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -434,7 +436,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		507D52CE1A6D0252008F44D1 /* RelocationManager */ = {
+		507D52CE1A6D0252008F44D1 /* Main App */ = {
 			isa = PBXGroup;
 			children = (
 				5019FE9D1A8A18E2007D5A09 /* Infrastructure */,
@@ -443,6 +445,7 @@
 				5019FE9C1A8A18BD007D5A09 /* Resources */,
 				507D52CF1A6D0252008F44D1 /* Supporting Files */,
 			);
+			name = "Main App";
 			path = RelocationManager;
 			sourceTree = "<group>";
 		};
@@ -454,7 +457,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		507D52E21A6D0252008F44D1 /* RelocationManagerTests */ = {
+		507D52E21A6D0252008F44D1 /* Main App Tests */ = {
 			isa = PBXGroup;
 			children = (
 				507D52E31A6D0252008F44D1 /* Supporting Files */,
@@ -463,6 +466,7 @@
 				509CD15F1A9209D100EDEABD /* CreateBoxTests.swift */,
 				50FAC0811A8DE578001A2EF1 /* RelocationManagerTests-Bridging-Header.h */,
 			);
+			name = "Main App Tests";
 			path = RelocationManagerTests;
 			sourceTree = "<group>";
 		};
@@ -476,13 +480,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		507D52F41A6D02C2008F44D1 /* RelocationManagerService */ = {
+		507D52F41A6D02C2008F44D1 /* XPC Service */ = {
 			isa = PBXGroup;
 			children = (
 				507D53051A6D031C008F44D1 /* RelocationManagerService.entitlements */,
 				50F98BD11A714C1800426FD8 /* main.swift */,
 				507D52F51A6D02C2008F44D1 /* Supporting Files */,
 			);
+			name = "XPC Service";
 			path = RelocationManagerService;
 			sourceTree = "<group>";
 		};
@@ -494,17 +499,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		50ABEA8B1A9B21E600E573E5 /* RelocationManagerServiceDomain */ = {
+		50ABEA8B1A9B21E600E573E5 /* XPC Service Core */ = {
 			isa = PBXGroup;
 			children = (
 				5063CE0E1A9B23F400F94449 /* Infrastructure */,
 				5063CE1B1A9B240900F94449 /* Domain */,
 				5063CE011A9B239A00F94449 /* Cocoa Target Overhead */,
 			);
+			name = "XPC Service Core";
 			path = RelocationManagerServiceDomain;
 			sourceTree = "<group>";
 		};
-		50ABEA9C1A9B21E600E573E5 /* RelocationManagerServiceDomainTests */ = {
+		50ABEA9C1A9B21E600E573E5 /* XPC Service Core Tests */ = {
 			isa = PBXGroup;
 			children = (
 				5063CE1C1A9B244000F94449 /* PersistentStackTests.swift */,
@@ -513,6 +519,7 @@
 				5063CE1F1A9B244000F94449 /* ProvisioningServiceTests.swift */,
 				50ABEA9D1A9B21E600E573E5 /* Supporting Files */,
 			);
+			name = "XPC Service Core Tests";
 			path = RelocationManagerServiceDomainTests;
 			sourceTree = "<group>";
 		};
