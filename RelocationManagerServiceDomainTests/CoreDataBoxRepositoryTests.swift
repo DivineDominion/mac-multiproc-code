@@ -49,7 +49,8 @@ class CoreDataBoxRepositoryTests: CoreDataTestCase {
     func testAddingBox_InsertsEntityIntoStore() {
         let title = "a title"
         let boxId = repository!.nextId()
-        let box = Box(boxId: boxId, title: title)
+        let capacity = BoxCapacity.Medium
+        let box = Box(boxId: boxId, capacity: capacity, title: title)
     
         repository!.addBox(box)
 
@@ -58,6 +59,7 @@ class CoreDataBoxRepositoryTests: CoreDataTestCase {
         
         if let managedBox = boxes.first {
             XCTAssertEqual(managedBox.title, title, "Title should be saved")
+            XCTAssertEqual(managedBox.capacity, capacity.rawValue)
             XCTAssertEqual(managedBox.boxId(), boxId, "Box ID should be saved")
         }
     }
@@ -68,7 +70,7 @@ class CoreDataBoxRepositoryTests: CoreDataTestCase {
         let testGenerator = TestIntegerIdGenerator()
         repository = CoreDataBoxRepository(managedObjectContext: context, integerIdGenerator: testGenerator)
         let existingId = BoxId(testGenerator.firstAttempt)
-        ManagedBox.insertManagedBox(existingId, title: "irrelevant", inManagedObjectContext: context)
+        ManagedBox.insertManagedBox(existingId, capacity: 10, title: "irrelevant", inManagedObjectContext: context)
         
         let boxId = repository!.nextId()
         

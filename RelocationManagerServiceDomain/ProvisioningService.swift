@@ -19,18 +19,18 @@ public class ProvisioningService {
         self.repository = repository
     }
     
-    public func provisionBox() {
+    public func provisionBox(#capacity: BoxCapacity) {
         let boxId = repository.nextId()
-        let box = Box(boxId: boxId, title: "New Box")
+        let box = Box(boxId: boxId, capacity: capacity, title: "New Box")
         
         repository.addBox(box)
         
         eventPublisher.publish(BoxProvisionedEvent(boxId: boxId, title: box.title))
     }
     
-    public func provisionItem(inBox box: Box) {
+    public func provisionItem(title: String, inBox box: Box) {
         let itemId = repository.nextItemId()
-        let item = Item(itemId: itemId, title: "New Item")
+        let item = Item(itemId: itemId, title: title)
 
         box.addItem(item)
         

@@ -58,6 +58,8 @@
 		509CD1601A9209D100EDEABD /* CreateBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509CD15F1A9209D100EDEABD /* CreateBoxTests.swift */; };
 		50ABEA641A92185E00E573E5 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEA631A92185E00E573E5 /* TestHelpers.swift */; };
 		50ABEA8F1A9B21E600E573E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEA8E1A9B21E600E573E5 /* AppDelegate.swift */; };
+		50D215C51A9B388500059B36 /* DistributeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D215C41A9B388500059B36 /* DistributeItem.swift */; };
+		50D215C71A9B479300059B36 /* BoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D215C61A9B479300059B36 /* BoxTests.swift */; };
 		50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50F98BD21A714C1800426FD8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F98BD11A714C1800426FD8 /* main.swift */; };
 		50FAC0831A8DE579001A2EF1 /* BoxViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FAC0821A8DE579001A2EF1 /* BoxViewControllerTests.swift */; };
@@ -172,6 +174,8 @@
 		50ABEA8E1A9B21E600E573E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50ABEA991A9B21E600E573E5 /* RelocationManagerServiceDomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RelocationManagerServiceDomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ABEA9E1A9B21E600E573E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50D215C41A9B388500059B36 /* DistributeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributeItem.swift; sourceTree = "<group>"; };
+		50D215C61A9B479300059B36 /* BoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTests.swift; sourceTree = "<group>"; };
 		50F98BD11A714C1800426FD8 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50FAC0811A8DE578001A2EF1 /* RelocationManagerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RelocationManagerTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		50FAC0821A8DE579001A2EF1 /* BoxViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxViewControllerTests.swift; sourceTree = "<group>"; };
@@ -403,6 +407,7 @@
 				5063CE121A9B240400F94449 /* Identifiable.swift */,
 				5063CE131A9B240400F94449 /* Item.swift */,
 				5063CE141A9B240400F94449 /* Box.swift */,
+				50D215C41A9B388500059B36 /* DistributeItem.swift */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				5063CE1C1A9B244000F94449 /* PersistentStackTests.swift */,
 				5063CE1D1A9B244000F94449 /* CoreDataBoxRepositoryTests.swift */,
 				5063CE1E1A9B244000F94449 /* ManagedBoxTests.swift */,
+				50D215C61A9B479300059B36 /* BoxTests.swift */,
 				5063CE1F1A9B244000F94449 /* ProvisioningServiceTests.swift */,
 				50ABEA9D1A9B21E600E573E5 /* Supporting Files */,
 			);
@@ -853,6 +859,7 @@
 				50FAC08D1A8DF039001A2EF1 /* BoxAndItemTreeNodes.swift in Sources */,
 				5019FEAC1A8CCAE3007D5A09 /* Box.swift in Sources */,
 				507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */,
+				50D215C51A9B388500059B36 /* DistributeItem.swift in Sources */,
 				509CD15E1A9208E000EDEABD /* BoxOrder.swift in Sources */,
 				5019FE9F1A8A1983007D5A09 /* ManageBoxesAndItems.swift in Sources */,
 			);
@@ -911,6 +918,7 @@
 				5063CE221A9B244000F94449 /* ManagedBoxTests.swift in Sources */,
 				5063CE201A9B244000F94449 /* PersistentStackTests.swift in Sources */,
 				5063CE2A1A9B262E00F94449 /* CoreDataTestCase.swift in Sources */,
+				50D215C71A9B479300059B36 /* BoxTests.swift in Sources */,
 				50208E691A9B2CBA00F39A88 /* CoreDataBoxRepositoryTests.swift in Sources */,
 				5063CE281A9B260100F94449 /* TestDomainEventPublisher.swift in Sources */,
 			);

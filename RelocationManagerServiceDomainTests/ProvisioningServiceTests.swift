@@ -51,14 +51,14 @@ class ProvisioningServiceTests: XCTestCase {
     }
 
     func testProvisionBox_PublishesDomainEvent() {
-        provisioningService.provisionBox()
+        provisioningService.provisionBox(capacity: .Small)
         
         XCTAssert(publisher.lastPublishedEvent != nil)
     }
 
     func testProvisionItem_PublishesDomainEvent() {
-        let box = Box(boxId: BoxId(123), title: "irrelevant")
-        provisioningService.provisionItem(inBox: box)
+        let box = Box(boxId: BoxId(123), capacity: .Small, title: "irrelevant")
+        provisioningService.provisionItem("irrelevant", inBox: box)
         
         if let event = publisher.lastPublishedEvent as? BoxItemProvisionedEvent {
             XCTAssertEqual(event.boxId, box.boxId)

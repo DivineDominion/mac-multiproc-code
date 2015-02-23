@@ -36,7 +36,7 @@ class ManagedBoxTests: CoreDataTestCase {
 
     func testChangingFetchedBoxTitle_PersistsChanges() {
         let boxId = BoxId(1234)
-        ManagedBox.insertManagedBox(boxId, title: "before", inManagedObjectContext: context)
+        ManagedBox.insertManagedBox(boxId, capacity: 5, title: "before", inManagedObjectContext: context)
         
         if let box = repository!.box(boxId: boxId) {
             box.title = "new title"
@@ -50,7 +50,7 @@ class ManagedBoxTests: CoreDataTestCase {
     
     func testChangingFetchedBoxTitle_ToEmptyString_PersistsChanges() {
         let boxId = BoxId(1234)
-        ManagedBox.insertManagedBox(boxId, title: "before", inManagedObjectContext: context)
+        ManagedBox.insertManagedBox(boxId, capacity: 5, title: "before", inManagedObjectContext: context)
         
         if let box = repository!.box(boxId: boxId) {
             box.title = ""
@@ -64,7 +64,7 @@ class ManagedBoxTests: CoreDataTestCase {
     
     func testAddingItemToFetchedBox_PersistsChanges() {
         let boxId = BoxId(1234)
-        ManagedBox.insertManagedBox(boxId, title: "irrelevant", inManagedObjectContext: context)
+        ManagedBox.insertManagedBox(boxId, capacity: 5, title: "irrelevant", inManagedObjectContext: context)
         
         if let box = repository!.box(boxId: boxId) {
             let itemId = ItemId(6789)
