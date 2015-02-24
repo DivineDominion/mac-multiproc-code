@@ -11,32 +11,32 @@ import XCTest
 
 import RelocationManagerServiceDomain
 
-class TestBoxRepository: BoxRepository {
-    func nextId() -> BoxId {
-        return BoxId(0)
-    }
-    
-    func nextItemId() -> ItemId {
-        return ItemId(0)
-    }
-    
-    func addBox(box: Box) { }
-    func removeBox(#boxId: BoxId) { }
-    
-    func box(#boxId: BoxId) -> Box? {
-        return nil
-    }
-    
-    func boxes() -> [Box] {
-        return []
-    }
-    
-    func count() -> Int {
-        return 0
-    }
-}
-
 class ProvisioningServiceTests: XCTestCase {
+    class TestBoxRepository: BoxRepository {
+        func nextId() -> BoxId {
+            return BoxId(0)
+        }
+        
+        func nextItemId() -> ItemId {
+            return ItemId(0)
+        }
+        
+        func addBox(box: Box) { }
+        func removeBox(#boxId: BoxId) { }
+        
+        func box(#boxId: BoxId) -> Box? {
+            return nil
+        }
+        
+        func boxes() -> [Box] {
+            return []
+        }
+        
+        func count() -> Int {
+            return 0
+        }
+    }
+    
     let provisioningService = ProvisioningService(repository: TestBoxRepository())
     let publisher = MockDomainEventPublisher()
     

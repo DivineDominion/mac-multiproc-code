@@ -49,7 +49,13 @@ public class Box: NSObject {
     public let boxId: BoxId
     public dynamic var title: String
     public let capacity: BoxCapacity
+    public var remainingCapacity: Int {
+        return capacity.rawValue - itemsCount
+    }
     dynamic var items: [Item] = []
+    public var itemsCount: Int {
+        return items.count
+    }
     
     public init(boxId: BoxId, capacity: BoxCapacity, title: String) {
         self.boxId = boxId
@@ -59,6 +65,10 @@ public class Box: NSObject {
     
     public func addItem(item: Item) {
         assert(item.box == nil, "item should not have a parent box already")
+        
+        if isFull() {
+            return
+        }
         
         items.append(item)
     }
@@ -85,5 +95,13 @@ public class Box: NSObject {
         }
         
         return nil
+    }
+    
+    public func canTakeItem() -> Bool {
+        return !isFull()
+    }
+    
+    public func isFull() -> Bool {
+        return remainingCapacity <= 0
     }
 }

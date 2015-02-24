@@ -31,6 +31,8 @@
 		5019FEB21A8CCAFC007D5A09 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */; };
 		5019FEB31A8CCAFC007D5A09 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */; };
 		50208E691A9B2CBA00F39A88 /* CoreDataBoxRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE1D1A9B244000F94449 /* CoreDataBoxRepositoryTests.swift */; };
+		5062F8C11A9C9400005F45FB /* DistributeItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5062F8C01A9C9400005F45FB /* DistributeItemTests.swift */; };
+		5062F8C61A9C9589005F45FB /* DistributeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D215C41A9B388500059B36 /* DistributeItem.swift */; };
 		5063CE001A9B237900F94449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5063CDFF1A9B237900F94449 /* MainMenu.xib */; };
 		5063CE071A9B23D000F94449 /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE021A9B23D000F94449 /* PersistentStack.swift */; };
 		5063CE081A9B23D100F94449 /* ManagedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE031A9B23D000F94449 /* ManagedEntity.swift */; };
@@ -58,7 +60,6 @@
 		509CD1601A9209D100EDEABD /* CreateBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509CD15F1A9209D100EDEABD /* CreateBoxTests.swift */; };
 		50ABEA641A92185E00E573E5 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEA631A92185E00E573E5 /* TestHelpers.swift */; };
 		50ABEA8F1A9B21E600E573E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEA8E1A9B21E600E573E5 /* AppDelegate.swift */; };
-		50D215C51A9B388500059B36 /* DistributeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D215C41A9B388500059B36 /* DistributeItem.swift */; };
 		50D215C71A9B479300059B36 /* BoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D215C61A9B479300059B36 /* BoxTests.swift */; };
 		50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50F98BD21A714C1800426FD8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F98BD11A714C1800426FD8 /* main.swift */; };
@@ -135,6 +136,7 @@
 		5019FEA71A8CCAE3007D5A09 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5019FEA81A8CCAE3007D5A09 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		5062F8C01A9C9400005F45FB /* DistributeItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributeItemTests.swift; sourceTree = "<group>"; };
 		5063CDFF1A9B237900F94449 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		5063CE021A9B23D000F94449 /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStack.swift; sourceTree = "<group>"; };
 		5063CE031A9B23D000F94449 /* ManagedEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedEntity.swift; sourceTree = "<group>"; };
@@ -359,6 +361,40 @@
 			path = SharedSources;
 			sourceTree = "<group>";
 		};
+		5062F8C21A9C941F005F45FB /* Application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		5062F8C31A9C943A005F45FB /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				5063CE1C1A9B244000F94449 /* PersistentStackTests.swift */,
+				5063CE1D1A9B244000F94449 /* CoreDataBoxRepositoryTests.swift */,
+				5063CE1E1A9B244000F94449 /* ManagedBoxTests.swift */,
+			);
+			name = Infrastructure;
+			sourceTree = "<group>";
+		};
+		5062F8C41A9C9442005F45FB /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				50D215C61A9B479300059B36 /* BoxTests.swift */,
+				5062F8C01A9C9400005F45FB /* DistributeItemTests.swift */,
+				5063CE1F1A9B244000F94449 /* ProvisioningServiceTests.swift */,
+			);
+			name = Domain;
+			sourceTree = "<group>";
+		};
+		5062F8C51A9C9447005F45FB /* Application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
 		5063CE011A9B239A00F94449 /* Cocoa Target Overhead */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,13 +437,13 @@
 		5063CE1B1A9B240900F94449 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				50D215C41A9B388500059B36 /* DistributeItem.swift */,
 				5063CE0F1A9B240400F94449 /* ProvisioningService.swift */,
 				5063CE101A9B240400F94449 /* DomainEventPublisher.swift */,
 				5063CE111A9B240400F94449 /* DomainEvents.swift */,
 				5063CE121A9B240400F94449 /* Identifiable.swift */,
 				5063CE131A9B240400F94449 /* Item.swift */,
 				5063CE141A9B240400F94449 /* Box.swift */,
-				50D215C41A9B388500059B36 /* DistributeItem.swift */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -508,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				5063CE0E1A9B23F400F94449 /* Infrastructure */,
+				5062F8C21A9C941F005F45FB /* Application */,
 				5063CE1B1A9B240900F94449 /* Domain */,
 				5063CE011A9B239A00F94449 /* Cocoa Target Overhead */,
 			);
@@ -518,11 +555,9 @@
 		50ABEA9C1A9B21E600E573E5 /* XPC Service Core Tests */ = {
 			isa = PBXGroup;
 			children = (
-				5063CE1C1A9B244000F94449 /* PersistentStackTests.swift */,
-				5063CE1D1A9B244000F94449 /* CoreDataBoxRepositoryTests.swift */,
-				5063CE1E1A9B244000F94449 /* ManagedBoxTests.swift */,
-				50D215C61A9B479300059B36 /* BoxTests.swift */,
-				5063CE1F1A9B244000F94449 /* ProvisioningServiceTests.swift */,
+				5062F8C31A9C943A005F45FB /* Infrastructure */,
+				5062F8C51A9C9447005F45FB /* Application */,
+				5062F8C41A9C9442005F45FB /* Domain */,
 				50ABEA9D1A9B21E600E573E5 /* Supporting Files */,
 			);
 			name = "XPC Service Core Tests";
@@ -859,7 +894,6 @@
 				50FAC08D1A8DF039001A2EF1 /* BoxAndItemTreeNodes.swift in Sources */,
 				5019FEAC1A8CCAE3007D5A09 /* Box.swift in Sources */,
 				507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */,
-				50D215C51A9B388500059B36 /* DistributeItem.swift in Sources */,
 				509CD15E1A9208E000EDEABD /* BoxOrder.swift in Sources */,
 				5019FE9F1A8A1983007D5A09 /* ManageBoxesAndItems.swift in Sources */,
 			);
@@ -900,6 +934,7 @@
 				50ABEA8F1A9B21E600E573E5 /* AppDelegate.swift in Sources */,
 				5063CE181A9B240400F94449 /* Identifiable.swift in Sources */,
 				5063CE081A9B23D100F94449 /* ManagedEntity.swift in Sources */,
+				5062F8C61A9C9589005F45FB /* DistributeItem.swift in Sources */,
 				5063CE091A9B23D100F94449 /* CoreDataBoxRepository.swift in Sources */,
 				5063CE191A9B240400F94449 /* Item.swift in Sources */,
 				5063CE151A9B240400F94449 /* ProvisioningService.swift in Sources */,
@@ -919,6 +954,7 @@
 				5063CE201A9B244000F94449 /* PersistentStackTests.swift in Sources */,
 				5063CE2A1A9B262E00F94449 /* CoreDataTestCase.swift in Sources */,
 				50D215C71A9B479300059B36 /* BoxTests.swift in Sources */,
+				5062F8C11A9C9400005F45FB /* DistributeItemTests.swift in Sources */,
 				50208E691A9B2CBA00F39A88 /* CoreDataBoxRepositoryTests.swift in Sources */,
 				5063CE281A9B260100F94449 /* TestDomainEventPublisher.swift in Sources */,
 			);
@@ -1290,6 +1326,7 @@
 				INFOPLIST_FILE = RelocationManagerServiceDomainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RelocationManagerServiceDomainTests/RelocationManagerServiceDomainTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RelocationManagerServiceDomain.app/Contents/MacOS/RelocationManagerServiceDomain";
 			};
 			name = Release;
