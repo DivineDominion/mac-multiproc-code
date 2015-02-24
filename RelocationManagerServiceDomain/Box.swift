@@ -48,27 +48,13 @@ public enum BoxCapacity: Int {
 public class Box: NSObject {
     public let boxId: BoxId
     public dynamic var title: String
+    public let capacity: BoxCapacity
     dynamic var items: [Item] = []
-    
-    public dynamic private(set) var capacityRaw : NSNumber! = 0
-    
-    public var capacity: BoxCapacity {
-        didSet {
-            self.convertCapacity()
-        }
-    }
-    
-    func convertCapacity() {
-        capacityRaw = NSNumber(integer: capacity.rawValue)
-    }
     
     public init(boxId: BoxId, capacity: BoxCapacity, title: String) {
         self.boxId = boxId
         self.capacity = capacity
         self.title = title
-        super.init()
-        
-        convertCapacity()
     }
     
     public func addItem(item: Item) {

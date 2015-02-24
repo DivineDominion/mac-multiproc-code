@@ -29,7 +29,7 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
         return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext)
     }
     
-    public class func insertManagedBox(boxId: BoxId, capacity: NSNumber, title: NSString, inManagedObjectContext managedObjectContext:NSManagedObjectContext) {
+    public class func insertManagedBox(boxId: BoxId, capacity: Int, title: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) {
         
         let box: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext)
         var managedBox: ManagedBox = box as ManagedBox
@@ -81,7 +81,6 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
     
     func observe(box: Box) {
         box.addObserver(self, forKeyPath: "title", options: .New, context: &boxContext)
-        box.addObserver(self, forKeyPath: "capacityRaw", options: .New, context: &boxContext)
         box.addObserver(self, forKeyPath: "items", options: .New, context: &boxContext)
     }
     
@@ -94,8 +93,6 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
         
         if keyPath == "title" {
             self.title = change[NSKeyValueChangeNewKey] as String
-        } else if keyPath == "capacity" {
-            self.capacity = change[NSKeyValueChangeNewKey] as NSNumber
         } else if keyPath == "items" {
             let items = change[NSKeyValueChangeNewKey] as [Item]
             mergeItems(items)
@@ -133,7 +130,6 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
 
     func unobserve(box: Box) {
         box.removeObserver(self, forKeyPath: "title")
-        box.removeObserver(self, forKeyPath: "capacityRaw")
         box.removeObserver(self, forKeyPath: "items")
     }
 }
