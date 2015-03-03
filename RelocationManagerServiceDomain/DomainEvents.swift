@@ -12,6 +12,7 @@ public typealias UserInfo = [NSObject : AnyObject]
 
 public enum DomainEventType: String {
     case BoxProvisioned = "Box Provisioned"
+    
     case BoxItemAdded = "Box Item Added"
     case AddingBoxItemFailed = "Adding Box Item Failed"
     case BoxItemRemoved = "Box Item Removed"
@@ -32,7 +33,7 @@ public protocol DomainEvent {
     func notification() -> NSNotification
 }
 
-public struct BoxProvisionedEvent: DomainEvent {
+public struct BoxProvisioned: DomainEvent {
     public static var eventType: DomainEventType {
         return DomainEventType.BoxProvisioned
     }
@@ -69,7 +70,7 @@ public struct BoxProvisionedEvent: DomainEvent {
     }
 }
 
-public struct BoxItemAddedEvent: DomainEvent {
+public struct BoxItemAdded: DomainEvent {
     public static var eventType: DomainEventType {
         return DomainEventType.BoxItemAdded
     }
@@ -156,7 +157,7 @@ public struct AddingBoxItemFailed: DomainEvent {
     }
 }
 
-public struct BoxItemRemovedEvent: DomainEvent {
+public struct BoxItemRemoved: DomainEvent {
     public static var eventType: DomainEventType {
         return DomainEventType.BoxItemRemoved
     }
@@ -195,7 +196,7 @@ public struct BoxItemRemovedEvent: DomainEvent {
     }
 }
 
-public struct BoxItemDistributionFailedEvent: DomainEvent {
+public struct BoxItemDistributionFailed: DomainEvent {
     public static var eventType: DomainEventType {
         return DomainEventType.BoxItemDistributionFailed
     }

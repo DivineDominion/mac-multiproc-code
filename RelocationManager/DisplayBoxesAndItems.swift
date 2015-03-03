@@ -30,8 +30,8 @@ class DisplayBoxesAndItems {
 //    func subscribe() {
 //        let mainQueue = NSOperationQueue.mainQueue()
 //        
-//        boxProvisioningObserver = publisher.subscribe(BoxProvisionedEvent.self, queue: mainQueue) {
-//            [unowned self] (event: BoxProvisionedEvent!) in
+//        boxProvisioningObserver = publisher.subscribe(BoxProvisioned.self, queue: mainQueue) {
+//            [unowned self] (event: BoxProvisioned!) in
 //
 //            let boxData = BoxData(boxId: event.boxId, title: event.title)
 //            self.consumeBox(boxData)

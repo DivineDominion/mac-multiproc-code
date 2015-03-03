@@ -25,7 +25,7 @@ public class ProvisioningService {
         
         repository.addBox(box)
         
-        eventPublisher.publish(BoxProvisionedEvent(boxId: boxId, capacity: capacity.rawValue, title: title))
+        eventPublisher.publish(BoxProvisioned(boxId: boxId, capacity: capacity.rawValue, title: title))
     }
     
     public func provisionItem(title: String, inBox box: Box) {

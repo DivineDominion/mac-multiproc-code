@@ -22,7 +22,7 @@ public class DistributeItem {
             return
         }
         
-        eventPublisher.publish(BoxItemDistributionFailedEvent(itemTitle: title))
+        eventPublisher.publish(BoxItemDistributionFailed(itemTitle: title))
     }
     
     func boxes(fromRepository repository: BoxRepository) -> [Box] {

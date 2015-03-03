@@ -78,7 +78,7 @@ public class Box: NSObject {
         
         items.append(item)
         
-        eventPublisher.publish(BoxItemAddedEvent(boxId: boxId, itemId: item.itemId, itemTitle: item.title))
+        eventPublisher.publish(BoxItemAdded(boxId: boxId, itemId: item.itemId, itemTitle: item.title))
     }
     
     public func item(#itemId: ItemId) -> Item? {
@@ -93,7 +93,7 @@ public class Box: NSObject {
         if let index = indexOfItem(itemId: itemId) {
             items.removeAtIndex(index)
             
-            eventPublisher.publish(BoxItemRemovedEvent(boxId: boxId, itemId: itemId))
+            eventPublisher.publish(BoxItemRemoved(boxId: boxId, itemId: itemId))
         }
     }
     

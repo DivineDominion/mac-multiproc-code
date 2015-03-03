@@ -68,7 +68,7 @@ class BoxTests: XCTestCase {
         
         box.addItem(item())
         
-        if let event = publisher.lastPublishedEvent as? BoxItemAddedEvent {
+        if let event = publisher.lastPublishedEvent as? BoxItemAdded {
             XCTAssertEqual(event.boxId, box.boxId)
         } else {
             XCTFail("did not publish success event")

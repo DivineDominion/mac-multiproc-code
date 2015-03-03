@@ -88,7 +88,7 @@ class DistributeItemTests: XCTestCase {
         
         distribute("irrelevant")
         
-        let maybeExpectedEvent = publisher.lastPublishedEvent as? BoxItemDistributionFailedEvent
+        let maybeExpectedEvent = publisher.lastPublishedEvent as? BoxItemDistributionFailed
         XCTAssert(maybeExpectedEvent != nil, "expected BoxItemDistributionFailed event")
     }
     
