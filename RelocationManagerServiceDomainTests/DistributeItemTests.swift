@@ -36,10 +36,14 @@ class DistributeItemTests: XCTestCase {
         override func provisionBox(#capacity: BoxCapacity) { }
         
         var provisionedItemTitle: String?
+        var didProvisionItem = false
         override func provisionItem(title: String, inBox box: Box) {
             provisionedItemTitle = title
+            didProvisionItem = true
         }
     }
+    
+    let publisher = MockDomainEventPublisher()
     
     let repository = TestBoxRepository()
     lazy var provisioningService: TestProvisioningService = {
@@ -49,63 +53,18 @@ class DistributeItemTests: XCTestCase {
         DistributeItem(repository: self.repository, provisioningService: self.provisioningService)
     }()
     
-    let irrelevantCallback: () -> () = { }
-    let shouldNotSucceed = { XCTFail("should not succeed") }
-    let shouldNotBeFull = { XCTFail("should not be full") }
-    
-    func testDistributeItem_WithoutExistingBoxes_RunsErrorCallback() {
-        var didFail = false
-        let fail = {
-            didFail = true
-        }
-        
-        distributeItem.distribute(itemTitle: "irrelevant", successCallback: shouldNotSucceed, noCapacityCallback: fail)
-        
-        XCTAssert(didFail)
+    override func setUp() {
+        super.setUp()
+        DomainEventPublisher.setSharedInstance(publisher)
     }
-
-    func testDistributeItem_WithOneEmptyBox_RunsSuccessCallback() {
-        repository.boxesStub = [emptyBox()]
-        
-        var didSucceed = false
-        let succeed = {
-            didSucceed = true
-        }
-        
-        distributeItem.distribute(itemTitle: "irrelevant", successCallback: succeed, noCapacityCallback: shouldNotBeFull)
-        
-        XCTAssert(didSucceed)
+    
+    override func tearDown() {
+        DomainEventPublisher.resetSharedInstance()
+        super.tearDown()
     }
     
     func emptyBox() -> Box {
         return Box(boxId: BoxId(0), capacity: .Medium, title: "irrelevant")
-    }
-    
-    func testDistributeItem_WithOneEmptyBox_ProvisionsItem() {
-        let box = emptyBox()
-        repository.boxesStub = [box]
-        let itemTitle = "the title"
-        
-        distributeItem.distribute(itemTitle: itemTitle, successCallback: irrelevantCallback, noCapacityCallback: irrelevantCallback)
-        
-        if let receivedTitle = provisioningService.provisionedItemTitle {
-            XCTAssertEqual(provisioningService.provisionedItemTitle!, itemTitle)
-        } else {
-            XCTFail("no item provisioned")
-        }
-    }
-    
-    func testDistributeItem_WithOneFullBox_RunsErrorCallback() {
-        repository.boxesStub = [fullBox()]
-        
-        var didFail = false
-        let fail = {
-            didFail = true
-        }
-        
-        distributeItem.distribute(itemTitle: "irrelevant", successCallback: shouldNotSucceed, noCapacityCallback: fail)
-        
-        XCTAssert(didFail)
     }
     
     func fullBox() -> Box {
@@ -117,18 +76,46 @@ class DistributeItemTests: XCTestCase {
         
         return box
     }
+    
+    // MARK: Item Distribution
+    
+    func testDistributeItem_WithOneEmptyBox_ProvisionsItem() {
+        let box = emptyBox()
+        repository.boxesStub = [box]
+        let itemTitle = "the title"
+        
+        distributeItem.distribute(itemTitle: itemTitle)
+        
+        if let receivedTitle = provisioningService.provisionedItemTitle {
+            XCTAssertEqual(provisioningService.provisionedItemTitle!, itemTitle)
+        } else {
+            XCTFail("no item provisioned")
+        }
+    }
+    
+    func testDistributeItem_WithOneFullBox_PublishesFailureDomainEvent() {
+        repository.boxesStub = [fullBox()]
+        
+        distributeItem.distribute(itemTitle: "irrelevant")
+        
+        let maybeExpectedEvent = publisher.lastPublishedEvent as? BoxItemDistributionDidFail
+        XCTAssert(maybeExpectedEvent != nil, "expected BoxItemDistributionDidFail event")
+    }
+    
+    func testDistributeItem_WithOneFullBox_DoesntProvisionItem() {
+        repository.boxesStub = [fullBox()]
+        
+        distributeItem.distribute(itemTitle: "irrelevant")
+        
+        XCTAssertFalse(provisioningService.didProvisionItem)
+    }
 
-    func testDistributeItem_WithOneFullAndOneEmptyBox_RunsSuccessCallback() {
+    func testDistributeItem_WithOneFullAndOneEmptyBox_ProvisionsItem() {
         repository.boxesStub = [fullBox(), emptyBox()]
         
-        var didSucceed = false
-        let succeed = {
-            didSucceed = true
-        }
+        distributeItem.distribute(itemTitle: "irrelevant")
         
-        distributeItem.distribute(itemTitle: "irrelevant", successCallback: succeed, noCapacityCallback: shouldNotBeFull)
-        
-        XCTAssert(didSucceed)
+        XCTAssertTrue(provisioningService.didProvisionItem)
     }
     
 }

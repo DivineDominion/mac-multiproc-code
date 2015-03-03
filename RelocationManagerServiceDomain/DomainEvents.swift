@@ -13,6 +13,7 @@ public typealias UserInfo = [NSObject : AnyObject]
 public enum DomainEventType: String {
     case BoxProvisioned = "Box Provisioned"
     case BoxItemProvisioned = "Box Item Provisioned"
+    case BoxItemDistributionDidFail = "Box Item Distribution Did Fail"
     
     var name: String {
         return self.rawValue
@@ -99,5 +100,34 @@ public struct BoxItemProvisionedEvent: DomainEvent {
     
     public func notification() -> NSNotification {
         return NSNotification(name: BoxItemProvisionedEvent.eventType.name, object: nil, userInfo: userInfo())
+    }
+}
+
+public struct BoxItemDistributionDidFail: DomainEvent {
+    public static var eventType: DomainEventType {
+        return DomainEventType.BoxItemDistributionDidFail
+    }
+    
+    public let itemTitle: String
+    
+    public init(itemTitle: String) {
+        self.itemTitle = itemTitle
+    }
+    
+    public init(userInfo: UserInfo) {
+        let itemData = userInfo["item"] as UserInfo
+        self.itemTitle = itemData["title"] as String
+    }
+    
+    public func userInfo() -> UserInfo {
+        return [
+            "item" : [
+                "title": itemTitle
+            ]
+        ]
+    }
+    
+    public func notification() -> NSNotification {
+        return NSNotification(name: BoxItemDistributionDidFail.eventType.name, object: nil, userInfo: userInfo())
     }
 }

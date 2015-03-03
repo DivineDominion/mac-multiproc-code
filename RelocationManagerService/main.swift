@@ -13,7 +13,7 @@ class TheHelper : NSObject, ManagesBoxesAndItems {
 
     }
     
-    func provisionItem(name: String, inBoxWithIdentifier boxIdentifier: IntegerId) {
+    func provisionItem(name: String) {
         
     }
     

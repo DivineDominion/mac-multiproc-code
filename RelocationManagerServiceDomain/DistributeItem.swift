@@ -11,6 +11,9 @@ import Foundation
 public class DistributeItem {
     let repository: BoxRepository
     let provisioningService: ProvisioningService
+    var eventPublisher: DomainEventPublisher {
+        return DomainEventPublisher.sharedInstance
+    }
     
     public init(repository: BoxRepository, provisioningService: ProvisioningService) {
         self.repository = repository
@@ -21,20 +24,20 @@ public class DistributeItem {
         self.init(repository: repository, provisioningService: ProvisioningService(repository: repository))
     }
     
-    public func distribute(itemTitle title: String, successCallback: ()->(), noCapacityCallback: ()->()) {
-        
-        let boxes = repository.boxes().filter { box in
-            return box.canTakeItem()
-        }.sorted { (one, other) -> Bool in
-            return one.itemsCount < other.itemsCount
-        }
-        
-        if let box = boxes.first {
+    public func distribute(itemTitle title: String) {
+        if let box = boxes().first {
             provisioningService.provisionItem(title, inBox: box)
-            successCallback()
             return
         }
         
-        noCapacityCallback()
+        eventPublisher.publish(BoxItemDistributionDidFail(itemTitle: title))
+    }
+    
+    func boxes() -> [Box] {
+        return repository.boxes().filter { box in
+            return box.canTakeItem()
+        }.sorted { (one, other) -> Bool in
+                return one.itemsCount < other.itemsCount
+        }
     }
 }
