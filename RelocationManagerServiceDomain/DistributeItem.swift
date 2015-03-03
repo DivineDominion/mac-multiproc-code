@@ -9,23 +9,15 @@
 import Foundation
 
 public class DistributeItem {
-    let repository: BoxRepository
-    let provisioningService: ProvisioningService
     var eventPublisher: DomainEventPublisher {
         return DomainEventPublisher.sharedInstance
     }
     
-    public init(repository: BoxRepository, provisioningService: ProvisioningService) {
-        self.repository = repository
-        self.provisioningService = provisioningService
-    }
+    public init() { }
     
-    public convenience init(repository: BoxRepository) {
-        self.init(repository: repository, provisioningService: ProvisioningService(repository: repository))
-    }
-    
-    public func distribute(itemTitle title: String) {
-        if let box = boxes().first {
+    public func distribute(itemTitle title: String, provisioningService: ProvisioningService, boxRepository repository: BoxRepository) {
+        
+        if let box = boxes(fromRepository: repository).first {
             provisioningService.provisionItem(title, inBox: box)
             return
         }
@@ -33,7 +25,7 @@ public class DistributeItem {
         eventPublisher.publish(BoxItemDistributionDidFail(itemTitle: title))
     }
     
-    func boxes() -> [Box] {
+    func boxes(fromRepository repository: BoxRepository) -> [Box] {
         return repository.boxes().filter { box in
             return box.canTakeItem()
         }.sorted { (one, other) -> Bool in

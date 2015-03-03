@@ -49,9 +49,8 @@ class DistributeItemTests: XCTestCase {
     lazy var provisioningService: TestProvisioningService = {
         TestProvisioningService(repository: self.repository)
     }()
-    lazy var distributeItem: DistributeItem = {
-        DistributeItem(repository: self.repository, provisioningService: self.provisioningService)
-    }()
+    
+    let distributeItem = DistributeItem()
     
     override func setUp() {
         super.setUp()
@@ -79,12 +78,16 @@ class DistributeItemTests: XCTestCase {
     
     // MARK: Item Distribution
     
+    func distribute(title: String) {
+        distributeItem.distribute(itemTitle: title, provisioningService: provisioningService, boxRepository: repository)
+    }
+    
     func testDistributeItem_WithOneEmptyBox_ProvisionsItem() {
         let box = emptyBox()
         repository.boxesStub = [box]
         let itemTitle = "the title"
         
-        distributeItem.distribute(itemTitle: itemTitle)
+        distribute(itemTitle)
         
         if let receivedTitle = provisioningService.provisionedItemTitle {
             XCTAssertEqual(provisioningService.provisionedItemTitle!, itemTitle)
@@ -96,7 +99,7 @@ class DistributeItemTests: XCTestCase {
     func testDistributeItem_WithOneFullBox_PublishesFailureDomainEvent() {
         repository.boxesStub = [fullBox()]
         
-        distributeItem.distribute(itemTitle: "irrelevant")
+        distribute("irrelevant")
         
         let maybeExpectedEvent = publisher.lastPublishedEvent as? BoxItemDistributionDidFail
         XCTAssert(maybeExpectedEvent != nil, "expected BoxItemDistributionDidFail event")
@@ -105,7 +108,7 @@ class DistributeItemTests: XCTestCase {
     func testDistributeItem_WithOneFullBox_DoesntProvisionItem() {
         repository.boxesStub = [fullBox()]
         
-        distributeItem.distribute(itemTitle: "irrelevant")
+        distribute("irrelevant")
         
         XCTAssertFalse(provisioningService.didProvisionItem)
     }
@@ -113,7 +116,7 @@ class DistributeItemTests: XCTestCase {
     func testDistributeItem_WithOneFullAndOneEmptyBox_ProvisionsItem() {
         repository.boxesStub = [fullBox(), emptyBox()]
         
-        distributeItem.distribute(itemTitle: "irrelevant")
+        distribute("irrelevant")
         
         XCTAssertTrue(provisioningService.didProvisionItem)
     }

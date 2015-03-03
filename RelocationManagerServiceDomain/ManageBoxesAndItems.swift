@@ -15,9 +15,7 @@ class ManageBoxesAndItems: NSObject, ManagesBoxesAndItems {
     var provisioningService: ProvisioningService {
         return ProvisioningService(repository: self.repository)
     }
-    var distributionService: DistributeItem {
-        return DistributeItem(repository: repository)
-    }
+    var distributionService = DistributeItem()
     
     func provisionBox(label: String, capacity: Int) {
         if let boxCapacity = BoxCapacity(rawValue: capacity) {
@@ -26,7 +24,7 @@ class ManageBoxesAndItems: NSObject, ManagesBoxesAndItems {
     }
     
     func provisionItem(name: String) {
-        distributionService.distribute(itemTitle: name)
+        distributionService.distribute(itemTitle: name, provisioningService: provisioningService, boxRepository: repository)
     }
     
     func removeBox(boxIdentifier: IntegerId) {
