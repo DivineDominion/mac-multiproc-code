@@ -35,22 +35,28 @@ public struct BoxProvisionedEvent: DomainEvent {
     }
     
     public let boxId: BoxId
+    public let capacity: Int
     public let title: String
     
-    public init(boxId: BoxId, title: String) {
+    public init(boxId: BoxId, capacity: Int, title: String) {
         self.boxId = boxId
+        self.capacity = capacity
         self.title = title
     }
     
     public init(userInfo: UserInfo) {
         let boxIdData = userInfo["id"] as NSNumber
-        self.init(boxId: BoxId(boxIdData), title: userInfo["title"] as String)
+        let boxCapacity = userInfo["capacity"] as Int
+        let boxTitle = userInfo["title"] as String
+        
+        self.init(boxId: BoxId(boxIdData), capacity: boxCapacity, title: boxTitle)
     }
     
     public func userInfo() -> UserInfo {
         // TODO replace NSNumber(...) by using StringLiteralConvertible
         return [
             "id": NSNumber(longLong: boxId.identifier),
+            "capacity": capacity,
             "title": title
         ]
     }
