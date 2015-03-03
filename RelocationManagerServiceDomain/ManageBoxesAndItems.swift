@@ -13,8 +13,6 @@ public class ManageBoxesAndItems: NSObject, ManagesBoxesAndItems {
     public lazy var provisioningService: ProvisioningService = ProvisioningService(repository: self.repository)
     public lazy var distributionService = DistributeItem()
     
-//    public override init() { }
-    
     public func provisionBox(label: String, capacity: Int) {
         if let boxCapacity = BoxCapacity(rawValue: capacity) {
             provisioningService.provisionBox(label, capacity: boxCapacity)

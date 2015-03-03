@@ -56,14 +56,4 @@ class ProvisioningServiceTests: XCTestCase {
         XCTAssert(publisher.lastPublishedEvent != nil)
     }
 
-    func testProvisionItem_PublishesDomainEvent() {
-        let box = Box(boxId: BoxId(123), capacity: .Small, title: "irrelevant")
-        provisioningService.provisionItem("irrelevant", inBox: box)
-        
-        if let event = publisher.lastPublishedEvent as? BoxItemProvisionedEvent {
-            XCTAssertEqual(event.boxId, box.boxId)
-        } else {
-            XCTFail("did not publish event")
-        }
-    }
 }

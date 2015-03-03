@@ -33,7 +33,5 @@ public class ProvisioningService {
         let item = Item(itemId: itemId, title: title)
 
         box.addItem(item)
-        
-        eventPublisher.publish(BoxItemProvisionedEvent(boxId: box.boxId, itemId: itemId, itemTitle: title))
     }
 }

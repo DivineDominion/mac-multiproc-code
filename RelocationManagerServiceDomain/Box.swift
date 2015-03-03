@@ -57,6 +57,10 @@ public class Box: NSObject {
         return items.count
     }
     
+    var eventPublisher: DomainEventPublisher {
+        return DomainEventPublisher.sharedInstance
+    }
+    
     public init(boxId: BoxId, capacity: BoxCapacity, title: String) {
         self.boxId = boxId
         self.capacity = capacity
@@ -67,10 +71,14 @@ public class Box: NSObject {
         assert(item.box == nil, "item should not have a parent box already")
         
         if isFull() {
+            eventPublisher.publish(AddingBoxItemFailed(boxId: boxId, itemId: item.itemId, itemTitle: item.title))
+            
             return
         }
         
         items.append(item)
+        
+        eventPublisher.publish(BoxItemAddedEvent(boxId: boxId, itemId: item.itemId, itemTitle: item.title))
     }
     
     public func item(#itemId: ItemId) -> Item? {
@@ -84,6 +92,8 @@ public class Box: NSObject {
     public func removeItem(#itemId: ItemId) {
         if let index = indexOfItem(itemId: itemId) {
             items.removeAtIndex(index)
+            
+            eventPublisher.publish(BoxItemRemovedEvent(boxId: boxId, itemId: itemId))
         }
     }
     
