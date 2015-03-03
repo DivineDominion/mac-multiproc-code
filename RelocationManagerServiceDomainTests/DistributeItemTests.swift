@@ -12,28 +12,15 @@ import XCTest
 import RelocationManagerServiceDomain
 
 class DistributeItemTests: XCTestCase {
-    class TestBoxRepository: BoxRepository {
-        func nextId() -> BoxId { return BoxId(0) }
-        
-        func nextItemId() -> ItemId { return ItemId(0) }
-        
-        func addBox(box: Box) { }
-        func removeBox(#boxId: BoxId) { }
-        
-        func box(#boxId: BoxId) -> Box? { return nil }
-        
+    class TestBoxRepository: NullBoxRepository {
         var boxesStub = [Box]()
-        func boxes() -> [Box] {
+        override func boxes() -> [Box] {
             return boxesStub
-        }
-        
-        func count() -> Int {
-            return 0
         }
     }
     
     class TestProvisioningService: ProvisioningService {
-        override func provisionBox(#capacity: BoxCapacity) { }
+        override func provisionBox(label: String, capacity: BoxCapacity) { }
         
         var provisionedItemTitle: String?
         var didProvisionItem = false

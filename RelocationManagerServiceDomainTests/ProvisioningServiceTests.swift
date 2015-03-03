@@ -51,7 +51,7 @@ class ProvisioningServiceTests: XCTestCase {
     }
 
     func testProvisionBox_PublishesDomainEvent() {
-        provisioningService.provisionBox(capacity: .Small)
+        provisioningService.provisionBox("irrelevant", capacity: .Small)
         
         XCTAssert(publisher.lastPublishedEvent != nil)
     }

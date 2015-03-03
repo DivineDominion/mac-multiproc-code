@@ -19,9 +19,9 @@ public class ProvisioningService {
         self.repository = repository
     }
     
-    public func provisionBox(#capacity: BoxCapacity) {
+    public func provisionBox(title: String, capacity: BoxCapacity) {
         let boxId = repository.nextId()
-        let box = Box(boxId: boxId, capacity: capacity, title: "New Box")
+        let box = Box(boxId: boxId, capacity: capacity, title: title)
         
         repository.addBox(box)
         

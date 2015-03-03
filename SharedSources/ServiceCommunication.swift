@@ -11,7 +11,7 @@ import Foundation
 @objc(ManagesBoxesAndItems)
 public protocol ManagesBoxesAndItems {
     func provisionBox(label: String, capacity: Int)
-    func provisionItem(name: String)
+    func provisionItem(title: String)
     func removeBox(boxIdentifier: IntegerId)
     func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId)
 }

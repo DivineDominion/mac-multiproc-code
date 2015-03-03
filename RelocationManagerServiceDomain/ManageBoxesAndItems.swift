@@ -8,30 +8,28 @@
 
 import Foundation
 
-class ManageBoxesAndItems: NSObject, ManagesBoxesAndItems {
-    var repository: BoxRepository {
-        return ServiceLocator.boxRepository()
-    }
-    var provisioningService: ProvisioningService {
-        return ProvisioningService(repository: self.repository)
-    }
-    var distributionService = DistributeItem()
+public class ManageBoxesAndItems: NSObject, ManagesBoxesAndItems {
+    public lazy var repository: BoxRepository = ServiceLocator.boxRepository()
+    public lazy var provisioningService: ProvisioningService = ProvisioningService(repository: self.repository)
+    public lazy var distributionService = DistributeItem()
     
-    func provisionBox(label: String, capacity: Int) {
+//    public override init() { }
+    
+    public func provisionBox(label: String, capacity: Int) {
         if let boxCapacity = BoxCapacity(rawValue: capacity) {
-            provisioningService.provisionBox(capacity: boxCapacity)
+            provisioningService.provisionBox(label, capacity: boxCapacity)
         }
     }
     
-    func provisionItem(name: String) {
-        distributionService.distribute(itemTitle: name, provisioningService: provisioningService, boxRepository: repository)
+    public func provisionItem(title: String) {
+        distributionService.distribute(itemTitle: title, provisioningService: provisioningService, boxRepository: repository)
     }
     
-    func removeBox(boxIdentifier: IntegerId) {
+    public func removeBox(boxIdentifier: IntegerId) {
         
     }
     
-    func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId) {
+    public func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId) {
         
     }
 }
