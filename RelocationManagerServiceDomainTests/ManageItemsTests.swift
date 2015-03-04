@@ -12,20 +12,7 @@ import XCTest
 import RelocationManagerServiceDomain
 
 /// Integration Tests
-class ManageBoxesAndItemsTests: XCTestCase {
-    class TestProvisioningService: ProvisioningService {
-        override func provisionItem(title: String, inBox box: Box) { }
-        
-        var provisionedBoxTitle: String?
-        var provisionedBoxCapacity: Int?
-        var didProvisionBox = false
-        override func provisionBox(title: String, capacity: BoxCapacity) {
-            provisionedBoxTitle = title
-            provisionedBoxCapacity = capacity.rawValue
-            didProvisionBox = true
-        }
-    }
-    
+class ManageItemsTests: XCTestCase {
     class TestDistributeItem: DistributeItem {
         var didDistributeItem = false
         var itemTitle: String?
@@ -36,8 +23,8 @@ class ManageBoxesAndItemsTests: XCTestCase {
         }
     }
     
-    lazy var service: ManageBoxesAndItems = {
-        let service = ManageBoxesAndItems()
+    lazy var service: ManageItems = {
+        let service = ManageItems()
         service.repository = self.repository
         service.provisioningService = self.provisioningService
         service.distributionService = self.distributionService
@@ -69,10 +56,7 @@ class ManageBoxesAndItemsTests: XCTestCase {
         let irrelevantBoxId = BoxId(101)
         let irrelevantItemId = ItemId(202)
         let itemTitle = "the title"
-        let service = ManageBoxesAndItems()
-        service.repository = self.repository
-        service.provisioningService = self.provisioningService
-        service.distributionService = self.distributionService
+        let service = self.service // force lazy init
         
         publisher.publish(AddingBoxItemFailed(boxId: irrelevantBoxId, itemId: irrelevantItemId, itemTitle: itemTitle))
         
@@ -81,29 +65,6 @@ class ManageBoxesAndItemsTests: XCTestCase {
             XCTAssertEqual(distributionService.itemTitle!, itemTitle)
         }
     }
-    
-    
-    // MARK: Provision Box
-    
-    func testProvisionBox_WithValidCapacity_ProvisionsBox() {
-        let title = "The Box"
-        let capacity = BoxCapacity.Medium.rawValue
-        
-        service.provisionBox(title, capacity: capacity)
-        
-        XCTAssertTrue(provisioningService.didProvisionBox)
-        if provisioningService.didProvisionBox {
-            XCTAssertEqual(provisioningService.provisionedBoxTitle!, title)
-            XCTAssertEqual(provisioningService.provisionedBoxCapacity!, capacity)
-        }
-    }
-    
-    func testProvisionBox_WithInvalidCapacity_DoesNotProvisionBox() {
-        service.provisionBox("irrelevant", capacity: 1000)
-        
-        XCTAssertFalse(provisioningService.didProvisionBox)
-    }
-
     
     // MARK: Provision Item
     

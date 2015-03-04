@@ -8,21 +8,6 @@
 
 import Foundation
 
-public class DomainEventSubscriber {
-    
-    let observer: NSObjectProtocol
-    let eventPublisher: DomainEventPublisher
-    
-    public init(observer: NSObjectProtocol, eventPublisher: DomainEventPublisher) {
-        self.observer = observer
-        self.eventPublisher = eventPublisher
-    }
-    
-    deinit {
-        eventPublisher.unsubscribe(observer)
-    }
-}
-
 private struct DomainEventPublisherStatic {
     static var singleton: DomainEventPublisher? = nil
     static var onceToken: dispatch_once_t = 0

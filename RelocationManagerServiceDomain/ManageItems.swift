@@ -1,5 +1,5 @@
 //
-//  ManageBoxesAndItems.swift
+//  ManageItems.swift
 //  RelocationManager
 //
 //  Created by Christian Tietze on 24/02/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class ManageBoxesAndItems: ManagesBoxesAndItems {
+public class ManageItems {
     
     var eventPublisher: DomainEventPublisher {
         return DomainEventPublisher.sharedInstance
@@ -32,24 +32,8 @@ public class ManageBoxesAndItems: ManagesBoxesAndItems {
         }
     }
     
-    
-    // MARK: Provisioning
-    
-    public func provisionBox(label: String, capacity: Int) {
-        if let boxCapacity = BoxCapacity(rawValue: capacity) {
-            provisioningService.provisionBox(label, capacity: boxCapacity)
-        }
-    }
-    
     public func provisionItem(title: String) {
         distributionService.distribute(itemTitle: title, provisioningService: provisioningService, boxRepository: repository)
-    }
-    
-    
-    // MARK: Removing
-    
-    public func removeBox(boxIdentifier: IntegerId) {
-        
     }
     
     public func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId) {

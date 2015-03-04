@@ -8,28 +8,11 @@
 
 import Cocoa
 
-class TheHelper : NSObject, ManagesBoxesAndItems {
-    func provisionBox(label: String, capacity: Int) {
-
-    }
-    
-    func provisionItem(name: String) {
-        
-    }
-    
-    func removeBox(boxIdentifier: IntegerId) {
-        
-    }
-    
-    func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId) {
-        
-    }
-}
 
 class ServiceDelegate : NSObject, NSXPCListenerDelegate {
     func listener(listener: NSXPCListener!, shouldAcceptNewConnection newConnection: NSXPCConnection!) -> Bool {
         newConnection.exportedInterface = NSXPCInterface(`protocol`: ManagesBoxesAndItems.self)
-        var exportedObject = TheHelper()
+        var exportedObject = Endpoint()
         newConnection.exportedObject = exportedObject
         newConnection.remoteObjectInterface = NSXPCInterface(`protocol`: UsesBoxesAndItems.self)
         
