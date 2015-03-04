@@ -57,9 +57,8 @@ public struct BoxProvisioned: DomainEvent {
     }
     
     public func userInfo() -> UserInfo {
-        // TODO replace NSNumber(...) by using StringLiteralConvertible
         return [
-            "id": NSNumber(longLong: boxId.identifier),
+            "id": boxId.number,
             "capacity": capacity,
             "title": title
         ]
@@ -99,10 +98,10 @@ public struct BoxItemAdded: DomainEvent {
     public func userInfo() -> UserInfo {
         return [
             "box" : [
-                "id" : NSNumber(longLong: boxId.identifier)
+                "id" : boxId.number
             ],
             "item" : [
-                "id" : NSNumber(longLong: itemId.identifier),
+                "id" : itemId.number,
                 "title": itemTitle
             ]
         ]
@@ -143,10 +142,10 @@ public struct AddingBoxItemFailed: DomainEvent {
     public func userInfo() -> UserInfo {
         return [
             "box" : [
-                "id" : NSNumber(longLong: boxId.identifier)
+                "id" : boxId.number
             ],
             "item" : [
-                "id" : NSNumber(longLong: itemId.identifier),
+                "id" : itemId.number,
                 "title": itemTitle
             ]
         ]
@@ -183,10 +182,10 @@ public struct BoxItemRemoved: DomainEvent {
     public func userInfo() -> UserInfo {
         return [
             "box" : [
-                "id" : NSNumber(longLong: boxId.identifier)
+                "id" : boxId.number
             ],
             "item" : [
-                "id" : NSNumber(longLong: itemId.identifier)
+                "id" : itemId.number
             ]
         ]
     }

@@ -12,6 +12,8 @@ public struct BoxId: Equatable, DebugPrintable, Identifiable {
     public var identifier: IntegerId { return _identifier }
     private var _identifier: IntegerId
     
+    public var number: NSNumber { return NSNumber(longLong: identifier) }
+    
     public init(_ identifier: IntegerId) {
         _identifier = identifier
     }
