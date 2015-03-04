@@ -15,6 +15,28 @@
 		501963171AA711560041DFD8 /* TestProvisioningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963161AA711560041DFD8 /* TestProvisioningService.swift */; };
 		501963191AA712280041DFD8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963181AA712280041DFD8 /* Endpoint.swift */; };
 		5019631B1AA712C60041DFD8 /* DomainEventSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019631A1AA712C60041DFD8 /* DomainEventSubscriber.swift */; };
+		501963201AA722A30041DFD8 /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019631F1AA722A30041DFD8 /* ConnectionController.swift */; };
+		501963231AA725C90041DFD8 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963221AA725C90041DFD8 /* Connection.swift */; };
+		501963251AA75A150041DFD8 /* ClientEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963241AA75A150041DFD8 /* ClientEvents.swift */; };
+		501963261AA75E320041DFD8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963181AA712280041DFD8 /* Endpoint.swift */; };
+		501963271AA75E320041DFD8 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963221AA725C90041DFD8 /* Connection.swift */; };
+		501963281AA75E320041DFD8 /* ClientEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963241AA75A150041DFD8 /* ClientEvents.swift */; };
+		501963291AA75E320041DFD8 /* RelocationManager.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE241A9B250100F94449 /* RelocationManager.xcdatamodel */; };
+		5019632A1AA75E320041DFD8 /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE021A9B23D000F94449 /* PersistentStack.swift */; };
+		5019632B1AA75E320041DFD8 /* ManagedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE031A9B23D000F94449 /* ManagedEntity.swift */; };
+		5019632C1AA75E320041DFD8 /* CoreDataBoxRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE041A9B23D000F94449 /* CoreDataBoxRepository.swift */; };
+		5019632D1AA75E320041DFD8 /* ManagedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE051A9B23D000F94449 /* ManagedBox.swift */; };
+		5019632E1AA75E320041DFD8 /* ManagedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE061A9B23D000F94449 /* ManagedItem.swift */; };
+		5019632F1AA75E320041DFD8 /* ManageBoxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963121AA7107E0041DFD8 /* ManageBoxes.swift */; };
+		501963301AA75E320041DFD8 /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019631F1AA722A30041DFD8 /* ConnectionController.swift */; };
+		501963311AA75E320041DFD8 /* DistributeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D215C41A9B388500059B36 /* DistributeItem.swift */; };
+		501963321AA75E320041DFD8 /* ProvisioningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE0F1A9B240400F94449 /* ProvisioningService.swift */; };
+		501963331AA75E320041DFD8 /* DomainEventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE101A9B240400F94449 /* DomainEventPublisher.swift */; };
+		501963341AA75E320041DFD8 /* DomainEventSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019631A1AA712C60041DFD8 /* DomainEventSubscriber.swift */; };
+		501963351AA75E320041DFD8 /* DomainEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE111A9B240400F94449 /* DomainEvents.swift */; };
+		501963361AA75E320041DFD8 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE121A9B240400F94449 /* Identifiable.swift */; };
+		501963371AA75E320041DFD8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE131A9B240400F94449 /* Item.swift */; };
+		501963381AA75E320041DFD8 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE141A9B240400F94449 /* Box.swift */; };
 		5019FE7F1A8A1463007D5A09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FE7E1A8A1463007D5A09 /* AppDelegate.swift */; };
 		5019FE811A8A1463007D5A09 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5019FE801A8A1463007D5A09 /* Images.xcassets */; };
 		5019FE841A8A1463007D5A09 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5019FE821A8A1463007D5A09 /* MainMenu.xib */; };
@@ -137,6 +159,9 @@
 		501963161AA711560041DFD8 /* TestProvisioningService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestProvisioningService.swift; sourceTree = "<group>"; };
 		501963181AA712280041DFD8 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		5019631A1AA712C60041DFD8 /* DomainEventSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainEventSubscriber.swift; sourceTree = "<group>"; };
+		5019631F1AA722A30041DFD8 /* ConnectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionController.swift; sourceTree = "<group>"; };
+		501963221AA725C90041DFD8 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		501963241AA75A150041DFD8 /* ClientEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientEvents.swift; sourceTree = "<group>"; };
 		5019FE7A1A8A1463007D5A09 /* RelocationManagerHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelocationManagerHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5019FE7D1A8A1463007D5A09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5019FE7E1A8A1463007D5A09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -314,6 +339,16 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		501963211AA725B90041DFD8 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				501963181AA712280041DFD8 /* Endpoint.swift */,
+				501963221AA725C90041DFD8 /* Connection.swift */,
+				501963241AA75A150041DFD8 /* ClientEvents.swift */,
+			);
+			name = Connection;
+			sourceTree = "<group>";
+		};
 		5019FE7B1A8A1463007D5A09 /* Status Bar App */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +451,7 @@
 			children = (
 				50A4F6261A9CDA2300A32A5E /* ManageItems.swift */,
 				501963121AA7107E0041DFD8 /* ManageBoxes.swift */,
+				5019631F1AA722A30041DFD8 /* ConnectionController.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -483,7 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				50A4F62A1A9CDA6400A32A5E /* ServiceLocator.swift */,
-				501963181AA712280041DFD8 /* Endpoint.swift */,
+				501963211AA725B90041DFD8 /* Connection */,
 				5063CE0D1A9B23E200F94449 /* Core Data */,
 				5063CE0C1A9B23D700F94449 /* Entities */,
 			);
@@ -969,12 +1005,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				501963331AA75E320041DFD8 /* DomainEventPublisher.swift in Sources */,
 				5019FEAA1A8CCAE3007D5A09 /* Item.swift in Sources */,
+				501963301AA75E320041DFD8 /* ConnectionController.swift in Sources */,
+				501963281AA75E320041DFD8 /* ClientEvents.swift in Sources */,
+				501963271AA75E320041DFD8 /* Connection.swift in Sources */,
+				501963371AA75E320041DFD8 /* Item.swift in Sources */,
+				5019632B1AA75E320041DFD8 /* ManagedEntity.swift in Sources */,
+				501963291AA75E320041DFD8 /* RelocationManager.xcdatamodel in Sources */,
 				5019FEB21A8CCAFC007D5A09 /* Identifiable.swift in Sources */,
+				501963261AA75E320041DFD8 /* Endpoint.swift in Sources */,
 				50F98BD21A714C1800426FD8 /* main.swift in Sources */,
+				501963351AA75E320041DFD8 /* DomainEvents.swift in Sources */,
+				5019632E1AA75E320041DFD8 /* ManagedItem.swift in Sources */,
+				5019632A1AA75E320041DFD8 /* PersistentStack.swift in Sources */,
+				501963361AA75E320041DFD8 /* Identifiable.swift in Sources */,
+				5019632D1AA75E320041DFD8 /* ManagedBox.swift in Sources */,
+				501963311AA75E320041DFD8 /* DistributeItem.swift in Sources */,
 				5019FEA51A8CC97C007D5A09 /* ServiceCommunication.swift in Sources */,
 				5019FEAD1A8CCAE3007D5A09 /* Box.swift in Sources */,
+				501963381AA75E320041DFD8 /* Box.swift in Sources */,
 				50A4F6271A9CDA2300A32A5E /* ManageItems.swift in Sources */,
+				501963321AA75E320041DFD8 /* ProvisioningService.swift in Sources */,
+				501963341AA75E320041DFD8 /* DomainEventSubscriber.swift in Sources */,
+				5019632F1AA75E320041DFD8 /* ManageBoxes.swift in Sources */,
+				5019632C1AA75E320041DFD8 /* CoreDataBoxRepository.swift in Sources */,
 				50A4F62B1A9CDA6400A32A5E /* ServiceLocator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -984,8 +1039,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				50A4F62C1A9CDA6400A32A5E /* ServiceLocator.swift in Sources */,
+				501963251AA75A150041DFD8 /* ClientEvents.swift in Sources */,
 				5063CE0B1A9B23D100F94449 /* ManagedItem.swift in Sources */,
 				5063CE171A9B240400F94449 /* DomainEvents.swift in Sources */,
+				501963231AA725C90041DFD8 /* Connection.swift in Sources */,
 				5063CE261A9B255E00F94449 /* Utilities.swift in Sources */,
 				50A4F6281A9CDA2300A32A5E /* ManageItems.swift in Sources */,
 				5063CE251A9B250100F94449 /* RelocationManager.xcdatamodel in Sources */,
@@ -995,6 +1052,7 @@
 				5062F8C61A9C9589005F45FB /* DistributeItem.swift in Sources */,
 				50A4F6291A9CDA2F00A32A5E /* ServiceCommunication.swift in Sources */,
 				5063CE091A9B23D100F94449 /* CoreDataBoxRepository.swift in Sources */,
+				501963201AA722A30041DFD8 /* ConnectionController.swift in Sources */,
 				5063CE191A9B240400F94449 /* Item.swift in Sources */,
 				5063CE151A9B240400F94449 /* ProvisioningService.swift in Sources */,
 				501963191AA712280041DFD8 /* Endpoint.swift in Sources */,

@@ -18,9 +18,5 @@ public protocol ManagesBoxesAndItems {
 
 @objc(UsesBoxesAndItems)
 public protocol UsesBoxesAndItems {
-    func receiveBox(boxData: NSDictionary)
-    func receiveItem(itemData: NSDictionary)
-    
-    func allowAddingItems()
-    func forbidAddingItems()
+    func apply(eventRepresentation: NSDictionary)
 }

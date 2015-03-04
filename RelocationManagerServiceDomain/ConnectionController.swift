@@ -1,0 +1,33 @@
+//
+//  ConnectionController.swift
+//  RelocationManager
+//
+//  Created by Christian Tietze on 04/03/15.
+//  Copyright (c) 2015 Christian Tietze. All rights reserved.
+//
+
+import Foundation
+
+public class ConnectionController {
+    let connection: Connection
+    
+    public init(connection: Connection) {
+        self.connection = connection
+        self.subscribeToItemDistributionFailed()
+    }
+    
+    // MARK: Notify about failed item distribution
+    
+    var distributionFailedSubscriber: DomainEventSubscriber!
+    var eventPublisher: DomainEventPublisher {
+        return DomainEventPublisher.sharedInstance
+    }
+    
+    func subscribeToItemDistributionFailed() {
+        distributionFailedSubscriber = eventPublisher.subscribe(BoxItemDistributionFailed.self) {
+            [unowned self] event in
+            
+            self.connection.send(DistributingItemFailed(itemTitle: event.itemTitle))
+        }
+    }
+}
