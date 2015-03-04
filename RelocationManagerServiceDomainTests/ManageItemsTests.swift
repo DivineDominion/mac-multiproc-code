@@ -71,7 +71,7 @@ class ManageItemsTests: XCTestCase {
     func testProvisionItem_DelegatesToDistributionService() {
         let itemTitle = "the name"
         
-        service.provisionItem(itemTitle)
+        service.distributeItem(itemTitle)
         
         XCTAssertTrue(distributionService.didDistributeItem)
         if distributionService.didDistributeItem {

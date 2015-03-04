@@ -10,10 +10,10 @@ import Foundation
 
 @objc(ManagesBoxesAndItems)
 public protocol ManagesBoxesAndItems {
-    func provisionBox(label: String, capacity: Int)
-    func provisionItem(title: String)
-    func removeBox(boxIdentifier: IntegerId)
-    func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId)
+    func orderBox(label: String, capacity: Int)
+    func distributeItem(title: String)
+    func removeBox(#boxIdentifier: IntegerId)
+    func removeItem(#itemIdentifier: IntegerId, fromBoxWithIdentifier boxIdentifier: IntegerId)
 }
 
 @objc(UsesBoxesAndItems)

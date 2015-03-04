@@ -12,19 +12,19 @@ public class Endpoint: NSObject, ManagesBoxesAndItems {
     let manageBoxes = ManageBoxes()
     let manageItems = ManageItems()
     
-    public func provisionBox(label: String, capacity: Int) {
-        manageBoxes.provisionBox(label, capacity: capacity)
+    public func orderBox(label: String, capacity: Int) {
+        manageBoxes.orderBox(label, capacity: capacity)
     }
     
-    public func provisionItem(title: String) {
-        manageItems.provisionItem(title)
+    public func distributeItem(title: String) {
+        manageItems.distributeItem(title)
     }
     
-    public func removeBox(boxIdentifier: IntegerId) {
+    public func removeBox(#boxIdentifier: IntegerId) {
         manageBoxes.removeBox(boxIdentifier)
     }
     
-    public func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId) {
+    public func removeItem(#itemIdentifier: IntegerId, fromBoxWithIdentifier boxIdentifier: IntegerId) {
         manageItems.removeItem(itemIdentifier, fromBoxIdentifier: boxIdentifier)
     }
 }

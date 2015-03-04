@@ -14,7 +14,7 @@ public class ManageBoxes {
 
     public init() { }
     
-    public func provisionBox(label: String, capacity: Int) {
+    public func orderBox(label: String, capacity: Int) {
         if let boxCapacity = BoxCapacity(rawValue: capacity) {
             provisioningService.provisionBox(label, capacity: boxCapacity)
         }

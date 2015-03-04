@@ -11,20 +11,18 @@ import Cocoa
 
 class ServiceDelegate : NSObject, NSXPCListenerDelegate {
     func listener(listener: NSXPCListener!, shouldAcceptNewConnection newConnection: NSXPCConnection!) -> Bool {
-        newConnection.exportedInterface = NSXPCInterface(`protocol`: ManagesBoxesAndItems.self)
+
         var exportedObject = Endpoint()
+        newConnection.exportedInterface = NSXPCInterface(`protocol`: ManagesBoxesAndItems.self)
         newConnection.exportedObject = exportedObject
+        
         newConnection.remoteObjectInterface = NSXPCInterface(`protocol`: UsesBoxesAndItems.self)
         
-        var valid = true
-        
         newConnection.invalidationHandler = {
-            //valid = false
             NSLog("invalidated")
         }
         NSLog("accepting connection")
         newConnection.resume()
-        
         
         dispatch_async(dispatch_get_global_queue(0, 0)) {
             let listener = newConnection.remoteObjectProxyWithErrorHandler({ error in
@@ -42,7 +40,7 @@ class ServiceDelegate : NSObject, NSXPCListenerDelegate {
 let bundleId = NSBundle.mainBundle().bundleIdentifier!
 let delegate = ServiceDelegate()
 let listener = NSXPCListener(machServiceName: bundleId)
-listener.delegate = delegate;
+listener.delegate = delegate
 listener.resume()
 
 NSRunLoop.currentRunLoop().run()

@@ -31,7 +31,7 @@ class ManageBoxesTests: XCTestCase {
         let title = "The Box"
         let capacity = BoxCapacity.Medium.rawValue
         
-        service.provisionBox(title, capacity: capacity)
+        service.orderBox(title, capacity: capacity)
         
         XCTAssertTrue(provisioningService.didProvisionBox)
         if provisioningService.didProvisionBox {
@@ -41,7 +41,7 @@ class ManageBoxesTests: XCTestCase {
     }
     
     func testProvisionBox_WithInvalidCapacity_DoesNotProvisionBox() {
-        service.provisionBox("irrelevant", capacity: 1000)
+        service.orderBox("irrelevant", capacity: 1000)
         
         XCTAssertFalse(provisioningService.didProvisionBox)
     }

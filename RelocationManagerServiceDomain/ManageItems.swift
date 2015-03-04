@@ -18,21 +18,21 @@ public class ManageItems {
     public lazy var provisioningService: ProvisioningService = ProvisioningService(repository: self.repository)
     public lazy var distributionService = DistributeItem()
     
-    var addingBoxItemFailedSubscriber: DomainEventSubscriber!
-    
     public init() {
         self.subscribeToBoxItemAddingFailed()
     }
+    
+    var addingBoxItemFailedSubscriber: DomainEventSubscriber!
     
     func subscribeToBoxItemAddingFailed() {
         addingBoxItemFailedSubscriber = eventPublisher.subscribe(AddingBoxItemFailed.self) {
             [unowned self] event in
             
-            self.provisionItem(event.itemTitle)
+            self.distributeItem(event.itemTitle)
         }
     }
     
-    public func provisionItem(title: String) {
+    public func distributeItem(title: String) {
         distributionService.distribute(itemTitle: title, provisioningService: provisioningService, boxRepository: repository)
     }
     
