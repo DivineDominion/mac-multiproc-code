@@ -11,6 +11,7 @@ import XCTest
 
 import RelocationManagerServiceDomain
 
+/// Integration Tests
 class ManageBoxesAndItemsTests: XCTestCase {
     class TestProvisioningService: ProvisioningService {
         override func provisionItem(title: String, inBox box: Box) { }
@@ -49,6 +50,39 @@ class ManageBoxesAndItemsTests: XCTestCase {
         TestProvisioningService(repository: self.repository)
     }()
     
+    let publisher = DomainEventPublisher(notificationCenter: NSNotificationCenter())
+
+    
+    override func setUp() {
+        super.setUp()
+        DomainEventPublisher.setSharedInstance(publisher)
+    }
+    
+    override func tearDown() {
+        DomainEventPublisher.resetSharedInstance()
+        super.tearDown()
+    }
+    
+    // MARK: Reacting to Domain Events
+    
+    func testAddingFailed_InvokesAnotherDistribution() {
+        let irrelevantBoxId = BoxId(101)
+        let irrelevantItemId = ItemId(202)
+        let itemTitle = "the title"
+        let service = ManageBoxesAndItems()
+        service.repository = self.repository
+        service.provisioningService = self.provisioningService
+        service.distributionService = self.distributionService
+        
+        publisher.publish(AddingBoxItemFailed(boxId: irrelevantBoxId, itemId: irrelevantItemId, itemTitle: itemTitle))
+        
+        XCTAssertTrue(distributionService.didDistributeItem)
+        if distributionService.didDistributeItem {
+            XCTAssertEqual(distributionService.itemTitle!, itemTitle)
+        }
+    }
+    
+    
     // MARK: Provision Box
     
     func testProvisionBox_WithValidCapacity_ProvisionsBox() {
@@ -84,3 +118,4 @@ class ManageBoxesAndItemsTests: XCTestCase {
         }
     }
 }
+

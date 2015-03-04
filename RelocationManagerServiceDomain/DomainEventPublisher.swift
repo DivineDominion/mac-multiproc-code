@@ -8,13 +8,30 @@
 
 import Foundation
 
+public class DomainEventSubscriber {
+    
+    let observer: NSObjectProtocol
+    let eventPublisher: DomainEventPublisher
+    
+    public init(observer: NSObjectProtocol, eventPublisher: DomainEventPublisher) {
+        self.observer = observer
+        self.eventPublisher = eventPublisher
+    }
+    
+    deinit {
+        eventPublisher.unsubscribe(observer)
+    }
+}
+
 private struct DomainEventPublisherStatic {
     static var singleton: DomainEventPublisher? = nil
     static var onceToken: dispatch_once_t = 0
 }
 
 public class DomainEventPublisher {
+    
     public class var sharedInstance: DomainEventPublisher {
+        
         if DomainEventPublisherStatic.singleton == nil {
             dispatch_once(&DomainEventPublisherStatic.onceToken) {
                 self.setSharedInstance(DomainEventPublisher())
@@ -51,15 +68,24 @@ public class DomainEventPublisher {
         notificationCenter.postNotification(event.notification())
     }
     
-    public func subscribe<T: DomainEvent>(eventKind: T.Type, queue: NSOperationQueue, usingBlock block: (T!) -> Void) -> NSObjectProtocol {
+    public func subscribe<T: DomainEvent>(eventKind: T.Type, usingBlock block: (T!) -> Void) -> DomainEventSubscriber {
+        
+        let mainQueue = NSOperationQueue.mainQueue()
+        
+        return self.subscribe(eventKind, queue: mainQueue, usingBlock: block)
+    }
+    
+    public func subscribe<T: DomainEvent>(eventKind: T.Type, queue: NSOperationQueue, usingBlock block: (T!) -> Void) -> DomainEventSubscriber {
         let eventType: DomainEventType = T.eventType
-        return notificationCenter.addObserverForName(eventType.name, object: nil, queue: queue) {
-            (notification: NSNotification!) -> Void in
+        let observer = notificationCenter.addObserverForName(eventType.name, object: nil, queue: queue) {
+            notification in
             
             let userInfo = notification.userInfo!
             let event: T = T(userInfo: userInfo)
             block(event)
         }
+        
+        return DomainEventSubscriber(observer: observer, eventPublisher: self)
     }
     
     public func unsubscribe(subscriber: AnyObject) {

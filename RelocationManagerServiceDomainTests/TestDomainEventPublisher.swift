@@ -32,9 +32,8 @@ class TestDomainEventPublisher: DomainEventPublisher {
     }
 }
 
-class MockDomainEventPublisher: TestDomainEventPublisher {
+class MockDomainEventPublisher: TestDomainEventPublisher {    
     var lastPublishedEvent: DomainEvent?
-    
     override func publish(event: DomainEvent) {
         lastPublishedEvent = event
     }
