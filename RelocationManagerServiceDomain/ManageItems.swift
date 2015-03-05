@@ -22,7 +22,7 @@ public class ManageItems {
         self.subscribeToBoxItemAddingFailed()
     }
     
-    var addingBoxItemFailedSubscriber: DomainEventSubscriber!
+    var addingBoxItemFailedSubscriber: DomainEventSubscription!
     
     func subscribeToBoxItemAddingFailed() {
         addingBoxItemFailedSubscriber = eventPublisher.subscribe(AddingBoxItemFailed.self) {

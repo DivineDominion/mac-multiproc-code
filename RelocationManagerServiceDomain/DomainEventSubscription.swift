@@ -1,5 +1,5 @@
 //
-//  DomainEventSubscriber.swift
+//  DomainEventSubscription.swift
 //  RelocationManager
 //
 //  Created by Christian Tietze on 04/03/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class DomainEventSubscriber {
+public class DomainEventSubscription {
     
     let observer: NSObjectProtocol
     let eventPublisher: DomainEventPublisher

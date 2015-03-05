@@ -18,13 +18,13 @@ public class ConnectionController {
     
     // MARK: Notify about failed item distribution
     
-    var distributionFailedSubscriber: DomainEventSubscriber!
+    var distributionFailedSubscription: DomainEventSubscription!
     var eventPublisher: DomainEventPublisher {
         return DomainEventPublisher.sharedInstance
     }
     
     func subscribeToItemDistributionFailed() {
-        distributionFailedSubscriber = eventPublisher.subscribe(BoxItemDistributionFailed.self) {
+        distributionFailedSubscription = eventPublisher.subscribe(BoxItemDistributionFailed.self) {
             [unowned self] event in
             
             self.connection.send(DistributingItemFailed(itemTitle: event.itemTitle))

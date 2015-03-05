@@ -53,14 +53,14 @@ public class DomainEventPublisher {
         notificationCenter.postNotification(event.notification())
     }
     
-    public func subscribe<T: DomainEvent>(eventKind: T.Type, usingBlock block: (T!) -> Void) -> DomainEventSubscriber {
+    public func subscribe<T: DomainEvent>(eventKind: T.Type, usingBlock block: (T!) -> Void) -> DomainEventSubscription {
         
         let mainQueue = NSOperationQueue.mainQueue()
         
         return self.subscribe(eventKind, queue: mainQueue, usingBlock: block)
     }
     
-    public func subscribe<T: DomainEvent>(eventKind: T.Type, queue: NSOperationQueue, usingBlock block: (T!) -> Void) -> DomainEventSubscriber {
+    public func subscribe<T: DomainEvent>(eventKind: T.Type, queue: NSOperationQueue, usingBlock block: (T!) -> Void) -> DomainEventSubscription {
         let eventType: DomainEventType = T.eventType
         let observer = notificationCenter.addObserverForName(eventType.name, object: nil, queue: queue) {
             notification in
@@ -70,7 +70,7 @@ public class DomainEventPublisher {
             block(event)
         }
         
-        return DomainEventSubscriber(observer: observer, eventPublisher: self)
+        return DomainEventSubscription(observer: observer, eventPublisher: self)
     }
     
     public func unsubscribe(subscriber: AnyObject) {

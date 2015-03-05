@@ -14,7 +14,7 @@
 		501963151AA710FE0041DFD8 /* ManageBoxesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963141AA710FE0041DFD8 /* ManageBoxesTests.swift */; };
 		501963171AA711560041DFD8 /* TestProvisioningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963161AA711560041DFD8 /* TestProvisioningService.swift */; };
 		501963191AA712280041DFD8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963181AA712280041DFD8 /* Endpoint.swift */; };
-		5019631B1AA712C60041DFD8 /* DomainEventSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019631A1AA712C60041DFD8 /* DomainEventSubscriber.swift */; };
+		5019631B1AA712C60041DFD8 /* DomainEventSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019631A1AA712C60041DFD8 /* DomainEventSubscription.swift */; };
 		501963201AA722A30041DFD8 /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019631F1AA722A30041DFD8 /* ConnectionController.swift */; };
 		501963231AA725C90041DFD8 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963221AA725C90041DFD8 /* Connection.swift */; };
 		501963251AA75A150041DFD8 /* ClientEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963241AA75A150041DFD8 /* ClientEvents.swift */; };
@@ -32,7 +32,7 @@
 		501963311AA75E320041DFD8 /* DistributeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D215C41A9B388500059B36 /* DistributeItem.swift */; };
 		501963321AA75E320041DFD8 /* ProvisioningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE0F1A9B240400F94449 /* ProvisioningService.swift */; };
 		501963331AA75E320041DFD8 /* DomainEventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE101A9B240400F94449 /* DomainEventPublisher.swift */; };
-		501963341AA75E320041DFD8 /* DomainEventSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019631A1AA712C60041DFD8 /* DomainEventSubscriber.swift */; };
+		501963341AA75E320041DFD8 /* DomainEventSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019631A1AA712C60041DFD8 /* DomainEventSubscription.swift */; };
 		501963351AA75E320041DFD8 /* DomainEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE111A9B240400F94449 /* DomainEvents.swift */; };
 		501963361AA75E320041DFD8 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE121A9B240400F94449 /* Identifiable.swift */; };
 		501963371AA75E320041DFD8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE131A9B240400F94449 /* Item.swift */; };
@@ -158,7 +158,7 @@
 		501963141AA710FE0041DFD8 /* ManageBoxesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageBoxesTests.swift; sourceTree = "<group>"; };
 		501963161AA711560041DFD8 /* TestProvisioningService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestProvisioningService.swift; sourceTree = "<group>"; };
 		501963181AA712280041DFD8 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		5019631A1AA712C60041DFD8 /* DomainEventSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainEventSubscriber.swift; sourceTree = "<group>"; };
+		5019631A1AA712C60041DFD8 /* DomainEventSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainEventSubscription.swift; sourceTree = "<group>"; };
 		5019631F1AA722A30041DFD8 /* ConnectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionController.swift; sourceTree = "<group>"; };
 		501963221AA725C90041DFD8 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		501963241AA75A150041DFD8 /* ClientEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientEvents.swift; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				5063CE101A9B240400F94449 /* DomainEventPublisher.swift */,
-				5019631A1AA712C60041DFD8 /* DomainEventSubscriber.swift */,
+				5019631A1AA712C60041DFD8 /* DomainEventSubscription.swift */,
 				5063CE111A9B240400F94449 /* DomainEvents.swift */,
 			);
 			name = Events;
@@ -1027,7 +1027,7 @@
 				501963381AA75E320041DFD8 /* Box.swift in Sources */,
 				50A4F6271A9CDA2300A32A5E /* ManageItems.swift in Sources */,
 				501963321AA75E320041DFD8 /* ProvisioningService.swift in Sources */,
-				501963341AA75E320041DFD8 /* DomainEventSubscriber.swift in Sources */,
+				501963341AA75E320041DFD8 /* DomainEventSubscription.swift in Sources */,
 				5019632F1AA75E320041DFD8 /* ManageBoxes.swift in Sources */,
 				5019632C1AA75E320041DFD8 /* CoreDataBoxRepository.swift in Sources */,
 				50A4F62B1A9CDA6400A32A5E /* ServiceLocator.swift in Sources */,
@@ -1061,7 +1061,7 @@
 				5063CE071A9B23D000F94449 /* PersistentStack.swift in Sources */,
 				5063CE0A1A9B23D100F94449 /* ManagedBox.swift in Sources */,
 				501963131AA7107E0041DFD8 /* ManageBoxes.swift in Sources */,
-				5019631B1AA712C60041DFD8 /* DomainEventSubscriber.swift in Sources */,
+				5019631B1AA712C60041DFD8 /* DomainEventSubscription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
