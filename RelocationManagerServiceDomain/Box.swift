@@ -74,7 +74,6 @@ public class Box: NSObject {
         
         if isFull() {
             eventPublisher.publish(AddingBoxItemFailed(boxId: boxId, itemId: item.itemId, itemTitle: item.title))
-            
             return
         }
         

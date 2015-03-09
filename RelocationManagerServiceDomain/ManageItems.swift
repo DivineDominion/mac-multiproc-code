@@ -14,9 +14,7 @@ public class ManageItems {
         return DomainEventPublisher.sharedInstance
     }
     
-    public lazy var repository: BoxRepository = ServiceLocator.boxRepository()
-    public lazy var provisioningService: ProvisioningService = ProvisioningService(repository: self.repository)
-    public lazy var distributionService = DistributeItem()
+    public lazy var distributionService: DistributeItem = DomainRegistry.sharedInstance.distributeItem()
     
     public init() {
         self.subscribeToBoxItemAddingFailed()
@@ -33,7 +31,7 @@ public class ManageItems {
     }
     
     public func distributeItem(title: String) {
-        distributionService.distribute(itemTitle: title, provisioningService: provisioningService, boxRepository: repository)
+        distributionService.distribute(itemTitle: title)
     }
     
     public func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId) {

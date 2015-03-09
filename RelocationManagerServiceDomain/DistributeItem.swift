@@ -13,11 +13,19 @@ public class DistributeItem {
         return DomainEventPublisher.sharedInstance
     }
     
-    public init() { }
+    let repository: BoxRepository
+    let provisioningService: ProvisioningService
     
-    public func distribute(itemTitle title: String, provisioningService: ProvisioningService, boxRepository repository: BoxRepository) {
-        
-        if let box = boxes(fromRepository: repository).first {
+    public init(boxRepository: BoxRepository, provisioningService: ProvisioningService) {
+        self.repository = boxRepository
+        self.provisioningService = provisioningService
+    }
+    
+    
+    public func distribute(itemTitle title: String) {
+        let boxes = nonFullBoxesSortedByFill()
+
+        if let box = boxes.first {
             provisioningService.provisionItem(title, inBox: box)
             return
         }
@@ -25,11 +33,16 @@ public class DistributeItem {
         eventPublisher.publish(BoxItemDistributionFailed(itemTitle: title))
     }
     
-    func boxes(fromRepository repository: BoxRepository) -> [Box] {
+    func nonFullBoxesSortedByFill() -> [Box] {
         return repository.boxes().filter { box in
             return box.canTakeItem()
         }.sorted { (one, other) -> Bool in
-                return one.itemsCount < other.itemsCount
+            return one.itemsCount < other.itemsCount
         }
     }
+    
+    func nonFullBoxesSortedByFillExcept(box: Box) -> [Box] {
+        return nonFullBoxesSortedByFill().filter { return $0 != box }
+    }
+    
 }

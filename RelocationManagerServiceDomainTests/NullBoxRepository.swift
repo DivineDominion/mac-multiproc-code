@@ -11,6 +11,8 @@ import Foundation
 import RelocationManagerServiceDomain
 
 class NullBoxRepository: BoxRepository {
+    init() { }
+    
     func nextId() -> BoxId { return BoxId(0) }
     
     func nextItemId() -> ItemId { return ItemId(0) }

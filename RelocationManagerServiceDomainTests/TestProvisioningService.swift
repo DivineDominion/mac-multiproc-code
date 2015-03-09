@@ -10,7 +10,13 @@ import Foundation
 
 import RelocationManagerServiceDomain
 
-class TestProvisioningService: ProvisioningService {
+class NullProvisioningService: ProvisioningService {
+    convenience init() {
+        self.init(repository: NullBoxRepository())
+    }
+}
+
+class TestProvisioningService: NullProvisioningService {
     override func provisionItem(title: String, inBox box: Box) { }
     
     var provisionedBoxTitle: String?

@@ -31,13 +31,9 @@ class DistributeItemTests: XCTestCase {
     }
     
     let publisher = MockDomainEventPublisher()
-    
     let repository = TestBoxRepository()
-    lazy var provisioningService: TestProvisioningService = {
-        TestProvisioningService(repository: self.repository)
-    }()
-    
-    let distributeItem = DistributeItem()
+    lazy var provisioningService: TestProvisioningService = TestProvisioningService(repository: self.repository)
+    lazy var distributeItem: DistributeItem = DistributeItem(boxRepository: self.repository, provisioningService: self.provisioningService)
     
     override func setUp() {
         super.setUp()
@@ -67,7 +63,7 @@ class DistributeItemTests: XCTestCase {
     // MARK: Item Distribution
     
     func distribute(title: String) {
-        distributeItem.distribute(itemTitle: title, provisioningService: provisioningService, boxRepository: repository)
+        distributeItem.distribute(itemTitle: title)
     }
     
     func testDistributeItem_WithOneEmptyBox_ProvisionsItem() {

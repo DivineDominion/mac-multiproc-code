@@ -13,40 +13,38 @@ import RelocationManagerServiceDomain
 
 /// Integration Tests
 class ManageItemsTests: XCTestCase {
-    class TestDistributeItem: DistributeItem {
+    class TestDistributeItem: NullDistributeItem {
         var didDistributeItem = false
         var itemTitle: String?
-        override func distribute(itemTitle title: String, provisioningService: ProvisioningService, boxRepository repository: BoxRepository) {
+        override func distribute(itemTitle title: String) {
             
             self.itemTitle = title
             didDistributeItem = true
         }
     }
     
-    lazy var service: ManageItems = {
-        let service = ManageItems()
-        service.repository = self.repository
-        service.provisioningService = self.provisioningService
-        service.distributionService = self.distributionService
-        return service
-    }()
+    lazy var service: ManageItems = ManageItems()
     
     let distributionService = TestDistributeItem()
-    let repository = NullBoxRepository()
-    lazy var provisioningService: TestProvisioningService = {
-        TestProvisioningService(repository: self.repository)
-    }()
+    let provisioningService: TestProvisioningService = TestProvisioningService()
     
+    let registry = TestDomainRegistry()
     let publisher = DomainEventPublisher(notificationCenter: NSNotificationCenter())
 
     
     override func setUp() {
         super.setUp()
+        
+        registry.testDistributeItem = distributionService
+        DomainRegistry.setSharedInstance(registry)
+        
         DomainEventPublisher.setSharedInstance(publisher)
     }
     
     override func tearDown() {
         DomainEventPublisher.resetSharedInstance()
+        DomainRegistry.resetSharedInstance()
+        
         super.tearDown()
     }
     
