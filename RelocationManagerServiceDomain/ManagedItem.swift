@@ -29,12 +29,9 @@ public class ManagedItem: NSManagedObject, ManagedEntity {
     }
     
     public class func insertManagedItem(item: Item, managedBox: ManagedBox, inManagedObjectContext managedObjectContext:NSManagedObjectContext) {
-        let theItem: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext)
-        var managedItem: ManagedItem = theItem as ManagedItem
+        let managedItem = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext) as ManagedItem
         
-        managedItem.uniqueId = item.itemId.number
-        managedItem.title = item.title
-        managedItem.setItem(item)
+        managedItem.item = item
         managedItem.box = managedBox
     }
     
@@ -46,19 +43,44 @@ public class ManagedItem: NSManagedObject, ManagedEntity {
     //MARK: Item Management
     
     private var _item: Item?
-    public lazy var item: Item = {
-        
-        let item = Item(itemId: self.itemId(), title: self.title)
+    public var item: Item {
+        get {
+            if let item = _item {
+                return item
+            }
+            
+            let item = createItem()
+            observe(item)
+            _item = item
+            
+            return item
+        }
+        set {
+            assert(_item == nil, "can be set only during initialization")
+            
+            let item = newValue
+            adaptItem(item)
+            observe(item)
+            
+            _item = item
+        }
+    }
+    
+    func createItem() -> Item {
+        return Item(itemId: self.itemId(), title: self.title)
+    }
+    
+    func adaptItem(item: Item) {
+        uniqueId = item.itemId.number
+        title = item.title
+    }
+    
+    
+    // MARK: OBserving Changes
+    
+    func observe(item: Item) {
         // TODO add back-reference to box
         item.addObserver(self, forKeyPath: "title", options: .New, context: &itemContext)
-        
-        self._item = item
-        return item
-    }()
-    
-    public func setItem(item: Item) {
-        assert(_item == nil, "can be set only before lazy initialization of item")
-        _item = item
     }
     
     public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
@@ -69,14 +91,20 @@ public class ManagedItem: NSManagedObject, ManagedEntity {
         }
         
         if keyPath == "title" {
-            self.title = change[NSKeyValueChangeNewKey] as String
+            let newTitle = change[NSKeyValueChangeNewKey] as String
+            self.title = newTitle
         }
     }
+    
+    // MARK: Destructor
     
     deinit {
         if let item = _item {
-            item.removeObserver(self, forKeyPath: "title")
+            unobserve(item)
         }
     }
     
+    func unobserve(item: Item) {
+        item.removeObserver(self, forKeyPath: "title")
+    }
 }

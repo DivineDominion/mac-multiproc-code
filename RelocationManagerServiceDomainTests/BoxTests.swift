@@ -11,97 +11,85 @@ import XCTest
 
 import RelocationManagerServiceDomain
 
-class BoxTests: XCTestCase {
-    let publisher = MockDomainEventPublisher()
+class TestBoxFactory {
+    let itemRepository = InstantFullItemRepository()
     
-    override func setUp() {
-        super.setUp()
-        DomainEventPublisher.setSharedInstance(publisher)
+    func registerItemRepository(registry: TestDomainRegistry) {
+        registry.testItemRepository = itemRepository
     }
     
-    override func tearDown() {
-        DomainEventPublisher.resetSharedInstance()
-        super.tearDown()
-    }
-    
+    var identifier: IntegerId = 0
     func emptyBox() -> Box {
-        return Box(boxId: BoxId(0), capacity: .Small, title: "irrelevant")
-    }
-    
-    func item() -> Item {
-        return Item(itemId: ItemId(1), title: "irrelevant item")
+        return Box(boxId: BoxId(identifier++), capacity: .Small, title: "irrelevant")
     }
     
     func fullBox() -> Box {
         let box = emptyBox()
         
-        for index in 1...box.capacity.rawValue {
-            box.addItem(item())
-        }
+        itemRepository.fillBox(box)
         
         return box
     }
     
+    class InstantFullItemRepository: NullItemRepository {
+        var items = [IntegerId : [Item]]()
+        override func items(#boxId: BoxId) -> [Item] {
+            if let items = items[boxId.identifier] {
+                return items
+            }
+            
+            return []
+        }
+        
+        func fillBox(box: Box) {
+            var boxItems = [Item]()
+            
+            for index in 1...box.capacity.rawValue {
+                boxItems.append(item())
+            }
+            
+            items[box.boxId.identifier] = boxItems
+        }
+        
+        private func item() -> Item {
+            return Item(itemId: ItemId(1), title: "irrelevant item")
+        }
+    }
+}
+
+class BoxTests: XCTestCase {
+    let boxFactory = TestBoxFactory()
+    let registry = TestDomainRegistry()
+    let publisher = MockDomainEventPublisher()
     
-    // MARK: - Creation
+    override func setUp() {
+        super.setUp()
+        boxFactory.registerItemRepository(registry)
+        DomainRegistry.setSharedInstance(registry)
+        DomainEventPublisher.setSharedInstance(publisher)
+    }
+    
+    override func tearDown() {
+        DomainEventPublisher.resetSharedInstance()
+        DomainRegistry.resetSharedInstance()
+        super.tearDown()
+    }
+
+    func emptyBox() -> Box {
+        return boxFactory.emptyBox()
+    }
+    
+    func fullBox() -> Box {
+        return boxFactory.fullBox()
+    }
+    
+    // MARK: Creation
     
     func testCreatingBox_StartsWithFullRemainingCapacity() {
         let box = emptyBox()
         
         XCTAssertEqual(box.remainingCapacity, box.capacity.rawValue)
     }
-    
-    
-    // MARK: -
-    // MARK: Adding items
-    
-    func testAddingItem_ReducesRemainingCapacity() {
-        let box = emptyBox()
-        
-        box.addItem(item())
-        
-        XCTAssertEqual(box.remainingCapacity, box.capacity.rawValue - 1)
-    }
-    
-    func testAddingItem_PublishesSuccessEvent() {
-        let box = emptyBox()
-        
-        box.addItem(item())
-        
-        if let event = publisher.lastPublishedEvent as? BoxItemAdded {
-            XCTAssertEqual(event.boxId, box.boxId)
-        } else {
-            XCTFail("did not publish success event")
-        }
-    }
-    
-    func testAddingItem_ToFullBox_DoesntAddTheItem() {
-        let box = fullBox()
-        let itemId = ItemId(2)
-        let item = Item(itemId: itemId, title: "different item")
-        
-        box.addItem(item)
-        
-        XCTAssertNil(box.item(itemId: itemId), "new item should not be added")
-    }
-    
-    func testAddingItem_ToFullBox_PublishesFailureEvent() {
-        let box = fullBox()
-        let itemId = ItemId(2)
-        let itemTitle = "different item"
-        let item = Item(itemId: itemId, title: itemTitle)
-        
-        box.addItem(item)
-        
-        if let event = publisher.lastPublishedEvent as? AddingBoxItemFailed {
-            XCTAssertEqual(event.boxId, box.boxId)
-            XCTAssertEqual(event.itemId, itemId)
-            XCTAssertEqual(event.itemTitle, itemTitle)
-        } else {
-            XCTFail("did not publish failure event")
-        }
-    }
-    
     
     // MARK: Filled status
     

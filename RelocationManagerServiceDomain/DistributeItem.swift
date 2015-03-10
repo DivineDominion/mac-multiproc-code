@@ -34,7 +34,8 @@ public class DistributeItem {
     }
     
     func nonFullBoxesSortedByFill() -> [Box] {
-        return repository.boxes().filter { box in
+        let allBoxes = repository.boxes()
+        return allBoxes.filter { box in
             return box.canTakeItem()
         }.sorted { (one, other) -> Bool in
             return one.itemsCount < other.itemsCount

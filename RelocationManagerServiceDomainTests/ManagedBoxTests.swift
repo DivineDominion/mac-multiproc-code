@@ -12,16 +12,12 @@ import XCTest
 import RelocationManagerServiceDomain
 
 class ManagedBoxTests: CoreDataTestCase {
+    
     var repository: CoreDataBoxRepository?
     
     override func setUp() {
         super.setUp()
         repository = CoreDataBoxRepository(managedObjectContext: context)
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
     }
     
     func soleManagedBox() -> ManagedBox? {
@@ -96,30 +92,6 @@ class ManagedBoxTests: CoreDataTestCase {
             
             let foundBox = allBoxes()!.first! as ManagedBox
             XCTAssertEqual(foundBox.title, "")
-        } else {
-            XCTFail("box not found")
-        }
-    }
-
-    // MARK: Items changes
-    
-    func testAddingItemToFetchedBox_PersistsChanges() {
-        let boxId = BoxId(1234)
-        ManagedBox.insertManagedBox(box(boxId), inManagedObjectContext: context)
-        
-        if let box = repository!.box(boxId: boxId) {
-            let itemId = ItemId(6789)
-            let item = Item(itemId: itemId, title: "the item")
-            box.addItem(item)
-            
-            let managedBox = allBoxes()!.first! as ManagedBox
-            XCTAssertEqual(managedBox.items.count, 1, "contains item")
-            if let managedItem = managedBox.items.anyObject() as? ManagedItem {
-                XCTAssertEqual(managedItem.item, item)
-            } else {
-                XCTFail("no managed item")
-            }
-            
         } else {
             XCTFail("box not found")
         }

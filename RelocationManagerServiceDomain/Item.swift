@@ -39,6 +39,7 @@ public protocol ItemRepository {
     func nextId() -> ItemId
     func addItem(item: Item)
     func items() -> [Item]
+    func items(#boxId: BoxId) -> [Item]
     func count() -> Int
 }
 

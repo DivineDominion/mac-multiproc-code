@@ -53,8 +53,9 @@ public class Box: NSObject {
     public var remainingCapacity: Int {
         return capacity.rawValue - itemsCount
     }
-    dynamic var items: [Item] = []
     public var itemsCount: Int {
+        // FIXME move this into a Domain Service
+        let items = DomainRegistry.sharedInstance.itemRepository().items(boxId: self.boxId)
         return items.count
     }
     
@@ -68,50 +69,11 @@ public class Box: NSObject {
         self.title = title
     }
     
-    public func addItem(item: Item) {
-        assert(item.box == nil, "item should not have a parent box already")
-        
-        if isFull() {
-            eventPublisher.publish(AddingBoxItemFailed(boxId: boxId, itemId: item.itemId, itemTitle: item.title))
-            return
-        }
-        
-        items.append(item)
-        
-        eventPublisher.publish(BoxItemAdded(boxId: boxId, itemId: item.itemId, itemTitle: item.title))
-    }
-    
     public func item(itemTitle: String, provisioningService: ProvisioningService) -> Item {
         let itemId = provisioningService.nextItemId()
         return Item(itemId: itemId, title: title)
     }
-    
-    public func item(#itemId: ItemId) -> Item? {
-        if let index = indexOfItem(itemId: itemId) {
-            return items[index]
-        }
         
-        return nil
-    }
-    
-    public func removeItem(#itemId: ItemId) {
-        if let index = indexOfItem(itemId: itemId) {
-            items.removeAtIndex(index)
-            
-            eventPublisher.publish(BoxItemRemoved(boxId: boxId, itemId: itemId))
-        }
-    }
-    
-    func indexOfItem(#itemId: ItemId) -> Int? {
-        for (index, item) in enumerate(items) {
-            if item.itemId == itemId {
-                return index
-            }
-        }
-        
-        return nil
-    }
-    
     public func canTakeItem() -> Bool {
         return !isFull()
     }

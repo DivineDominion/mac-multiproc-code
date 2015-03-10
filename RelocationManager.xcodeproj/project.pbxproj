@@ -50,16 +50,8 @@
 		5019FEA41A8CC97C007D5A09 /* ServiceCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEA31A8CC97C007D5A09 /* ServiceCommunication.swift */; };
 		5019FEA51A8CC97C007D5A09 /* ServiceCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEA31A8CC97C007D5A09 /* ServiceCommunication.swift */; };
 		5019FEA61A8CC97C007D5A09 /* ServiceCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEA31A8CC97C007D5A09 /* ServiceCommunication.swift */; };
-		5019FEA91A8CCAE3007D5A09 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEA71A8CCAE3007D5A09 /* Item.swift */; };
-		5019FEAA1A8CCAE3007D5A09 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEA71A8CCAE3007D5A09 /* Item.swift */; };
-		5019FEAB1A8CCAE3007D5A09 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEA71A8CCAE3007D5A09 /* Item.swift */; };
-		5019FEAC1A8CCAE3007D5A09 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEA81A8CCAE3007D5A09 /* Box.swift */; };
-		5019FEAD1A8CCAE3007D5A09 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEA81A8CCAE3007D5A09 /* Box.swift */; };
-		5019FEAE1A8CCAE3007D5A09 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEA81A8CCAE3007D5A09 /* Box.swift */; };
-		5019FEB11A8CCAFC007D5A09 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */; };
-		5019FEB21A8CCAFC007D5A09 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */; };
-		5019FEB31A8CCAFC007D5A09 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */; };
 		50208E691A9B2CBA00F39A88 /* CoreDataBoxRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE1D1A9B244000F94449 /* CoreDataBoxRepositoryTests.swift */; };
+		5060FCC61AAEF64C00C8818E /* ManagedItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060FCC51AAEF64C00C8818E /* ManagedItemTests.swift */; };
 		5062F8C11A9C9400005F45FB /* DistributeItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5062F8C01A9C9400005F45FB /* DistributeItemTests.swift */; };
 		5062F8C61A9C9589005F45FB /* DistributeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D215C41A9B388500059B36 /* DistributeItem.swift */; };
 		5063CE001A9B237900F94449 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5063CDFF1A9B237900F94449 /* MainMenu.xib */; };
@@ -186,9 +178,7 @@
 		5019FE9E1A8A1983007D5A09 /* ManageBoxesAndItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageBoxesAndItems.swift; sourceTree = "<group>"; };
 		5019FEA11A8A1A1E007D5A09 /* BoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxViewController.swift; sourceTree = "<group>"; };
 		5019FEA31A8CC97C007D5A09 /* ServiceCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCommunication.swift; sourceTree = "<group>"; };
-		5019FEA71A8CCAE3007D5A09 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		5019FEA81A8CCAE3007D5A09 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
-		5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		5060FCC51AAEF64C00C8818E /* ManagedItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedItemTests.swift; sourceTree = "<group>"; };
 		5062F8C01A9C9400005F45FB /* DistributeItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DistributeItemTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5063CDFF1A9B237900F94449 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		5063CE021A9B23D000F94449 /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStack.swift; sourceTree = "<group>"; };
@@ -445,9 +435,6 @@
 		5019FEAF1A8CCAF1007D5A09 /* Domain Model */ = {
 			isa = PBXGroup;
 			children = (
-				5019FEB01A8CCAFC007D5A09 /* Identifiable.swift */,
-				5019FEA71A8CCAE3007D5A09 /* Item.swift */,
-				5019FEA81A8CCAE3007D5A09 /* Box.swift */,
 			);
 			name = "Domain Model";
 			sourceTree = "<group>";
@@ -480,6 +467,7 @@
 				5063CE1D1A9B244000F94449 /* CoreDataBoxRepositoryTests.swift */,
 				50B0812E1AADB75D00E24120 /* CoreDataItemRepositoryTests.swift */,
 				5063CE1E1A9B244000F94449 /* ManagedBoxTests.swift */,
+				5060FCC51AAEF64C00C8818E /* ManagedItemTests.swift */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -975,9 +963,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5019FEA61A8CC97C007D5A09 /* ServiceCommunication.swift in Sources */,
-				5019FEAE1A8CCAE3007D5A09 /* Box.swift in Sources */,
-				5019FEAB1A8CCAE3007D5A09 /* Item.swift in Sources */,
-				5019FEB31A8CCAFC007D5A09 /* Identifiable.swift in Sources */,
 				5019FE7F1A8A1463007D5A09 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1000,13 +985,10 @@
 				500925C61A91FDA1007BE727 /* BoxCreationWindowController.swift in Sources */,
 				5019FE991A8A1744007D5A09 /* BoxManagementWindowController.swift in Sources */,
 				5019FEA41A8CC97C007D5A09 /* ServiceCommunication.swift in Sources */,
-				5019FEB11A8CCAFC007D5A09 /* Identifiable.swift in Sources */,
 				50FAC08F1A8DF34B001A2EF1 /* DisplayBoxesAndItems.swift in Sources */,
-				5019FEA91A8CCAE3007D5A09 /* Item.swift in Sources */,
 				50FAC0891A8DE944001A2EF1 /* BoxAndItemData.swift in Sources */,
 				500925C21A91EE09007BE727 /* CreateBox.swift in Sources */,
 				50FAC08D1A8DF039001A2EF1 /* BoxAndItemTreeNodes.swift in Sources */,
-				5019FEAC1A8CCAE3007D5A09 /* Box.swift in Sources */,
 				507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */,
 				509CD15E1A9208E000EDEABD /* BoxOrder.swift in Sources */,
 				5019FE9F1A8A1983007D5A09 /* ManageBoxesAndItems.swift in Sources */,
@@ -1030,7 +1012,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				501963331AA75E320041DFD8 /* DomainEventPublisher.swift in Sources */,
-				5019FEAA1A8CCAE3007D5A09 /* Item.swift in Sources */,
 				501963301AA75E320041DFD8 /* ConnectionController.swift in Sources */,
 				501963281AA75E320041DFD8 /* ClientEvents.swift in Sources */,
 				501963271AA75E320041DFD8 /* Connection.swift in Sources */,
@@ -1039,7 +1020,6 @@
 				5019632B1AA75E320041DFD8 /* ManagedEntity.swift in Sources */,
 				501963291AA75E320041DFD8 /* RelocationManager.xcdatamodel in Sources */,
 				50B081291AADB3A600E24120 /* IdGenerator.swift in Sources */,
-				5019FEB21A8CCAFC007D5A09 /* Identifiable.swift in Sources */,
 				501963261AA75E320041DFD8 /* Endpoint.swift in Sources */,
 				50F98BD21A714C1800426FD8 /* main.swift in Sources */,
 				501963351AA75E320041DFD8 /* DomainEvents.swift in Sources */,
@@ -1049,7 +1029,6 @@
 				5019632D1AA75E320041DFD8 /* ManagedBox.swift in Sources */,
 				501963311AA75E320041DFD8 /* DistributeItem.swift in Sources */,
 				5019FEA51A8CC97C007D5A09 /* ServiceCommunication.swift in Sources */,
-				5019FEAD1A8CCAE3007D5A09 /* Box.swift in Sources */,
 				501963381AA75E320041DFD8 /* Box.swift in Sources */,
 				50A4F6271A9CDA2300A32A5E /* ManageItems.swift in Sources */,
 				5019633D1AA873750041DFD8 /* DomainRegistry.swift in Sources */,
@@ -1107,6 +1086,7 @@
 				50CA19A41AA5BE07006C254E /* ManageItemsTests.swift in Sources */,
 				5063CE2A1A9B262E00F94449 /* CoreDataTestCase.swift in Sources */,
 				50D215C71A9B479300059B36 /* BoxTests.swift in Sources */,
+				5060FCC61AAEF64C00C8818E /* ManagedItemTests.swift in Sources */,
 				5062F8C11A9C9400005F45FB /* DistributeItemTests.swift in Sources */,
 				50B081311AADB79200E24120 /* TestIntegerIdGenerator.swift in Sources */,
 				50208E691A9B2CBA00F39A88 /* CoreDataBoxRepositoryTests.swift in Sources */,

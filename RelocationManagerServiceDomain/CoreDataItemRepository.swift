@@ -35,6 +35,25 @@ public class CoreDataItemRepository: NSObject, ItemRepository {
     }
     
     public func items() -> [Item] {
+        return itemsFromManagedItems(allManagedItems())
+    }
+    
+    func itemsFromManagedItems(managedItems: [ManagedItem]) -> [Item] {
+        return managedItems.map { managedItem -> Item in
+            return managedItem.item
+        }
+    }
+    
+    public func items(#boxId: BoxId) -> [Item] {
+        let allItems = allManagedItems()
+        let itemsMatchingBox = allItems.filter { managedItem -> Bool in
+            return managedItem.box.boxId == boxId
+        }
+        
+        return itemsFromManagedItems(itemsMatchingBox)
+    }
+    
+    func allManagedItems() -> [ManagedItem] {
         let fetchRequest = NSFetchRequest(entityName: ManagedItem.entityName())
         fetchRequest.includesSubentities = true
         
@@ -48,11 +67,7 @@ public class CoreDataItemRepository: NSObject, ItemRepository {
             return []
         }
         
-        let managedItems: [ManagedItem] = results as [ManagedItem]
-        
-        return managedItems.map({ (managedItem: ManagedItem) -> Item in
-            return managedItem.item
-        })
+        return results as [ManagedItem]
     }
     
     public func count() -> Int {
@@ -84,9 +99,7 @@ public class CoreDataItemRepository: NSObject, ItemRepository {
     }
     
     func managedItemWithUniqueId(identifier: IntegerId) -> ManagedItem? {
-        let managedObjectModel = managedObjectContext.persistentStoreCoordinator!.managedObjectModel
-        let templateName = "ManagedItemWithUniqueId"
-        let fetchRequest = managedObjectModel.fetchRequestFromTemplateWithName(templateName, substitutionVariables: ["IDENTIFIER": NSNumber(longLong: identifier)])
+        let fetchRequest = namedFetchRequest("ManagedItemWithUniqueId", substitutionVariables: ["IDENTIFIER": NSNumber(longLong: identifier)])
         
         assert(fetchRequest != nil, "Fetch request named 'ManagedItemWithUniqueId' is required")
         
@@ -105,6 +118,11 @@ public class CoreDataItemRepository: NSObject, ItemRepository {
         }
         
         return result![0] as? ManagedItem
+    }
+    
+    func namedFetchRequest(templateName: String, substitutionVariables: [NSObject: AnyObject]) -> NSFetchRequest? {
+        let managedObjectModel = managedObjectContext.persistentStoreCoordinator!.managedObjectModel
+        return managedObjectModel.fetchRequestFromTemplateWithName(templateName, substitutionVariables: substitutionVariables)
     }
  
     

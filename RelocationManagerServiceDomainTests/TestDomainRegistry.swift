@@ -17,6 +17,11 @@ class TestDomainRegistry: DomainRegistry {
         return testBoxRepository
     }
     
+    var testItemRepository = NullItemRepository()
+    override func itemRepository() -> ItemRepository {
+        return testItemRepository
+    }
+    
     var testProvisioningService = NullProvisioningService()
     override func provisioningService() -> ProvisioningService {
         return testProvisioningService

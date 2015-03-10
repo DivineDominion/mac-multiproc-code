@@ -30,33 +30,34 @@ class DistributeItemTests: XCTestCase {
         }
     }
     
-    let publisher = MockDomainEventPublisher()
+    let boxFactory = TestBoxFactory()
     let repository = TestBoxRepository()
-    lazy var provisioningService: TestProvisioningService = TestProvisioningService(boxRepository: self.repository, itemRepository: NullItemRepository())
+    let registry = TestDomainRegistry()
+    
+    let publisher = MockDomainEventPublisher()
+    
+    lazy var provisioningService: TestProvisioningService = TestProvisioningService(boxRepository: NullBoxRepository(), itemRepository: NullItemRepository())
     lazy var distributeItem: DistributeItem = DistributeItem(boxRepository: self.repository, provisioningService: self.provisioningService)
     
     override func setUp() {
         super.setUp()
+        boxFactory.registerItemRepository(registry)
+        DomainRegistry.setSharedInstance(registry)
         DomainEventPublisher.setSharedInstance(publisher)
     }
     
     override func tearDown() {
         DomainEventPublisher.resetSharedInstance()
+        DomainRegistry.resetSharedInstance()
         super.tearDown()
     }
     
     func emptyBox() -> Box {
-        return Box(boxId: BoxId(0), capacity: .Medium, title: "irrelevant")
+        return boxFactory.emptyBox()
     }
     
     func fullBox() -> Box {
-        let box = emptyBox()
-        
-        for index in 1...box.capacity.rawValue {
-            box.addItem(Item(itemId: ItemId(1), title: "irrelevant item"))
-        }
-        
-        return box
+        return boxFactory.fullBox()
     }
     
     
@@ -67,13 +68,13 @@ class DistributeItemTests: XCTestCase {
     }
     
     func testDistributeItem_WithOneEmptyBox_ProvisionsItem() {
-        let box = emptyBox()
-        repository.boxesStub = [box]
+        repository.boxesStub = [emptyBox()]
         let itemTitle = "the title"
         
         distribute(itemTitle)
         
         if let receivedTitle = provisioningService.provisionedItemTitle {
+            XCTAssertTrue(provisioningService.didProvisionItem)
             XCTAssertEqual(provisioningService.provisionedItemTitle!, itemTitle)
         } else {
             XCTFail("no item provisioned")

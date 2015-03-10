@@ -41,7 +41,7 @@ class CoreDataBoxRepositoryTests: CoreDataTestCase {
         if let managedBox = boxes.first {
             XCTAssertEqual(managedBox.title, title, "Title should be saved")
             XCTAssertEqual(managedBox.capacity, capacity.rawValue)
-            XCTAssertEqual(managedBox.boxId(), boxId, "Box ID should be saved")
+            XCTAssertEqual(managedBox.boxId, boxId, "Box ID should be saved")
         }
     }
 
