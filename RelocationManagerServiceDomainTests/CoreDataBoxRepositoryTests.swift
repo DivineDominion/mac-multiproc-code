@@ -51,7 +51,8 @@ class CoreDataBoxRepositoryTests: CoreDataTestCase {
         let testGenerator = TestIntegerIdGenerator()
         repository = CoreDataBoxRepository(managedObjectContext: context, integerIdGenerator: testGenerator)
         let existingId = BoxId(testGenerator.firstAttempt)
-        ManagedBox.insertManagedBox(existingId, capacity: 10, title: "irrelevant", inManagedObjectContext: context)
+        let existingBox = Box(boxId: existingId, capacity: .Small, title: "irrelevant")
+        ManagedBox.insertManagedBox(existingBox, inManagedObjectContext: context)
         
         let boxId = repository!.nextId()
         

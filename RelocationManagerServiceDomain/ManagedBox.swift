@@ -29,14 +29,11 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
         return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext)
     }
     
-    public class func insertManagedBox(boxId: BoxId, capacity: Int, title: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) {
+    public class func insertManagedBox(box: Box, inManagedObjectContext managedObjectContext: NSManagedObjectContext) {
         
-        let box: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext)
-        var managedBox: ManagedBox = box as ManagedBox
+        let managedBox = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext) as ManagedBox
         
-        managedBox.uniqueId = boxId.number
-        managedBox.title = title
-        managedBox.capacity = capacity
+        managedBox.box = box
     }
         
     public func boxId() -> BoxId {
@@ -48,18 +45,40 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
     //MARK: Box Management
     
     private var _box: Box?
-    public lazy var box: Box = {
-        let box = self.createBox()
-        self.observe(box)
-        self._box = box
-        return box
-    }()
+    public var box: Box {
+        get {
+            if let box = _box {
+                return box
+            }
+            
+            let box = createBox()
+            observe(box)
+            _box = box
+            
+            return box
+        }
+        set {
+            assert(_box == nil, "can be set only during initialization")
+            
+            let box = newValue
+            adaptBox(box)
+            observe(box)
+            
+            _box = box
+        }
+    }
     
     func createBox() -> Box {
         let box = Box(boxId: self.boxId(), capacity: self.boxCapacity, title: self.title)
         box.items = self.associatedItems()
         
         return box
+    }
+    
+    func adaptBox(box: Box) {
+        uniqueId = box.boxId.number
+        title = box.title
+        capacity = box.capacity.rawValue
     }
     
     public lazy var boxCapacity: BoxCapacity = {

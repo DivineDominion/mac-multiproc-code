@@ -35,7 +35,8 @@ class CoreDataItemRepositoryTests: CoreDataTestCase {
     func testNextId_WhenGeneratedIdIsTaken_ReturnsAnotherId() {
         let testGenerator = TestIntegerIdGenerator()
         repository = CoreDataItemRepository(managedObjectContext: context, integerIdGenerator: testGenerator)
-        ManagedBox.insertManagedBox(BoxId(0), capacity: 5, title: "irrelevant", inManagedObjectContext: context)
+        let box = Box(boxId: BoxId(0), capacity: .Small, title: "irrelevant")
+        ManagedBox.insertManagedBox(box, inManagedObjectContext: context)
         let managedBox = allBoxes()!.first!
         let existingId = ItemId(testGenerator.firstAttempt)
         let item = Item(itemId: existingId, title: "irrelevant")

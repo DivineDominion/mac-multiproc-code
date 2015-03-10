@@ -30,7 +30,7 @@ public class CoreDataBoxRepository: NSObject, BoxRepository {
     //MARK: CRUD Actions
     
     public func addBox(box: Box) {
-        ManagedBox.insertManagedBox(box.boxId, capacity: box.capacity.rawValue, title: box.title, inManagedObjectContext: self.managedObjectContext)
+        ManagedBox.insertManagedBox(box, inManagedObjectContext: self.managedObjectContext)
     }
     
     public func removeBox(#boxId: BoxId) {

@@ -24,6 +24,10 @@ class ManagedBoxTests: CoreDataTestCase {
         super.tearDown()
     }
     
+    func soleManagedBox() -> ManagedBox? {
+        return allBoxes()?.first
+    }
+    
     func allBoxes() -> [ManagedBox]? {
         let request = NSFetchRequest(entityName: ManagedBox.entityName())
         return context.executeFetchRequest(request, error: nil) as [ManagedBox]?
@@ -33,10 +37,45 @@ class ManagedBoxTests: CoreDataTestCase {
         let request = NSFetchRequest(entityName: ManagedItem.entityName())
         return context.executeFetchRequest(request, error: nil) as [ManagedItem]?
     }
+    
+    func box() -> Box {
+        return box(BoxId(456))
+    }
+    
+    func box(boxId: BoxId) -> Box {
+        return Box(boxId: boxId, capacity: .Small, title: "the title")
+    }
+    
+    // MARK: Wrapping/Observing Box
+    
+    func testInsertingManagedBox_AdaptsAllValues() {
+        let theBox = box()
+        ManagedBox.insertManagedBox(theBox, inManagedObjectContext: context)
+        
+        if let managedBox = soleManagedBox() {
+            XCTAssertEqual(managedBox.title, theBox.title)
+            XCTAssertEqual(managedBox.capacity, theBox.capacity.rawValue)
+            XCTAssertEqual(managedBox.uniqueId, theBox.boxId.number)
+        } else {
+            XCTFail("inserting/fetching box failed")
+        }
+    }
+        
+    func testChangingOriginalBoxTitle_PersistsChanges() {
+        let theBox = box()
+        ManagedBox.insertManagedBox(theBox, inManagedObjectContext: context)
+        
+        theBox.title = "new title"
+        
+        let foundBox = allBoxes()!.first! as ManagedBox
+        XCTAssertEqual(foundBox.title, "new title")
+    }
+    
+    // MARK: Title changes
 
     func testChangingFetchedBoxTitle_PersistsChanges() {
         let boxId = BoxId(1234)
-        ManagedBox.insertManagedBox(boxId, capacity: 5, title: "before", inManagedObjectContext: context)
+        ManagedBox.insertManagedBox(box(boxId), inManagedObjectContext: context)
         
         if let box = repository!.box(boxId: boxId) {
             box.title = "new title"
@@ -50,7 +89,7 @@ class ManagedBoxTests: CoreDataTestCase {
     
     func testChangingFetchedBoxTitle_ToEmptyString_PersistsChanges() {
         let boxId = BoxId(1234)
-        ManagedBox.insertManagedBox(boxId, capacity: 5, title: "before", inManagedObjectContext: context)
+        ManagedBox.insertManagedBox(box(boxId), inManagedObjectContext: context)
         
         if let box = repository!.box(boxId: boxId) {
             box.title = ""
@@ -61,10 +100,12 @@ class ManagedBoxTests: CoreDataTestCase {
             XCTFail("box not found")
         }
     }
+
+    // MARK: Items changes
     
     func testAddingItemToFetchedBox_PersistsChanges() {
         let boxId = BoxId(1234)
-        ManagedBox.insertManagedBox(boxId, capacity: 5, title: "irrelevant", inManagedObjectContext: context)
+        ManagedBox.insertManagedBox(box(boxId), inManagedObjectContext: context)
         
         if let box = repository!.box(boxId: boxId) {
             let itemId = ItemId(6789)
