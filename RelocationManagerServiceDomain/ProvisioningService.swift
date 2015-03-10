@@ -13,45 +13,32 @@ public class ProvisioningService {
         return DomainEventPublisher.sharedInstance
     }
     
-    let repository: BoxRepository
+    let boxRepository: BoxRepository
+    let itemRepository: ItemRepository
     
-    public init(repository: BoxRepository) {
-        self.repository = repository
+    public init(boxRepository: BoxRepository, itemRepository: ItemRepository) {
+        self.boxRepository = boxRepository
+        self.itemRepository = itemRepository
     }
     
     public func provisionBox(title: String, capacity: BoxCapacity) {
-        ProvisionBox(repository: repository).provisionBox(title, capacity: capacity)
-    }
-    
-    public func provisionItem(title: String, inBox box: Box) {
-        let itemId = repository.nextItemId()
-        let item = Item(itemId: itemId, title: title)
-
-        box.addItem(item)
-    }
-}
-
-public class ProvisionBox {
-    var eventPublisher: DomainEventPublisher {
-        return DomainEventPublisher.sharedInstance
-    }
-    
-    let repository: BoxRepository
-    
-    public init(repository: BoxRepository) {
-        self.repository = repository
-    }
-    
-    public func provisionBox(title: String, capacity: BoxCapacity) {
-        let boxId = repository.nextId()
+        let boxId = boxRepository.nextId()
         let box = Box(boxId: boxId, capacity: capacity, title: title)
         
-        repository.addBox(box)
+        boxRepository.addBox(box)
         
         eventPublisher.publish(BoxProvisioned(boxId: boxId, capacity: capacity.rawValue, title: title))
     }
     
+    public func provisionItem(title: String, inBox box: Box) {
+        let item = box.item(title, provisioningService: self)
+        
+        itemRepository.addItem(item)
+        
+        eventPublisher.publish(ItemProvisioned(itemId: item.itemId, title: item.title))
+    }
+    
     public func nextItemId() -> ItemId {
-        return repository.nextItemId()
+        return itemRepository.nextId()
     }
 }

@@ -27,8 +27,8 @@ class ManageItemsTests: XCTestCase {
     
     let distributionService = TestDistributeItem()
     let provisioningService: TestProvisioningService = TestProvisioningService()
-    
     let registry = TestDomainRegistry()
+    
     let publisher = DomainEventPublisher(notificationCenter: NSNotificationCenter())
 
     

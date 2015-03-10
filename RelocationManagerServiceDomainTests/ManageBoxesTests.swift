@@ -12,18 +12,14 @@ import XCTest
 import RelocationManagerServiceDomain
 
 class ManageBoxesTests: XCTestCase {
+    
+    let provisioningService = TestProvisioningService(boxRepository: NullBoxRepository(), itemRepository: NullItemRepository())
+    
     lazy var service: ManageBoxes = {
         let service = ManageBoxes()
-        service.repository = self.repository
         service.provisioningService = self.provisioningService
         return service
     }()
-    
-    let repository = NullBoxRepository()
-    lazy var provisioningService: TestProvisioningService = {
-        TestProvisioningService(repository: self.repository)
-    }()
-    
     
     // MARK: Provision Box
     

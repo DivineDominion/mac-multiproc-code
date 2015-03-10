@@ -32,14 +32,10 @@ public class ManagedItem: NSManagedObject, ManagedEntity {
         let theItem: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext)
         var managedItem: ManagedItem = theItem as ManagedItem
         
-        managedItem.uniqueId = uniqueIdFromItemId(item.itemId)
+        managedItem.uniqueId = item.itemId.number
         managedItem.title = item.title
         managedItem.setItem(item)
         managedItem.box = managedBox
-    }
-    
-    class func uniqueIdFromItemId(itemId: ItemId) -> NSNumber {
-        return NSNumber(longLong: itemId.identifier)
     }
     
     public func itemId() -> ItemId {

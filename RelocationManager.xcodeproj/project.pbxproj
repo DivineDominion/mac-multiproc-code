@@ -96,8 +96,14 @@
 		50ABEA8F1A9B21E600E573E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEA8E1A9B21E600E573E5 /* AppDelegate.swift */; };
 		50B081231AADAB3300E24120 /* NullDistributeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B081221AADAB3300E24120 /* NullDistributeItem.swift */; };
 		50B081271AADAB6E00E24120 /* TestDomainRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B081261AADAB6E00E24120 /* TestDomainRegistry.swift */; };
+		50B081291AADB3A600E24120 /* IdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B081281AADB3A600E24120 /* IdGenerator.swift */; };
+		50B0812A1AADB3A600E24120 /* IdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B081281AADB3A600E24120 /* IdGenerator.swift */; };
+		50B0812C1AADB40600E24120 /* CoreDataItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0812B1AADB40600E24120 /* CoreDataItemRepository.swift */; };
+		50B0812D1AADB40600E24120 /* CoreDataItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0812B1AADB40600E24120 /* CoreDataItemRepository.swift */; };
+		50B0812F1AADB75D00E24120 /* CoreDataItemRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0812E1AADB75D00E24120 /* CoreDataItemRepositoryTests.swift */; };
+		50B081311AADB79200E24120 /* TestIntegerIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B081301AADB79200E24120 /* TestIntegerIdGenerator.swift */; };
 		50CA19A41AA5BE07006C254E /* ManageItemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CA19A31AA5BE07006C254E /* ManageItemsTests.swift */; };
-		50CA19A61AA5C1F6006C254E /* NullBoxRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CA19A51AA5C1F6006C254E /* NullBoxRepository.swift */; };
+		50CA19A61AA5C1F6006C254E /* NullRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CA19A51AA5C1F6006C254E /* NullRepositories.swift */; };
 		50D215C71A9B479300059B36 /* BoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D215C61A9B479300059B36 /* BoxTests.swift */; };
 		50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50F98BD21A714C1800426FD8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F98BD11A714C1800426FD8 /* main.swift */; };
@@ -227,8 +233,12 @@
 		50ABEA9E1A9B21E600E573E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B081221AADAB3300E24120 /* NullDistributeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullDistributeItem.swift; sourceTree = "<group>"; };
 		50B081261AADAB6E00E24120 /* TestDomainRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDomainRegistry.swift; sourceTree = "<group>"; };
+		50B081281AADB3A600E24120 /* IdGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdGenerator.swift; sourceTree = "<group>"; };
+		50B0812B1AADB40600E24120 /* CoreDataItemRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataItemRepository.swift; sourceTree = "<group>"; };
+		50B0812E1AADB75D00E24120 /* CoreDataItemRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataItemRepositoryTests.swift; sourceTree = "<group>"; };
+		50B081301AADB79200E24120 /* TestIntegerIdGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestIntegerIdGenerator.swift; sourceTree = "<group>"; };
 		50CA19A31AA5BE07006C254E /* ManageItemsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageItemsTests.swift; sourceTree = "<group>"; };
-		50CA19A51AA5C1F6006C254E /* NullBoxRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullBoxRepository.swift; sourceTree = "<group>"; };
+		50CA19A51AA5C1F6006C254E /* NullRepositories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullRepositories.swift; sourceTree = "<group>"; };
 		50D215C41A9B388500059B36 /* DistributeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DistributeItem.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50D215C61A9B479300059B36 /* BoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTests.swift; sourceTree = "<group>"; };
 		50F98BD11A714C1800426FD8 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -468,6 +478,7 @@
 			children = (
 				5063CE1C1A9B244000F94449 /* PersistentStackTests.swift */,
 				5063CE1D1A9B244000F94449 /* CoreDataBoxRepositoryTests.swift */,
+				50B0812E1AADB75D00E24120 /* CoreDataItemRepositoryTests.swift */,
 				5063CE1E1A9B244000F94449 /* ManagedBoxTests.swift */,
 			);
 			name = Infrastructure;
@@ -506,7 +517,9 @@
 			isa = PBXGroup;
 			children = (
 				5063CE031A9B23D000F94449 /* ManagedEntity.swift */,
+				50B081281AADB3A600E24120 /* IdGenerator.swift */,
 				5063CE041A9B23D000F94449 /* CoreDataBoxRepository.swift */,
+				50B0812B1AADB40600E24120 /* CoreDataItemRepository.swift */,
 				5063CE051A9B23D000F94449 /* ManagedBox.swift */,
 				5063CE061A9B23D000F94449 /* ManagedItem.swift */,
 			);
@@ -667,8 +680,9 @@
 				5063CE271A9B260100F94449 /* TestDomainEventPublisher.swift */,
 				50B081261AADAB6E00E24120 /* TestDomainRegistry.swift */,
 				501963161AA711560041DFD8 /* TestProvisioningService.swift */,
+				50B081301AADB79200E24120 /* TestIntegerIdGenerator.swift */,
 				50ABEA9E1A9B21E600E573E5 /* Info.plist */,
-				50CA19A51AA5C1F6006C254E /* NullBoxRepository.swift */,
+				50CA19A51AA5C1F6006C254E /* NullRepositories.swift */,
 				50B081221AADAB3300E24120 /* NullDistributeItem.swift */,
 			);
 			name = "Supporting Files";
@@ -1021,8 +1035,10 @@
 				501963281AA75E320041DFD8 /* ClientEvents.swift in Sources */,
 				501963271AA75E320041DFD8 /* Connection.swift in Sources */,
 				501963371AA75E320041DFD8 /* Item.swift in Sources */,
+				50B0812C1AADB40600E24120 /* CoreDataItemRepository.swift in Sources */,
 				5019632B1AA75E320041DFD8 /* ManagedEntity.swift in Sources */,
 				501963291AA75E320041DFD8 /* RelocationManager.xcdatamodel in Sources */,
+				50B081291AADB3A600E24120 /* IdGenerator.swift in Sources */,
 				5019FEB21A8CCAFC007D5A09 /* Identifiable.swift in Sources */,
 				501963261AA75E320041DFD8 /* Endpoint.swift in Sources */,
 				50F98BD21A714C1800426FD8 /* main.swift in Sources */,
@@ -1062,7 +1078,9 @@
 				5019633E1AA873750041DFD8 /* DomainRegistry.swift in Sources */,
 				5063CE081A9B23D100F94449 /* ManagedEntity.swift in Sources */,
 				5062F8C61A9C9589005F45FB /* DistributeItem.swift in Sources */,
+				50B0812D1AADB40600E24120 /* CoreDataItemRepository.swift in Sources */,
 				50A4F6291A9CDA2F00A32A5E /* ServiceCommunication.swift in Sources */,
+				50B0812A1AADB3A600E24120 /* IdGenerator.swift in Sources */,
 				5063CE091A9B23D100F94449 /* CoreDataBoxRepository.swift in Sources */,
 				501963201AA722A30041DFD8 /* ConnectionController.swift in Sources */,
 				5063CE191A9B240400F94449 /* Item.swift in Sources */,
@@ -1084,16 +1102,18 @@
 				501963171AA711560041DFD8 /* TestProvisioningService.swift in Sources */,
 				5063CE231A9B244000F94449 /* ProvisioningServiceTests.swift in Sources */,
 				5063CE221A9B244000F94449 /* ManagedBoxTests.swift in Sources */,
+				50B0812F1AADB75D00E24120 /* CoreDataItemRepositoryTests.swift in Sources */,
 				5063CE201A9B244000F94449 /* PersistentStackTests.swift in Sources */,
 				50CA19A41AA5BE07006C254E /* ManageItemsTests.swift in Sources */,
 				5063CE2A1A9B262E00F94449 /* CoreDataTestCase.swift in Sources */,
 				50D215C71A9B479300059B36 /* BoxTests.swift in Sources */,
 				5062F8C11A9C9400005F45FB /* DistributeItemTests.swift in Sources */,
+				50B081311AADB79200E24120 /* TestIntegerIdGenerator.swift in Sources */,
 				50208E691A9B2CBA00F39A88 /* CoreDataBoxRepositoryTests.swift in Sources */,
 				50B081271AADAB6E00E24120 /* TestDomainRegistry.swift in Sources */,
 				501963151AA710FE0041DFD8 /* ManageBoxesTests.swift in Sources */,
 				50B081231AADAB3300E24120 /* NullDistributeItem.swift in Sources */,
-				50CA19A61AA5C1F6006C254E /* NullBoxRepository.swift in Sources */,
+				50CA19A61AA5C1F6006C254E /* NullRepositories.swift in Sources */,
 				5063CE281A9B260100F94449 /* TestDomainEventPublisher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

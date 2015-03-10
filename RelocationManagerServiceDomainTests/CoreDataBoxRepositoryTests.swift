@@ -11,20 +11,6 @@ import XCTest
 
 import RelocationManagerServiceDomain
 
-class TestIntegerIdGenerator : NSObject, GeneratesIntegerId {
-    let firstAttempt: IntegerId = 1234
-    let secondAttempt: IntegerId = 5678
-    var callCount = 0
-    
-    func integerId() -> IntegerId {
-        let identifier = (callCount == 0 ? firstAttempt : secondAttempt)
-        
-        callCount++
-        
-        return identifier
-    }
-}
-
 class CoreDataBoxRepositoryTests: CoreDataTestCase {
     var repository: CoreDataBoxRepository?
     
@@ -32,11 +18,6 @@ class CoreDataBoxRepositoryTests: CoreDataTestCase {
         super.setUp()
         
         repository = CoreDataBoxRepository(managedObjectContext: context)
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
     }
     
     func allBoxes() -> [ManagedBox]? {

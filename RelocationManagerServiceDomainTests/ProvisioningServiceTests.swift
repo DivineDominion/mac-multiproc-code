@@ -12,33 +12,27 @@ import XCTest
 import RelocationManagerServiceDomain
 
 class ProvisioningServiceTests: XCTestCase {
-    class TestBoxRepository: BoxRepository {
-        func nextId() -> BoxId {
-            return BoxId(0)
-        }
+    class TestBoxRepository: NullBoxRepository {
         
-        func nextItemId() -> ItemId {
-            return ItemId(0)
-        }
-        
-        func addBox(box: Box) { }
-        func removeBox(#boxId: BoxId) { }
-        
-        func box(#boxId: BoxId) -> Box? {
-            return nil
-        }
-        
-        func boxes() -> [Box] {
-            return []
-        }
-        
-        func count() -> Int {
-            return 0
+        var lastBoxAdded: Box?
+        override func addBox(box: Box) {
+            lastBoxAdded = box
         }
     }
     
-    let provisioningService = ProvisioningService(repository: TestBoxRepository())
+    class TestItemRepository: NullItemRepository {
+        
+        var lastItemAdded: Item?
+        override func addItem(item: Item) {
+            lastItemAdded = item
+        }
+    }
+    
+    let boxRepository = TestBoxRepository()
+    let itemRepository = TestItemRepository()
     let publisher = MockDomainEventPublisher()
+    lazy var provisioningService: ProvisioningService = ProvisioningService(boxRepository: self.boxRepository, itemRepository: self.itemRepository)
+    
     
     override func setUp() {
         super.setUp()
@@ -50,10 +44,40 @@ class ProvisioningServiceTests: XCTestCase {
         super.tearDown()
     }
 
-    func testProvisionBox_PublishesDomainEvent() {
+    // MARK: Provisioning Boxes
+    
+    func provisionIrrelevantBox() {
         provisioningService.provisionBox("irrelevant", capacity: .Small)
+    }
+    
+    func testProvisionBox_AddsBoxToRepo() {
+        provisionIrrelevantBox()
+        
+        XCTAssertNotNil(boxRepository.lastBoxAdded)
+    }
+    
+    func testProvisionBox_PublishesDomainEvent() {
+        provisionIrrelevantBox()
         
         XCTAssert(publisher.lastPublishedEvent != nil)
     }
+    
+    // MARK: Provisioning Items
 
+    func provisionIrrelevantItem() {
+        let box = Box(boxId: BoxId(0), capacity: .Medium, title: "irrelevant")
+        provisioningService.provisionItem("irrelevant", inBox: box)
+    }
+    
+    func testProvisionItem_AddsItemToRepo() {
+        provisionIrrelevantItem()
+        
+        XCTAssertNotNil(itemRepository.lastItemAdded)
+    }
+    
+    func testProvisionItem_PublishesDomainEvent() {
+        provisionIrrelevantItem()
+        
+        XCTAssert(publisher.lastPublishedEvent != nil)
+    }
 }

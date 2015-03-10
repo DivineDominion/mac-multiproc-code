@@ -9,8 +9,7 @@
 import Foundation
 
 public class ManageBoxes {
-    public lazy var repository: BoxRepository = ServiceLocator.boxRepository()
-    public lazy var provisioningService: ProvisioningService = ProvisioningService(repository: self.repository)
+    public lazy var provisioningService: ProvisioningService = DomainRegistry.sharedInstance.provisioningService()
 
     public init() { }
     

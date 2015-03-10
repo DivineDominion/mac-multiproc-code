@@ -33,7 +33,6 @@ public func ==(lhs: BoxId, rhs: BoxId) -> Bool {
 
 public protocol BoxRepository {
     func nextId() -> BoxId
-    func nextItemId() -> ItemId
     func addBox(box: Box)
     func removeBox(#boxId: BoxId)
     func boxes() -> [Box]
@@ -80,6 +79,11 @@ public class Box: NSObject {
         items.append(item)
         
         eventPublisher.publish(BoxItemAdded(boxId: boxId, itemId: item.itemId, itemTitle: item.title))
+    }
+    
+    public func item(itemTitle: String, provisioningService: ProvisioningService) -> Item {
+        let itemId = provisioningService.nextItemId()
+        return Item(itemId: itemId, title: title)
     }
     
     public func item(#itemId: ItemId) -> Item? {

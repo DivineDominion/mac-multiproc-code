@@ -34,15 +34,11 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
         let box: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext)
         var managedBox: ManagedBox = box as ManagedBox
         
-        managedBox.uniqueId = uniqueIdFromBoxId(boxId)
+        managedBox.uniqueId = boxId.number
         managedBox.title = title
         managedBox.capacity = capacity
     }
-    
-    class func uniqueIdFromBoxId(boxId: BoxId) -> NSNumber {
-        return NSNumber(longLong: boxId.identifier)
-    }
-    
+        
     public func boxId() -> BoxId {
         return BoxId(uniqueId.longLongValue)
     }
@@ -92,7 +88,8 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
         }
         
         if keyPath == "title" {
-            self.title = change[NSKeyValueChangeNewKey] as String
+            let newTitle = change[NSKeyValueChangeNewKey] as String
+            self.title = newTitle
         } else if keyPath == "items" {
             let items = change[NSKeyValueChangeNewKey] as [Item]
             mergeItems(items)
@@ -100,8 +97,12 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
     }
     
     func mergeItems(items: [Item]) {
-        //TODO: create 2 delta arrays instead of iterating over all items twice
         let existingItems = self.mutableSetValueForKey("items")
+        removeMissingItems(items, from: existingItems)
+        addNewItems(items, to: existingItems)
+    }
+    
+    func removeMissingItems(items: [Item], from existingItems: NSMutableSet) {
         for item in existingItems {
             if let managedItem: ManagedItem = item as? ManagedItem {
                 if !contains(items, managedItem.item) {
@@ -109,7 +110,9 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
                 }
             }
         }
-        
+    }
+    
+    func addNewItems(items: [Item], to existingItems: NSMutableSet) {
         for item in items {
             let itemIsInExistingItems = contains(existingItems, { (existingItem: AnyObject) -> Bool in
                 let managedItem = existingItem as ManagedItem
@@ -121,6 +124,8 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
             }
         }
     }
+    
+    // MARK: Destructor
     
     deinit {
         if let box = _box {

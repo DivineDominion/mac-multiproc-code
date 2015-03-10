@@ -32,7 +32,7 @@ class DistributeItemTests: XCTestCase {
     
     let publisher = MockDomainEventPublisher()
     let repository = TestBoxRepository()
-    lazy var provisioningService: TestProvisioningService = TestProvisioningService(repository: self.repository)
+    lazy var provisioningService: TestProvisioningService = TestProvisioningService(boxRepository: self.repository, itemRepository: NullItemRepository())
     lazy var distributeItem: DistributeItem = DistributeItem(boxRepository: self.repository, provisioningService: self.provisioningService)
     
     override func setUp() {

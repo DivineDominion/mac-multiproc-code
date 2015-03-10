@@ -41,4 +41,14 @@ public class ServiceLocator {
         assert(managedObjectContext != nil, "managedObjectContext must be set up")
         return CoreDataBoxRepository(managedObjectContext: managedObjectContext!)
     }
+    
+    
+    public class func itemRepository() -> ItemRepository {
+        return sharedInstance.itemRepository()
+    }
+    
+    public func itemRepository() -> ItemRepository {
+        assert(managedObjectContext != nil, "managedObjectContext must be set up")
+        return CoreDataItemRepository(managedObjectContext: managedObjectContext!)
+    }
 }

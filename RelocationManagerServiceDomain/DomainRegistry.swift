@@ -43,12 +43,16 @@ public class DomainRegistry {
         return ServiceLocator.boxRepository()
     }
     
+    public func itemRepository() -> ItemRepository {
+        return ServiceLocator.itemRepository()
+    }
+    
     lazy var _distributeItem: DistributeItem = DistributeItem(boxRepository: self.boxRepository(), provisioningService: self.provisioningService())
     public func distributeItem() -> DistributeItem {
         return _distributeItem
     }
     
     public func provisioningService() -> ProvisioningService {
-        return ProvisioningService(repository: boxRepository())
+        return ProvisioningService(boxRepository: boxRepository(), itemRepository: itemRepository())
     }
 }

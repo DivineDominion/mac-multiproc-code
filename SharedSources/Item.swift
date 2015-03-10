@@ -36,8 +36,8 @@ public func ==(lhs: ItemId, rhs: ItemId) -> Bool {
 public protocol ItemRepository {
     func nextId() -> ItemId
     func addItem(item: Item)
-    func items() -> Array<Item>
-    func count() -> UInt
+    func items() -> [Item]
+    func count() -> Int
 }
 
 public class Item: NSObject {

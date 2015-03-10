@@ -12,7 +12,7 @@ import RelocationManagerServiceDomain
 
 class NullProvisioningService: ProvisioningService {
     convenience init() {
-        self.init(repository: NullBoxRepository())
+        self.init(boxRepository: NullBoxRepository(), itemRepository: NullItemRepository())
     }
 }
 

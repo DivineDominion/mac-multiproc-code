@@ -12,6 +12,7 @@ public typealias UserInfo = [NSObject : AnyObject]
 
 public enum DomainEventType: String {
     case BoxProvisioned = "Box Provisioned"
+    case ItemProvisioned = "Item Provisioned"
     
     case BoxItemAdded = "Box Item Added"
     case AddingBoxItemFailed = "Adding Box Item Failed"
@@ -69,7 +70,40 @@ public struct BoxProvisioned: DomainEvent {
     }
 }
 
-public struct BoxItemAdded: DomainEvent {
+public struct ItemProvisioned: DomainEvent {
+    public static var eventType: DomainEventType {
+        return DomainEventType.ItemProvisioned
+    }
+    
+    public let itemId: ItemId
+    public let title: String
+    
+    public init(itemId: ItemId, title: String) {
+        self.itemId = itemId
+        self.title = title
+    }
+    
+    public init(userInfo: UserInfo) {
+        let itemIdData = userInfo["id"] as NSNumber
+        let itemTitle = userInfo["title"] as String
+        
+        self.init(itemId: ItemId(itemIdData), title: itemTitle)
+    }
+    
+    public func userInfo() -> UserInfo {
+        return [
+            "id": itemId.number,
+            "title": title
+        ]
+    }
+    
+    public func notification() -> NSNotification {
+        return NSNotification(name: self.dynamicType.eventType.name, object: nil, userInfo: userInfo())
+    }
+}
+
+@availability(*, deprecated=1)
+public struct BoxItemAdded: DomainEvent  {
     public static var eventType: DomainEventType {
         return DomainEventType.BoxItemAdded
     }
