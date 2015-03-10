@@ -16,6 +16,10 @@ public class ConnectionController {
         self.subscribeToItemDistributionFailed()
     }
     
+    func send(event: ClientEvent) {
+        connection.send(event)
+    }
+    
     // MARK: Notify about failed item distribution
     
     var distributionFailedSubscription: DomainEventSubscription!
@@ -27,7 +31,7 @@ public class ConnectionController {
         distributionFailedSubscription = eventPublisher.subscribe(BoxItemDistributionFailed.self) {
             [unowned self] event in
             
-            self.connection.send(DistributingItemFailed(itemTitle: event.itemTitle))
+            self.send(DistributingItemFailed(itemTitle: event.itemTitle))
         }
     }
 }
