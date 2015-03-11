@@ -45,14 +45,14 @@ class TestBoxFactory {
             var boxItems = [Item]()
             
             for index in 1...box.capacity.rawValue {
-                boxItems.append(item())
+                boxItems.append(item(box))
             }
             
             items[box.boxId.identifier] = boxItems
         }
         
-        private func item() -> Item {
-            return Item(itemId: ItemId(1), title: "irrelevant item")
+        private func item(box: Box) -> Item {
+            return Item(itemId: ItemId(1), title: "irrelevant item", boxId: box.boxId)
         }
     }
 }

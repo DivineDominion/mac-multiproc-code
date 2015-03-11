@@ -46,11 +46,18 @@ public protocol ItemRepository {
 public class Item: NSObject {
     public let itemId: ItemId
     public dynamic var title: String
-    public var box: Box?
+    public private(set) var boxId: BoxId {
+        didSet {
+            boxIdentifier = self.boxId.identifier
+        }
+    }
+    public dynamic var boxIdentifier: IntegerId
     
-    public init(itemId: ItemId, title: String) {
+    public init(itemId: ItemId, title: String, boxId: BoxId) {
         self.itemId = itemId
         self.title = title
+        self.boxId = boxId
+        self.boxIdentifier = boxId.identifier
     }
     
     public override func isEqual(object: AnyObject?) -> Bool {
@@ -63,6 +70,10 @@ public class Item: NSObject {
     
     public override var hashValue: Int {
         return 173 &+ self.itemId.hashValue
+    }
+    
+    public func moveToBox(boxId aBoxId: BoxId) {
+        boxId = aBoxId
     }
 }
 

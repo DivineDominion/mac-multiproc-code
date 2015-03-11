@@ -39,8 +39,8 @@ class CoreDataItemRepositoryTests: CoreDataTestCase {
         ManagedBox.insertManagedBox(box, inManagedObjectContext: context)
         let managedBox = allBoxes()!.first!
         let existingId = ItemId(testGenerator.firstAttempt)
-        let item = Item(itemId: existingId, title: "irrelevant")
-        ManagedItem.insertManagedItem(item, managedBox: managedBox, inManagedObjectContext: context)
+        let item = Item(itemId: existingId, title: "irrelevant", boxId: box.boxId)
+        ManagedItem.insertManagedItem(item, inManagedObjectContext: context)
         
         let itemId = repository!.nextId()
         

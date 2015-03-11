@@ -47,7 +47,7 @@ public class CoreDataItemRepository: NSObject, ItemRepository {
     public func items(#boxId: BoxId) -> [Item] {
         let allItems = allManagedItems()
         let itemsMatchingBox = allItems.filter { managedItem -> Bool in
-            return managedItem.box.boxId == boxId
+            return managedItem.boxId == boxId
         }
         
         return itemsFromManagedItems(itemsMatchingBox)

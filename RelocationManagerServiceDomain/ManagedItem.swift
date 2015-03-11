@@ -18,7 +18,7 @@ public class ManagedItem: NSManagedObject, ManagedEntity {
     @NSManaged public var title: String
     @NSManaged public var creationDate: NSDate
     @NSManaged public var modificationDate: NSDate
-    @NSManaged public var box: ManagedBox
+    @NSManaged public var managedBoxId: NSNumber
 
     public class func entityName() -> String {
         return "ManagedItem"
@@ -28,15 +28,18 @@ public class ManagedItem: NSManagedObject, ManagedEntity {
         return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext)
     }
     
-    public class func insertManagedItem(item: Item, managedBox: ManagedBox, inManagedObjectContext managedObjectContext:NSManagedObjectContext) {
+    public class func insertManagedItem(item: Item,inManagedObjectContext managedObjectContext:NSManagedObjectContext) {
         let managedItem = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext) as ManagedItem
         
         managedItem.item = item
-        managedItem.box = managedBox
     }
     
-    public func itemId() -> ItemId {
-        return ItemId(self.uniqueId.longLongValue)
+    public var itemId: ItemId {
+        return ItemId(uniqueId.longLongValue)
+    }
+    
+    public var boxId: BoxId {
+        return BoxId(managedBoxId.longLongValue)
     }
     
     //MARK: -
@@ -67,20 +70,21 @@ public class ManagedItem: NSManagedObject, ManagedEntity {
     }
     
     func createItem() -> Item {
-        return Item(itemId: self.itemId(), title: self.title)
+        return Item(itemId: self.itemId, title: self.title, boxId: self.boxId)
     }
     
     func adaptItem(item: Item) {
         uniqueId = item.itemId.number
         title = item.title
+        managedBoxId = item.boxId.number
     }
     
     
-    // MARK: OBserving Changes
+    // MARK: Observing Changes
     
     func observe(item: Item) {
-        // TODO add back-reference to box
         item.addObserver(self, forKeyPath: "title", options: .New, context: &itemContext)
+        item.addObserver(self, forKeyPath: "boxIdentifier", options: .New, context: &itemContext)
     }
     
     public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
@@ -93,6 +97,9 @@ public class ManagedItem: NSManagedObject, ManagedEntity {
         if keyPath == "title" {
             let newTitle = change[NSKeyValueChangeNewKey] as String
             self.title = newTitle
+        } else if keyPath == "boxIdentifier" {
+            let newIdentifier = change[NSKeyValueChangeNewKey] as NSNumber
+            self.managedBoxId = newIdentifier
         }
     }
     

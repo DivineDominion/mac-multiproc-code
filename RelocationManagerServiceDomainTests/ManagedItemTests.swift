@@ -21,11 +21,11 @@ class ManagedItemTests: CoreDataTestCase {
     }
 
     func item() -> Item {
-        return Item(itemId: ItemId(3344), title: "the title")
+        return Item(itemId: ItemId(3344), title: "the title", boxId: BoxId(0))
     }
     
-    func irrelevantManagedBox() -> ManagedBox? {
-        let box = Box(boxId: BoxId(123), capacity: .Medium, title: "irrelevant")
+    func irrelevantManagedBox(boxId: BoxId) -> ManagedBox? {
+        let box = Box(boxId: boxId, capacity: .Medium, title: "irrelevant")
         ManagedBox.insertManagedBox(box, inManagedObjectContext: context)
         
         let request = NSFetchRequest(entityName: ManagedBox.entityName())
@@ -43,17 +43,46 @@ class ManagedItemTests: CoreDataTestCase {
         return context.executeFetchRequest(request, error: nil) as [ManagedItem]?
     }
     
+    // MARK: Insertion
+    
     func testInsertingManagedItem_AdaptsAllValues() {
-        let managedBox = irrelevantManagedBox()
         let theItem = item()
-        ManagedItem.insertManagedItem(theItem, managedBox: managedBox!, inManagedObjectContext: context)
+        ManagedItem.insertManagedItem(theItem,inManagedObjectContext: context)
         
         if let managedItem = soleManagedItem() {
             XCTAssertEqual(managedItem.title, theItem.title)
             XCTAssertEqual(managedItem.uniqueId, theItem.itemId.number)
+            XCTAssertEqual(managedItem.boxId, theItem.boxId)
         } else {
             XCTFail("inserting/fetching item failed")
         }
     }
 
+    // MARK: Adapting Item Changes
+    
+    func testMovingItem_PersistsBoxId() {
+        let theItem = item()
+        ManagedItem.insertManagedItem(theItem,inManagedObjectContext: context)
+        
+        theItem.moveToBox(boxId: BoxId(999))
+        
+        if let managedItem = soleManagedItem() {
+            XCTAssertEqual(managedItem.boxId, theItem.boxId)
+        } else {
+            XCTFail("inserting/fetching item failed")
+        }
+    }
+    
+    func testChangingTitle_PersistsChanges() {
+        let theItem = item()
+        ManagedItem.insertManagedItem(theItem,inManagedObjectContext: context)
+        
+        theItem.title = "new title"
+        
+        if let managedItem = soleManagedItem() {
+            XCTAssertEqual(managedItem.title, theItem.title)
+        } else {
+            XCTFail("inserting/fetching item failed")
+        }
+    }
 }

@@ -71,7 +71,7 @@ public class Box: NSObject {
     
     public func item(itemTitle: String, provisioningService: ProvisioningService) -> Item {
         let itemId = provisioningService.nextItemId()
-        return Item(itemId: itemId, title: title)
+        return Item(itemId: itemId, title: title, boxId: boxId)
     }
         
     public func canTakeItem() -> Bool {
