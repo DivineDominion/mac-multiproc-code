@@ -83,26 +83,6 @@ class BoxTests: XCTestCase {
         return boxFactory.fullBox()
     }
     
-    // MARK: Creation
-    
-    func testCreatingBox_StartsWithFullRemainingCapacity() {
-        let box = emptyBox()
-        
-        XCTAssertEqual(box.remainingCapacity, box.capacity.rawValue)
-    }
-    
-    // MARK: Filled status
-    
-    func testFilledBox_IsFull() {
-        let box = fullBox()
-        
-        XCTAssert(box.isFull())
-    }
-    
-    func testFilledBox_HasNoRemainingCapacity() {
-        let box = fullBox()
-        
-        XCTAssertEqual(box.remainingCapacity, 0)
-    }
+
     
 }

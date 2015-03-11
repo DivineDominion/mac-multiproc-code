@@ -31,24 +31,21 @@ class DistributeItemTests: XCTestCase {
     }
     
     let boxFactory = TestBoxFactory()
-    let repository = TestBoxRepository()
-    let registry = TestDomainRegistry()
+    let boxRepository = TestBoxRepository()
+    lazy var itemRepository: ItemRepository = self.boxFactory.itemRepository
     
     let publisher = MockDomainEventPublisher()
     
     lazy var provisioningService: TestProvisioningService = TestProvisioningService(boxRepository: NullBoxRepository(), itemRepository: NullItemRepository())
-    lazy var distributeItem: DistributeItem = DistributeItem(boxRepository: self.repository, provisioningService: self.provisioningService)
+    lazy var distributeItem: DistributeItem = DistributeItem(boxRepository: self.boxRepository, itemRepository: self.itemRepository, provisioningService: self.provisioningService)
     
     override func setUp() {
         super.setUp()
-        boxFactory.registerItemRepository(registry)
-        DomainRegistry.setSharedInstance(registry)
         DomainEventPublisher.setSharedInstance(publisher)
     }
     
     override func tearDown() {
         DomainEventPublisher.resetSharedInstance()
-        DomainRegistry.resetSharedInstance()
         super.tearDown()
     }
     
@@ -68,7 +65,7 @@ class DistributeItemTests: XCTestCase {
     }
     
     func testDistributeItem_WithOneEmptyBox_ProvisionsItem() {
-        repository.boxesStub = [emptyBox()]
+        boxRepository.boxesStub = [emptyBox()]
         let itemTitle = "the title"
         
         distribute(itemTitle)
@@ -82,7 +79,7 @@ class DistributeItemTests: XCTestCase {
     }
     
     func testDistributeItem_WithOneFullBox_PublishesFailureDomainEvent() {
-        repository.boxesStub = [fullBox()]
+        boxRepository.boxesStub = [fullBox()]
         
         distribute("irrelevant")
         
@@ -91,7 +88,7 @@ class DistributeItemTests: XCTestCase {
     }
     
     func testDistributeItem_WithOneFullBox_DoesntProvisionItem() {
-        repository.boxesStub = [fullBox()]
+        boxRepository.boxesStub = [fullBox()]
         
         distribute("irrelevant")
         
@@ -99,7 +96,7 @@ class DistributeItemTests: XCTestCase {
     }
 
     func testDistributeItem_WithOneFullAndOneEmptyBox_ProvisionsItem() {
-        repository.boxesStub = [fullBox(), emptyBox()]
+        boxRepository.boxesStub = [fullBox(), emptyBox()]
         
         distribute("irrelevant")
         

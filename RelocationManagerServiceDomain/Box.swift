@@ -50,14 +50,6 @@ public class Box: NSObject {
     public let boxId: BoxId
     public dynamic var title: String
     public let capacity: BoxCapacity
-    public var remainingCapacity: Int {
-        return capacity.rawValue - itemsCount
-    }
-    public var itemsCount: Int {
-        // FIXME move this into a Domain Service
-        let items = DomainRegistry.sharedInstance.itemRepository().items(boxId: self.boxId)
-        return items.count
-    }
     
     var eventPublisher: DomainEventPublisher {
         return DomainEventPublisher.sharedInstance
@@ -73,12 +65,19 @@ public class Box: NSObject {
         let itemId = provisioningService.nextItemId()
         return Item(itemId: itemId, title: title, boxId: boxId)
     }
-        
-    public func canTakeItem() -> Bool {
-        return !isFull()
+    
+    public func itemsCount(itemRepository: ItemRepository) -> Int {
+        return itemRepository.items(boxId: boxId).count
     }
     
-    public func isFull() -> Bool {
-        return remainingCapacity <= 0
+    public func isFull(itemRepository: ItemRepository) -> Bool {
+        return remainingCapacity(itemRepository) <= 0
+    }
+    
+    func remainingCapacity(itemRepository: ItemRepository) -> Int {
+        let capacity = self.capacity.rawValue
+        let load = itemsCount(itemRepository)
+        
+        return capacity - load
     }
 }

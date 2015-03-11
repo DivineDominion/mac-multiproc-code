@@ -12,6 +12,6 @@ import RelocationManagerServiceDomain
 
 class NullDistributeItem: DistributeItem {
     convenience init() {
-        self.init(boxRepository: NullBoxRepository(), provisioningService: NullProvisioningService())
+        self.init(boxRepository: NullBoxRepository(), itemRepository: NullItemRepository(), provisioningService: NullProvisioningService())
     }
 }

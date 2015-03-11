@@ -13,17 +13,18 @@ public class DistributeItem {
         return DomainEventPublisher.sharedInstance
     }
     
-    let repository: BoxRepository
+    let boxRepository: BoxRepository
+    let itemRepository: ItemRepository
     let provisioningService: ProvisioningService
     
-    public init(boxRepository: BoxRepository, provisioningService: ProvisioningService) {
-        self.repository = boxRepository
+    public init(boxRepository: BoxRepository, itemRepository: ItemRepository, provisioningService: ProvisioningService) {
+        self.boxRepository = boxRepository
+        self.itemRepository = itemRepository
         self.provisioningService = provisioningService
     }
     
-    
     public func distribute(itemTitle title: String) {
-        let boxes = nonFullBoxesSortedByFill()
+        let boxes = nonFullBoxesSortedByLoad()
 
         if let box = boxes.first {
             provisioningService.provisionItem(title, inBox: box)
@@ -33,17 +34,27 @@ public class DistributeItem {
         eventPublisher.publish(BoxItemDistributionFailed(itemTitle: title))
     }
     
-    func nonFullBoxesSortedByFill() -> [Box] {
-        let allBoxes = repository.boxes()
-        return allBoxes.filter { box in
-            return box.canTakeItem()
-        }.sorted { (one, other) -> Bool in
-            return one.itemsCount < other.itemsCount
-        }
+    func nonFullBoxesSortedByLoad() -> [Box] {
+        let allBoxes = boxRepository.boxes()
+
+        // Both methods query the repository which is wasteful.
+        return allBoxes.filter(boxCanTakeItem).sorted(boxHasLessItems)
     }
     
-    func nonFullBoxesSortedByFillExcept(box: Box) -> [Box] {
-        return nonFullBoxesSortedByFill().filter { return $0 != box }
+    func boxCanTakeItem(box: Box) -> Bool {
+        return !box.isFull(itemRepository)
+    }
+    
+    func boxHasLessItems(one: Box, _ other: Box) -> Bool {
+        return itemsCount(one) < itemsCount(other)
+    }
+    
+    func itemsCount(box: Box) -> Int {
+        return box.itemsCount(itemRepository)
+    }
+    
+    func nonFullBoxesSortedByLoadExcept(box: Box) -> [Box] {
+        return nonFullBoxesSortedByLoad().filter { return $0 != box }
     }
     
 }
