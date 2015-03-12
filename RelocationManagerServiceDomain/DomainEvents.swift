@@ -19,6 +19,7 @@ public enum DomainEventType: String {
     case BoxItemRemoved = "Box Item Removed"
     
     case BoxItemDistributionFailed = "Box Item Distribution Failed"
+    case BoxItemsRedistributionFailed = "Box Items Redistribution Failed"
     
     var name: String {
         return self.rawValue
@@ -50,18 +51,21 @@ public struct BoxProvisioned: DomainEvent {
     }
     
     public init(userInfo: UserInfo) {
-        let boxIdData = userInfo["id"] as NSNumber
-        let boxCapacity = userInfo["capacity"] as Int
-        let boxTitle = userInfo["title"] as String
+        let boxData = userInfo["box"] as UserInfo
+        let boxIdData = boxData["id"] as NSNumber
+        let boxCapacity = boxData["capacity"] as Int
+        let boxTitle = boxData["title"] as String
         
         self.init(boxId: BoxId(boxIdData), capacity: boxCapacity, title: boxTitle)
     }
     
     public func userInfo() -> UserInfo {
         return [
-            "id": boxId.number,
-            "capacity": capacity,
-            "title": title
+            "box": [
+                "id": boxId.number,
+                "capacity": capacity,
+                "title": title
+            ]
         ]
     }
     
@@ -84,16 +88,19 @@ public struct ItemProvisioned: DomainEvent {
     }
     
     public init(userInfo: UserInfo) {
-        let itemIdData = userInfo["id"] as NSNumber
-        let itemTitle = userInfo["title"] as String
+        let itemData = userInfo["item"] as UserInfo
+        let itemIdData = itemData["id"] as NSNumber
+        let itemTitle = itemData["title"] as String
         
         self.init(itemId: ItemId(itemIdData), title: itemTitle)
     }
     
     public func userInfo() -> UserInfo {
         return [
-            "id": itemId.number,
-            "title": title
+            "item": [
+                "id": itemId.number,
+                "title": title
+            ]
         ]
     }
     
@@ -121,12 +128,14 @@ public struct BoxItemAdded: DomainEvent  {
     public init(userInfo: UserInfo) {
         let boxData = userInfo["box"] as UserInfo
         let boxIdData = boxData["id"] as NSNumber
-        self.boxId = BoxId(boxIdData)
+        let boxId = BoxId(boxIdData)
         
         let itemData = userInfo["item"] as UserInfo
         let itemIdData = itemData["id"] as NSNumber
-        self.itemId = ItemId(itemIdData)
-        self.itemTitle = itemData["title"] as String
+        let itemId = ItemId(itemIdData)
+        let itemTitle = itemData["title"] as String
+        
+        self.init(boxId: boxId, itemId: itemId, itemTitle: itemTitle)
     }
     
     public func userInfo() -> UserInfo {
@@ -165,12 +174,14 @@ public struct AddingBoxItemFailed: DomainEvent {
     public init(userInfo: UserInfo) {
         let boxData = userInfo["box"] as UserInfo
         let boxIdData = boxData["id"] as NSNumber
-        self.boxId = BoxId(boxIdData)
+        let boxId = BoxId(boxIdData)
         
         let itemData = userInfo["item"] as UserInfo
         let itemIdData = itemData["id"] as NSNumber
-        self.itemId = ItemId(itemIdData)
-        self.itemTitle = itemData["title"] as String
+        let itemId = ItemId(itemIdData)
+        let itemTitle = itemData["title"] as String
+        
+        self.init(boxId: boxId, itemId: itemId, itemTitle: itemTitle)
     }
     
     public func userInfo() -> UserInfo {
@@ -206,11 +217,13 @@ public struct BoxItemRemoved: DomainEvent {
     public init(userInfo: UserInfo) {
         let boxData = userInfo["box"] as UserInfo
         let boxIdData = boxData["id"] as NSNumber
-        self.boxId = BoxId(boxIdData)
+        let boxId = BoxId(boxIdData)
         
         let itemData = userInfo["item"] as UserInfo
         let itemIdData = itemData["id"] as NSNumber
-        self.itemId = ItemId(itemIdData)
+        let itemId = ItemId(itemIdData)
+        
+        self.init(boxId: boxId, itemId: itemId)
     }
     
     public func userInfo() -> UserInfo {
@@ -242,13 +255,47 @@ public struct BoxItemDistributionFailed: DomainEvent {
     
     public init(userInfo: UserInfo) {
         let itemData = userInfo["item"] as UserInfo
-        self.itemTitle = itemData["title"] as String
+        let itemTitle = itemData["title"] as String
+        
+        self.init(itemTitle: itemTitle)
     }
     
     public func userInfo() -> UserInfo {
         return [
             "item" : [
                 "title": itemTitle
+            ]
+        ]
+    }
+    
+    public func notification() -> NSNotification {
+        return NSNotification(name: self.dynamicType.eventType.name, object: nil, userInfo: userInfo())
+    }
+}
+
+public struct BoxItemsRedistributionFailed: DomainEvent {
+    public static var eventType: DomainEventType {
+        return DomainEventType.BoxItemsRedistributionFailed
+    }
+    
+    public let boxId: BoxId
+    
+    public init(boxId: BoxId) {
+        self.boxId = boxId
+    }
+    
+    public init(userInfo: UserInfo) {
+        let boxData = userInfo["box"] as UserInfo
+        let boxIdData = boxData["id"] as NSNumber
+        let boxId = BoxId(boxIdData)
+        
+        self.init(boxId: boxId)
+    }
+    
+    public func userInfo() -> UserInfo {
+        return [
+            "box": [
+                "id": boxId.number
             ]
         ]
     }
