@@ -97,6 +97,9 @@
 		50CA19A41AA5BE07006C254E /* ManageItemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CA19A31AA5BE07006C254E /* ManageItemsTests.swift */; };
 		50CA19A61AA5C1F6006C254E /* NullRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CA19A51AA5C1F6006C254E /* NullRepositories.swift */; };
 		50D215C71A9B479300059B36 /* BoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D215C61A9B479300059B36 /* BoxTests.swift */; };
+		50DBEDB61AB17F0700AE58CB /* DissolveBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBEDB51AB17F0700AE58CB /* DissolveBox.swift */; };
+		50DBEDB71AB17F0700AE58CB /* DissolveBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBEDB51AB17F0700AE58CB /* DissolveBox.swift */; };
+		50DBEDB91AB18E0900AE58CB /* DissolveBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBEDB81AB18E0900AE58CB /* DissolveBoxTests.swift */; };
 		50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50F98BD21A714C1800426FD8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F98BD11A714C1800426FD8 /* main.swift */; };
 		50FAC0831A8DE579001A2EF1 /* BoxViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FAC0821A8DE579001A2EF1 /* BoxViewControllerTests.swift */; };
@@ -231,6 +234,8 @@
 		50CA19A51AA5C1F6006C254E /* NullRepositories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullRepositories.swift; sourceTree = "<group>"; };
 		50D215C41A9B388500059B36 /* DistributeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DistributeItem.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		50D215C61A9B479300059B36 /* BoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTests.swift; sourceTree = "<group>"; };
+		50DBEDB51AB17F0700AE58CB /* DissolveBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DissolveBox.swift; sourceTree = "<group>"; };
+		50DBEDB81AB18E0900AE58CB /* DissolveBoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DissolveBoxTests.swift; sourceTree = "<group>"; };
 		50F98BD11A714C1800426FD8 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50FAC0811A8DE578001A2EF1 /* RelocationManagerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RelocationManagerTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		50FAC0821A8DE579001A2EF1 /* BoxViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxViewControllerTests.swift; sourceTree = "<group>"; };
@@ -342,6 +347,7 @@
 			children = (
 				50D215C41A9B388500059B36 /* DistributeItem.swift */,
 				5063CE0F1A9B240400F94449 /* ProvisioningService.swift */,
+				50DBEDB51AB17F0700AE58CB /* DissolveBox.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -478,6 +484,7 @@
 				50D215C61A9B479300059B36 /* BoxTests.swift */,
 				5062F8C01A9C9400005F45FB /* DistributeItemTests.swift */,
 				5063CE1F1A9B244000F94449 /* ProvisioningServiceTests.swift */,
+				50DBEDB81AB18E0900AE58CB /* DissolveBoxTests.swift */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -1020,6 +1027,7 @@
 				5019632B1AA75E320041DFD8 /* ManagedEntity.swift in Sources */,
 				501963291AA75E320041DFD8 /* RelocationManager.xcdatamodel in Sources */,
 				50B081291AADB3A600E24120 /* IdGenerator.swift in Sources */,
+				50DBEDB61AB17F0700AE58CB /* DissolveBox.swift in Sources */,
 				501963261AA75E320041DFD8 /* Endpoint.swift in Sources */,
 				50F98BD21A714C1800426FD8 /* main.swift in Sources */,
 				501963351AA75E320041DFD8 /* DomainEvents.swift in Sources */,
@@ -1062,6 +1070,7 @@
 				50B0812A1AADB3A600E24120 /* IdGenerator.swift in Sources */,
 				5063CE091A9B23D100F94449 /* CoreDataBoxRepository.swift in Sources */,
 				501963201AA722A30041DFD8 /* ConnectionController.swift in Sources */,
+				50DBEDB71AB17F0700AE58CB /* DissolveBox.swift in Sources */,
 				5063CE191A9B240400F94449 /* Item.swift in Sources */,
 				5063CE151A9B240400F94449 /* ProvisioningService.swift in Sources */,
 				501963191AA712280041DFD8 /* Endpoint.swift in Sources */,
@@ -1086,6 +1095,7 @@
 				50CA19A41AA5BE07006C254E /* ManageItemsTests.swift in Sources */,
 				5063CE2A1A9B262E00F94449 /* CoreDataTestCase.swift in Sources */,
 				50D215C71A9B479300059B36 /* BoxTests.swift in Sources */,
+				50DBEDB91AB18E0900AE58CB /* DissolveBoxTests.swift in Sources */,
 				5060FCC61AAEF64C00C8818E /* ManagedItemTests.swift in Sources */,
 				5062F8C11A9C9400005F45FB /* DistributeItemTests.swift in Sources */,
 				50B081311AADB79200E24120 /* TestIntegerIdGenerator.swift in Sources */,

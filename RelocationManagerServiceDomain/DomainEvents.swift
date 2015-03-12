@@ -19,6 +19,9 @@ public enum DomainEventType: String {
     case BoxItemRemoved = "Box Item Removed"
     
     case BoxItemDistributionFailed = "Box Item Distribution Failed"
+
+    case BoxRemoved = "Box Removed"
+    case BoxRemovalFailed = "Box Removal Failed"
     case BoxItemsRedistributionFailed = "Box Items Redistribution Failed"
     
     var name: String {
@@ -264,6 +267,70 @@ public struct BoxItemDistributionFailed: DomainEvent {
         return [
             "item" : [
                 "title": itemTitle
+            ]
+        ]
+    }
+    
+    public func notification() -> NSNotification {
+        return NSNotification(name: self.dynamicType.eventType.name, object: nil, userInfo: userInfo())
+    }
+}
+
+public struct BoxRemoved: DomainEvent {
+    public static var eventType: DomainEventType {
+        return DomainEventType.BoxRemoved
+    }
+    
+    public let boxId: BoxId
+    
+    public init(boxId: BoxId) {
+        self.boxId = boxId
+    }
+    
+    public init(userInfo: UserInfo) {
+        let boxData = userInfo["box"] as UserInfo
+        let boxIdData = boxData["id"] as NSNumber
+        let boxId = BoxId(boxIdData)
+        
+        self.init(boxId: boxId)
+    }
+    
+    public func userInfo() -> UserInfo {
+        return [
+            "box": [
+                "id": boxId.number
+            ]
+        ]
+    }
+    
+    public func notification() -> NSNotification {
+        return NSNotification(name: self.dynamicType.eventType.name, object: nil, userInfo: userInfo())
+    }
+}
+
+public struct BoxRemovalFailed: DomainEvent {
+    public static var eventType: DomainEventType {
+        return DomainEventType.BoxRemovalFailed
+    }
+    
+    public let boxId: BoxId
+    
+    public init(boxId: BoxId) {
+        self.boxId = boxId
+    }
+    
+    public init(userInfo: UserInfo) {
+        let boxData = userInfo["box"] as UserInfo
+        let boxIdData = boxData["id"] as NSNumber
+        let boxId = BoxId(boxIdData)
+        
+        self.init(boxId: boxId)
+    }
+    
+    public func userInfo() -> UserInfo {
+        return [
+            "box": [
+                "id": boxId.number
             ]
         ]
     }

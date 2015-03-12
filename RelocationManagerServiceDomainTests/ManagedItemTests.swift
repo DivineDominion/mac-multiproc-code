@@ -25,13 +25,17 @@ class ManagedItemTests: CoreDataTestCase {
     }
     
     func irrelevantManagedBox(boxId: BoxId) -> ManagedBox? {
-        let box = Box(boxId: boxId, capacity: .Medium, title: "irrelevant")
+        let box = irrelevantBox(boxId)
         ManagedBox.insertManagedBox(box, inManagedObjectContext: context)
         
         let request = NSFetchRequest(entityName: ManagedBox.entityName())
         let allBoxes = context.executeFetchRequest(request, error: nil) as [ManagedBox]?
         
         return allBoxes?.first
+    }
+    
+    func irrelevantBox(boxId: BoxId) -> Box {
+        return Box(boxId: boxId, capacity: .Medium, title: "irrelevant")
     }
     
     func soleManagedItem() -> ManagedItem? {
@@ -62,11 +66,13 @@ class ManagedItemTests: CoreDataTestCase {
     
     func testMovingItem_PersistsBoxId() {
         let theItem = item()
+        let destinationBox = irrelevantBox(BoxId(999))
         ManagedItem.insertManagedItem(theItem,inManagedObjectContext: context)
         
-        theItem.moveToBox(boxId: BoxId(999))
+        theItem.moveToBox(destinationBox)
         
         if let managedItem = soleManagedItem() {
+            XCTAssertEqual(theItem.boxId, destinationBox.boxId)
             XCTAssertEqual(managedItem.boxId, theItem.boxId)
         } else {
             XCTFail("inserting/fetching item failed")

@@ -58,31 +58,37 @@ class TestBoxFactory {
 }
 
 class BoxTests: XCTestCase {
-    let boxFactory = TestBoxFactory()
-    let registry = TestDomainRegistry()
-    let publisher = MockDomainEventPublisher()
+    let box = Box(boxId: BoxId(0), capacity: .Small, title: "the box")
     
-    override func setUp() {
-        super.setUp()
-        boxFactory.registerItemRepository(registry)
-        DomainRegistry.setSharedInstance(registry)
-        DomainEventPublisher.setSharedInstance(publisher)
+    // MARK: Locking
+    
+    func testLocking_Locks() {
+        box.lock()
+        
+        XCTAssertTrue(box.locked)
     }
     
-    override func tearDown() {
-        DomainEventPublisher.resetSharedInstance()
-        DomainRegistry.resetSharedInstance()
-        super.tearDown()
-    }
-
-    func emptyBox() -> Box {
-        return boxFactory.emptyBox()
+    func testUnlockingAfterLocking_Unlocks() {
+        box.lock()
+        box.unlock()
+        
+        XCTAssertFalse(box.locked)
     }
     
-    func fullBox() -> Box {
-        return boxFactory.fullBox()
+    // MARK: Dissolving
+    
+    func testDissolving_DelegatesToService() {
+        let redistributionService = TestRedistributionService()
+        
+        box.dissolve(redistributionService)
+        
+        XCTAssertTrue(redistributionService.didRedistribute)
     }
     
-
-    
+    class TestRedistributionService: RedistributesItems {
+        var didRedistribute = false
+        func redistributeItems(box: Box) {
+            didRedistribute = true
+        }
+    }
 }

@@ -35,11 +35,14 @@ public func ==(lhs: ItemId, rhs: ItemId) -> Bool {
     return lhs.identifier == rhs.identifier
 }
 
-public protocol ItemRepository {
+public protocol ProvidesBoxItems {
+    func items(#boxId: BoxId) -> [Item]
+}
+
+public protocol ItemRepository: ProvidesBoxItems {
     func nextId() -> ItemId
     func addItem(item: Item)
     func items() -> [Item]
-    func items(#boxId: BoxId) -> [Item]
     func count() -> Int
 }
 
@@ -72,8 +75,8 @@ public class Item: NSObject {
         return 173 &+ self.itemId.hashValue
     }
     
-    public func moveToBox(boxId aBoxId: BoxId) {
-        boxId = aBoxId
+    public func moveToBox(box: Box) {
+        boxId = box.boxId
     }
 }
 

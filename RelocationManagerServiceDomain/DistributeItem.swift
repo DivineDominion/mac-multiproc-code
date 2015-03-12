@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class DistributeItem {
+public class DistributeItem: RedistributesItems {
     var eventPublisher: DomainEventPublisher {
         return DomainEventPublisher.sharedInstance
     }
@@ -23,9 +23,15 @@ public class DistributeItem {
         self.provisioningService = provisioningService
     }
     
+    // MARK: Distributing a Single Item
+    
     public func distribute(itemTitle title: String) {
         let boxes = nonFullBoxesSortedByLoad()
 
+        distributeItem(itemTitle: title, among: boxes)
+    }
+    
+    func distributeItem(itemTitle title: String, among boxes: [Box]) {
         if let box = boxes.first {
             provisioningService.provisionItem(title, inBox: box)
             return
@@ -37,12 +43,12 @@ public class DistributeItem {
     func nonFullBoxesSortedByLoad() -> [Box] {
         let allBoxes = boxRepository.boxes()
 
-        // Both methods query the repository which is wasteful.
+        // TODO Both methods query the repository which is wasteful.
         return allBoxes.filter(boxCanTakeItem).sorted(boxHasLessItems)
     }
     
     func boxCanTakeItem(box: Box) -> Bool {
-        return !box.isFull(itemRepository)
+        return !box.isFull(itemRepository) && !box.locked
     }
     
     func boxHasLessItems(one: Box, _ other: Box) -> Bool {
@@ -53,8 +59,46 @@ public class DistributeItem {
         return box.itemsCount(itemRepository)
     }
     
+    
+    // MARK: Dissolving a Box's contents
+    
+    public func redistributeItems(box: Box) {
+        if totalRemainingCapacityInsufficient(box) {
+            eventPublisher.publish(BoxItemsRedistributionFailed(boxId: box.boxId))
+            return
+        }
+        
+        moveItems(box)
+    }
+    
+    func totalRemainingCapacityInsufficient(box: Box) -> Bool {
+        let otherBoxes = nonFullBoxesSortedByLoadExcept(box)
+        let totalRemainingCapacity = otherBoxes.reduce(0, combine: remainingCapacity)
+        
+        return totalRemainingCapacity < itemsCount(box)
+    }
+    
     func nonFullBoxesSortedByLoadExcept(box: Box) -> [Box] {
         return nonFullBoxesSortedByLoad().filter { return $0 != box }
     }
     
+    func remainingCapacity(initialCapacity: Int, box: Box) -> Int {
+        return initialCapacity + remainingCapacity(box)
+    }
+    
+    func remainingCapacity(box: Box) -> Int {
+        return box.remainingCapacity(itemRepository)
+    }
+    
+    func moveItems(box: Box) {
+        let items = itemRepository.items(boxId: box.boxId)
+        
+        for item in items {
+            let otherBoxes = nonFullBoxesSortedByLoadExcept(box)
+            
+            if let newBox = otherBoxes.first {
+                item.moveToBox(newBox)
+            }
+        }
+    }
 }

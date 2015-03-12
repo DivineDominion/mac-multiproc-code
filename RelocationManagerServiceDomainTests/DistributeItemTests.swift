@@ -60,15 +60,12 @@ class DistributeItemTests: XCTestCase {
     
     // MARK: Item Distribution
     
-    func distribute(title: String) {
-        distributeItem.distribute(itemTitle: title)
-    }
     
     func testDistributeItem_WithOneEmptyBox_ProvisionsItem() {
         boxRepository.boxesStub = [emptyBox()]
         let itemTitle = "the title"
         
-        distribute(itemTitle)
+        distributeItem.distribute(itemTitle: itemTitle)
         
         if let receivedTitle = provisioningService.provisionedItemTitle {
             XCTAssertTrue(provisioningService.didProvisionItem)
@@ -78,10 +75,21 @@ class DistributeItemTests: XCTestCase {
         }
     }
     
+    func testDistributeItem_WithOneEmptyButLockedBox_PublishesFailureDomainEvent() {
+        let box = emptyBox()
+        box.lock()
+        boxRepository.boxesStub = [box]
+        
+        distributeItem.distribute(itemTitle: "irrelevant")
+        
+        let maybeExpectedEvent = publisher.lastPublishedEvent as? BoxItemDistributionFailed
+        XCTAssert(maybeExpectedEvent != nil, "expected BoxItemDistributionFailed event")
+    }
+    
     func testDistributeItem_WithOneFullBox_PublishesFailureDomainEvent() {
         boxRepository.boxesStub = [fullBox()]
         
-        distribute("irrelevant")
+        distributeItem.distribute(itemTitle: "irrelevant")
         
         let maybeExpectedEvent = publisher.lastPublishedEvent as? BoxItemDistributionFailed
         XCTAssert(maybeExpectedEvent != nil, "expected BoxItemDistributionFailed event")
@@ -90,7 +98,7 @@ class DistributeItemTests: XCTestCase {
     func testDistributeItem_WithOneFullBox_DoesntProvisionItem() {
         boxRepository.boxesStub = [fullBox()]
         
-        distribute("irrelevant")
+        distributeItem.distribute(itemTitle: "irrelevant")
         
         XCTAssertFalse(provisioningService.didProvisionItem)
     }
@@ -98,9 +106,36 @@ class DistributeItemTests: XCTestCase {
     func testDistributeItem_WithOneFullAndOneEmptyBox_ProvisionsItem() {
         boxRepository.boxesStub = [fullBox(), emptyBox()]
         
-        distribute("irrelevant")
+        distributeItem.distribute(itemTitle: "irrelevant")
         
         XCTAssertTrue(provisioningService.didProvisionItem)
+    }
+    
+    
+    // MARK: Box item Redistribution
+    
+    func testRedistributing_WithInsufficientRemainingCap_PublishesEvent() {
+        let box = fullBox()
+        boxRepository.boxesStub = [box, fullBox()]
+        
+        distributeItem.redistributeItems(box)
+        
+        let event = publisher.lastPublishedEvent as? BoxItemsRedistributionFailed
+        XCTAssert(event != nil, "should publish failure event")
+    }
+    
+    func testRedistributing_WithSufficientRemainingCap_MovesItems() {
+        let sourceBox = fullBox()
+        let destinationBox = emptyBox()
+        let items = itemRepository.items(boxId: sourceBox.boxId)
+        XCTAssertEqual(items.count, sourceBox.capacity.rawValue)
+        boxRepository.boxesStub = [sourceBox, destinationBox]
+        
+        distributeItem.redistributeItems(sourceBox)
+        
+        for item in items {
+            XCTAssertEqual(item.boxId, destinationBox.boxId)
+        }
     }
     
 }
