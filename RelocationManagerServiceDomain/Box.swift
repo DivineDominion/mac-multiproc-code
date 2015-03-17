@@ -49,7 +49,6 @@ public enum BoxCapacity: Int {
 public class Box: NSObject {
     public let boxId: BoxId
     public dynamic var title: String
-    public dynamic private(set) var locked: Bool = false
     public let capacity: BoxCapacity
     
     var eventPublisher: DomainEventPublisher {
@@ -84,14 +83,6 @@ public class Box: NSObject {
     
     public func itemsCount(itemProvider: ProvidesBoxItems) -> Int {
         return itemProvider.count(boxId: boxId)
-    }
-    
-    public func lock() {
-        locked = true
-    }
-    
-    public func unlock() {
-        locked = false
     }
     
     public func dissolve(redistributionService: RedistributesItems) {

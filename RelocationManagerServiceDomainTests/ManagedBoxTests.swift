@@ -67,16 +67,6 @@ class ManagedBoxTests: CoreDataTestCase {
         XCTAssertEqual(foundBox.title, "new title")
     }
     
-    func testChangingOriginalLocking_PersistsChanges() {
-        let theBox = box()
-        ManagedBox.insertManagedBox(theBox, inManagedObjectContext: context)
-        
-        theBox.lock()
-        
-        let foundBox = allBoxes()!.first! as ManagedBox
-        XCTAssertTrue(foundBox.isLocked.boolValue)
-    }
-    
     
     // MARK: Title changes
 

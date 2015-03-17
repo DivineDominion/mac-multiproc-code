@@ -76,18 +76,7 @@ class DistributeItemTests: XCTestCase {
             XCTFail("no item provisioned")
         }
     }
-    
-    func testDistributeItem_WithOneEmptyButLockedBox_PublishesFailureDomainEvent() {
-        let box = emptyBox()
-        box.lock()
-        boxRepository.boxesStub = [box]
-        
-        distributeItem.distribute(itemTitle: "irrelevant")
-        
-        let maybeExpectedEvent = publisher.lastPublishedEvent as? BoxItemDistributionFailed
-        XCTAssert(maybeExpectedEvent != nil, "expected BoxItemDistributionFailed event")
-    }
-    
+
     func testDistributeItem_WithOneFullBox_PublishesFailureDomainEvent() {
         boxRepository.boxesStub = [fullBox()]
         

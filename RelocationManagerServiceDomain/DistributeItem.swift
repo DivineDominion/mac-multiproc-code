@@ -48,7 +48,7 @@ public class DistributeItem: RedistributesItems {
     }
     
     func boxCanTakeItem(box: Box) -> Bool {
-        return !box.isFull(itemRepository) && !box.locked
+        return !box.isFull(itemRepository)
     }
     
     func boxHasLessItems(one: Box, _ other: Box) -> Bool {

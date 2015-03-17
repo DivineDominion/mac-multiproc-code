@@ -56,20 +56,6 @@ class TestBoxFactory {
 class BoxTests: XCTestCase {
     let box = Box(boxId: BoxId(0), capacity: .Small, title: "the box")
     
-    // MARK: Locking
-    
-    func testLocking_Locks() {
-        box.lock()
-        
-        XCTAssertTrue(box.locked)
-    }
-    
-    func testUnlockingAfterLocking_Unlocks() {
-        box.lock()
-        box.unlock()
-        
-        XCTAssertFalse(box.locked)
-    }
     
     // MARK: Dissolving
     

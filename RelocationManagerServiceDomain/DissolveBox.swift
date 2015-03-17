@@ -28,12 +28,10 @@ public class DissolveBox {
     }
     
     public func dissolve(box: Box) {
-        box.lock()
         box.dissolve(distributionService)
         
         if !box.isEmpty(itemRepository) {
             eventPublisher.publish(BoxRemovalFailed(boxId: box.boxId))
-            box.unlock()
             return
         }
         

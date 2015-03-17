@@ -18,7 +18,6 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
     @NSManaged public var modificationDate: NSDate
     @NSManaged public var title: String
     @NSManaged public var capacity: NSNumber
-    @NSManaged public var isLocked: NSNumber
     @NSManaged public var uniqueId: NSNumber
     @NSManaged public var items: NSSet
     
@@ -71,11 +70,6 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
     
     func createBox() -> Box {
         let box = Box(boxId: self.boxId, capacity: self.boxCapacity, title: self.title)
-
-        if isLocked.boolValue {
-            box.lock()
-        }
-        
         return box
     }
     
@@ -83,7 +77,6 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
         uniqueId = box.boxId.number
         title = box.title
         capacity = box.capacity.rawValue
-        isLocked = box.locked
     }
     
     public lazy var boxCapacity: BoxCapacity = {
@@ -103,7 +96,6 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
     
     func observe(box: Box) {
         box.addObserver(self, forKeyPath: "title", options: .New, context: &boxContext)
-        box.addObserver(self, forKeyPath: "locked", options: .New, context: &boxContext)
     }
     
     public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
@@ -116,9 +108,6 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
         if keyPath == "title" {
             let newTitle = change[NSKeyValueChangeNewKey] as String
             self.title = newTitle
-        } else if keyPath == "locked" {
-            let isLocked = change[NSKeyValueChangeNewKey] as NSNumber
-            self.isLocked = isLocked
         }
     }
     

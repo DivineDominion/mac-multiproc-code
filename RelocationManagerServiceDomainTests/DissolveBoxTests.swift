@@ -55,13 +55,15 @@ class DissolveBoxTests: XCTestCase {
         
         XCTAssert(distributionService.redistributedBox == box)
     }
+    
+    
+    // MARK: Success
 
-    func testDissolve_WhenBoxIsEmpty_RemovesBoxLocked() {
+    func testDissolve_WhenBoxIsEmpty_RemovesBox() {
         let box = boxFactory.emptyBox()
         
         service.dissolve(box)
         
-        XCTAssertTrue(box.locked)
         XCTAssert(boxRepository.removedBoxId == box.boxId)
     }
     
@@ -74,13 +76,8 @@ class DissolveBoxTests: XCTestCase {
         XCTAssert(event != nil, "should publish success event")
     }
     
-    func testDissolve_WhenBoxWasntEmptied_UnlocksBox() {
-        let box = boxFactory.fullBox()
-        
-        service.dissolve(box)
-        
-        XCTAssertFalse(box.locked)
-    }
+    
+    // MARK: Failure
     
     func testDissolve_WhenBoxWasntEmptied_PublishesFailureEvent() {
         let box = boxFactory.fullBox()
