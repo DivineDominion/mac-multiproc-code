@@ -43,8 +43,9 @@ public protocol ProvidesBoxItems {
 public protocol ItemRepository: ProvidesBoxItems {
     func nextId() -> ItemId
     func addItem(item: Item)
+    func removeItem(#itemId: ItemId)
     func items() -> [Item]
-    func count() -> Int
+    func item(#itemId: ItemId) -> Item?
 }
 
 public class Item: NSObject {

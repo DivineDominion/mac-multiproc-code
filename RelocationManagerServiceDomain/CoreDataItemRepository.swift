@@ -44,6 +44,18 @@ public class CoreDataItemRepository: NSObject, ItemRepository {
         }
     }
     
+    public func item(#itemId: ItemId) -> Item? {
+        if let managedItem = managedItemWithId(itemId) {
+            return managedItem.item
+        }
+        
+        return nil
+    }
+    
+    func managedItemWithId(itemId: ItemId) -> ManagedItem? {
+        return managedItemWithUniqueId(itemId.identifier)
+    }
+    
     public func count(#boxId: BoxId) -> Int {
         return items(boxId: boxId).count
     }
@@ -74,21 +86,10 @@ public class CoreDataItemRepository: NSObject, ItemRepository {
         return results as [ManagedItem]
     }
     
-    public func count() -> Int {
-        let fetchRequest = NSFetchRequest(entityName: ManagedItem.entityName())
-        fetchRequest.includesSubentities = false
-        
-        var error: NSError? = nil
-        let count = managedObjectContext.countForFetchRequest(fetchRequest, error: &error)
-        
-        if count == NSNotFound {
-            logError(error!, operation: "fetching item count")
-            postReadErrorNotification()
-            assert(false, "error fetching count")
-            return NSNotFound
+    public func removeItem(#itemId: ItemId) {
+        if let managedItem = managedItemWithId(itemId) {
+            managedObjectContext.deleteObject(managedItem)
         }
-        
-        return count
     }
     
     
