@@ -14,16 +14,14 @@ public enum DomainEventType: String {
     case BoxProvisioned = "Box Provisioned"
     case ItemProvisioned = "Item Provisioned"
     
-    case BoxItemAdded = "Box Item Added"
-    case AddingBoxItemFailed = "Adding Box Item Failed"
-    case BoxItemRemoved = "Box Item Removed"
-    
-    case BoxItemDistributionFailed = "Box Item Distribution Failed"
+    case ItemDistributionFailed = "Item Distribution Failed"
 
     case BoxRemoved = "Box Removed"
     case BoxRemovalFailed = "Box Removal Failed"
     case BoxItemsRedistributionFailed = "Box Items Redistribution Failed"
-    
+
+    case ItemRemoved = "Item Removed"
+
     var name: String {
         return self.rawValue
     }
@@ -112,128 +110,28 @@ public struct ItemProvisioned: DomainEvent {
     }
 }
 
-@availability(*, deprecated=1)
-public struct BoxItemAdded: DomainEvent  {
-    public static var eventType: DomainEventType {
-        return DomainEventType.BoxItemAdded
-    }
-    
-    public let boxId: BoxId
-    public let itemId: ItemId
-    public let itemTitle: String
-    
-    public init(boxId: BoxId, itemId: ItemId, itemTitle: String) {
-        self.boxId = boxId
-        self.itemId = itemId
-        self.itemTitle = itemTitle
-    }
-    
-    public init(userInfo: UserInfo) {
-        let boxData = userInfo["box"] as UserInfo
-        let boxIdData = boxData["id"] as NSNumber
-        let boxId = BoxId(boxIdData)
-        
-        let itemData = userInfo["item"] as UserInfo
-        let itemIdData = itemData["id"] as NSNumber
-        let itemId = ItemId(itemIdData)
-        let itemTitle = itemData["title"] as String
-        
-        self.init(boxId: boxId, itemId: itemId, itemTitle: itemTitle)
-    }
-    
-    public func userInfo() -> UserInfo {
-        return [
-            "box" : [
-                "id" : boxId.number
-            ],
-            "item" : [
-                "id" : itemId.number,
-                "title": itemTitle
-            ]
-        ]
-    }
-    
-    public func notification() -> NSNotification {
-        return NSNotification(name: self.dynamicType.eventType.name, object: nil, userInfo: userInfo())
-    }
-}
 
-// TODO resolve duplication of almost 100% of BoxItemAdded
-public struct AddingBoxItemFailed: DomainEvent {
+public struct ItemRemoved: DomainEvent {
     public static var eventType: DomainEventType {
-        return DomainEventType.AddingBoxItemFailed
+        return DomainEventType.ItemRemoved
     }
     
-    public let boxId: BoxId
-    public let itemId: ItemId
-    public let itemTitle: String
-    
-    public init(boxId: BoxId, itemId: ItemId, itemTitle: String) {
-        self.boxId = boxId
-        self.itemId = itemId
-        self.itemTitle = itemTitle
-    }
-    
-    public init(userInfo: UserInfo) {
-        let boxData = userInfo["box"] as UserInfo
-        let boxIdData = boxData["id"] as NSNumber
-        let boxId = BoxId(boxIdData)
-        
-        let itemData = userInfo["item"] as UserInfo
-        let itemIdData = itemData["id"] as NSNumber
-        let itemId = ItemId(itemIdData)
-        let itemTitle = itemData["title"] as String
-        
-        self.init(boxId: boxId, itemId: itemId, itemTitle: itemTitle)
-    }
-    
-    public func userInfo() -> UserInfo {
-        return [
-            "box" : [
-                "id" : boxId.number
-            ],
-            "item" : [
-                "id" : itemId.number,
-                "title": itemTitle
-            ]
-        ]
-    }
-    
-    public func notification() -> NSNotification {
-        return NSNotification(name: self.dynamicType.eventType.name, object: nil, userInfo: userInfo())
-    }
-}
-
-public struct BoxItemRemoved: DomainEvent {
-    public static var eventType: DomainEventType {
-        return DomainEventType.BoxItemRemoved
-    }
-    
-    public let boxId: BoxId
     public let itemId: ItemId
     
-    public init(boxId: BoxId, itemId: ItemId) {
-        self.boxId = boxId
+    public init(itemId: ItemId) {
         self.itemId = itemId
     }
     
     public init(userInfo: UserInfo) {
-        let boxData = userInfo["box"] as UserInfo
-        let boxIdData = boxData["id"] as NSNumber
-        let boxId = BoxId(boxIdData)
-        
         let itemData = userInfo["item"] as UserInfo
         let itemIdData = itemData["id"] as NSNumber
         let itemId = ItemId(itemIdData)
         
-        self.init(boxId: boxId, itemId: itemId)
+        self.init(itemId: itemId)
     }
     
     public func userInfo() -> UserInfo {
         return [
-            "box" : [
-                "id" : boxId.number
-            ],
             "item" : [
                 "id" : itemId.number
             ]
@@ -245,9 +143,9 @@ public struct BoxItemRemoved: DomainEvent {
     }
 }
 
-public struct BoxItemDistributionFailed: DomainEvent {
+public struct ItemDistributionFailed: DomainEvent {
     public static var eventType: DomainEventType {
-        return DomainEventType.BoxItemDistributionFailed
+        return DomainEventType.ItemDistributionFailed
     }
     
     public let itemTitle: String

@@ -9,32 +9,24 @@
 import Foundation
 
 public class ManageItems {
-    
-    var eventPublisher: DomainEventPublisher {
-        return DomainEventPublisher.sharedInstance
-    }
-    
+ 
+    public lazy var itemRepository: ItemRepository = ServiceLocator.itemRepository()
     public lazy var distributionService: DistributeItem = DomainRegistry.sharedInstance.distributeItem()
     
-    public init() {
-        self.subscribeToBoxItemAddingFailed()
-    }
+    public init() { }
     
-    var addingBoxItemFailedSubscriber: DomainEventSubscription!
-    
-    func subscribeToBoxItemAddingFailed() {
-        addingBoxItemFailedSubscriber = eventPublisher.subscribe(AddingBoxItemFailed.self) {
-            [unowned self] event in
-            
-            self.distributeItem(event.itemTitle)
-        }
-    }
+    // MARK: Create/delete Item
     
     public func distributeItem(title: String) {
         distributionService.distribute(itemTitle: title)
     }
     
     public func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId) {
+        let itemId = ItemId(itemIdentifier)
+        let boxId = BoxId(boxIdentifier)
         
+        if let item = itemRepository.item(itemId: itemId) {
+            ///// TODO add remove event in domain: box.removeItem(item, repo)
+        }
     }
 }

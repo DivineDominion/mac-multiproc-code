@@ -48,22 +48,6 @@ class ManageItemsTests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK: Reacting to Domain Events
-    
-    func testAddingFailed_InvokesAnotherDistribution() {
-        let irrelevantBoxId = BoxId(101)
-        let irrelevantItemId = ItemId(202)
-        let itemTitle = "the title"
-        let service = self.service // force lazy init
-        
-        publisher.publish(AddingBoxItemFailed(boxId: irrelevantBoxId, itemId: irrelevantItemId, itemTitle: itemTitle))
-        
-        XCTAssertTrue(distributionService.didDistributeItem)
-        if distributionService.didDistributeItem {
-            XCTAssertEqual(distributionService.itemTitle!, itemTitle)
-        }
-    }
-    
     // MARK: Provision Item
     
     func testProvisionItem_DelegatesToDistributionService() {

@@ -37,7 +37,7 @@ public class DistributeItem: RedistributesItems {
             return
         }
         
-        eventPublisher.publish(BoxItemDistributionFailed(itemTitle: title))
+        eventPublisher.publish(ItemDistributionFailed(itemTitle: title))
     }
     
     func nonFullBoxesSortedByLoad() -> [Box] {

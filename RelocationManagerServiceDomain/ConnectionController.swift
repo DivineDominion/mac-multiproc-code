@@ -28,7 +28,7 @@ public class ConnectionController {
     }
     
     func subscribeToItemDistributionFailed() {
-        distributionFailedSubscription = eventPublisher.subscribe(BoxItemDistributionFailed.self) {
+        distributionFailedSubscription = eventPublisher.subscribe(ItemDistributionFailed.self) {
             [unowned self] event in
             
             self.send(DistributingItemFailed(itemTitle: event.itemTitle))

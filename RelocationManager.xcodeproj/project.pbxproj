@@ -528,6 +528,7 @@
 			children = (
 				5063CE241A9B250100F94449 /* RelocationManager.xcdatamodel */,
 				5063CE021A9B23D000F94449 /* PersistentStack.swift */,
+				5063CE0C1A9B23D700F94449 /* Entities */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -538,7 +539,6 @@
 				50A4F62A1A9CDA6400A32A5E /* ServiceLocator.swift */,
 				501963211AA725B90041DFD8 /* Connection */,
 				5063CE0D1A9B23E200F94449 /* Core Data */,
-				5063CE0C1A9B23D700F94449 /* Entities */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";

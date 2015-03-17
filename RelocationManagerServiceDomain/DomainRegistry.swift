@@ -54,11 +54,11 @@ public class DomainRegistry {
     
     // MARK: Repositories
     
-    func boxRepository() -> BoxRepository {
+    private func boxRepository() -> BoxRepository {
         return ServiceLocator.boxRepository()
     }
     
-    func itemRepository() -> ItemRepository {
+    private func itemRepository() -> ItemRepository {
         return ServiceLocator.itemRepository()
     }
 }
