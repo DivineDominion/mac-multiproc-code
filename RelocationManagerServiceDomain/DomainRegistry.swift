@@ -37,22 +37,28 @@ public class DomainRegistry {
         DomainRegistryStatic.singleton = instance
     }
     
-    // MARK: Registry Accessors
     
-    public func boxRepository() -> BoxRepository {
+    // MARK: - Services
+
+    public func provisioningService() -> ProvisioningService {
+        return ProvisioningService(boxRepository: boxRepository(), itemRepository: itemRepository())
+    }
+    
+    public func distributeItem() -> DistributeItem {
+        return DistributeItem(boxRepository: boxRepository(), itemRepository: itemRepository(), provisioningService: provisioningService())
+    }
+    
+    public func dissolveBox() -> DissolveBox {
+        return DissolveBox(boxRepository: boxRepository(), itemRepository: itemRepository(), distributionService: distributeItem())
+    }
+    
+    // MARK: Repositories
+    
+    func boxRepository() -> BoxRepository {
         return ServiceLocator.boxRepository()
     }
     
-    public func itemRepository() -> ItemRepository {
+    func itemRepository() -> ItemRepository {
         return ServiceLocator.itemRepository()
-    }
-    
-    lazy var _distributeItem: DistributeItem = DistributeItem(boxRepository: self.boxRepository(), itemRepository: self.itemRepository(), provisioningService: self.provisioningService())
-    public func distributeItem() -> DistributeItem {
-        return _distributeItem
-    }
-    
-    public func provisioningService() -> ProvisioningService {
-        return ProvisioningService(boxRepository: boxRepository(), itemRepository: itemRepository())
     }
 }

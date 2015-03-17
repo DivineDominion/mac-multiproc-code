@@ -39,6 +39,7 @@ class DistributeItemTests: XCTestCase {
     lazy var provisioningService: TestProvisioningService = TestProvisioningService(boxRepository: NullBoxRepository(), itemRepository: NullItemRepository())
     lazy var distributeItem: DistributeItem = DistributeItem(boxRepository: self.boxRepository, itemRepository: self.itemRepository, provisioningService: self.provisioningService)
     
+    
     override func setUp() {
         super.setUp()
         DomainEventPublisher.setSharedInstance(publisher)
@@ -48,6 +49,7 @@ class DistributeItemTests: XCTestCase {
         DomainEventPublisher.resetSharedInstance()
         super.tearDown()
     }
+    
     
     func emptyBox() -> Box {
         return boxFactory.emptyBox()

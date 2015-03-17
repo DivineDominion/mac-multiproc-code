@@ -14,10 +14,6 @@ import RelocationManagerServiceDomain
 class TestBoxFactory {
     let itemRepository = InstantFullItemRepository()
     
-    func registerItemRepository(registry: TestDomainRegistry) {
-        registry.testItemRepository = itemRepository
-    }
-    
     var identifier: IntegerId = 0
     func emptyBox() -> Box {
         return Box(boxId: BoxId(identifier++), capacity: .Small, title: "irrelevant")
@@ -40,7 +36,7 @@ class TestBoxFactory {
             
             return []
         }
-        
+                
         func fillBox(box: Box) {
             var boxItems = [Item]()
             

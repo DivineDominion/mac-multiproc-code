@@ -101,6 +101,7 @@
 		50DBEDB71AB17F0700AE58CB /* DissolveBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBEDB51AB17F0700AE58CB /* DissolveBox.swift */; };
 		50DBEDB91AB18E0900AE58CB /* DissolveBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBEDB81AB18E0900AE58CB /* DissolveBoxTests.swift */; };
 		50E7A1691A6E5D99008E5174 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 507D52F31A6D02C2008F44D1 /* FRMDA3XRGC.de.christiantietze.relocman.Service.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50F73FD91AB837D3002F3004 /* TestServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F73FD81AB837D3002F3004 /* TestServiceLocator.swift */; };
 		50F98BD21A714C1800426FD8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F98BD11A714C1800426FD8 /* main.swift */; };
 		50FAC0831A8DE579001A2EF1 /* BoxViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FAC0821A8DE579001A2EF1 /* BoxViewControllerTests.swift */; };
 		50FAC0851A8DE672001A2EF1 /* NonNilStringValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FAC0841A8DE672001A2EF1 /* NonNilStringValueTransformer.swift */; };
@@ -236,6 +237,7 @@
 		50D215C61A9B479300059B36 /* BoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTests.swift; sourceTree = "<group>"; };
 		50DBEDB51AB17F0700AE58CB /* DissolveBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DissolveBox.swift; sourceTree = "<group>"; };
 		50DBEDB81AB18E0900AE58CB /* DissolveBoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DissolveBoxTests.swift; sourceTree = "<group>"; };
+		50F73FD81AB837D3002F3004 /* TestServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestServiceLocator.swift; sourceTree = "<group>"; };
 		50F98BD11A714C1800426FD8 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50FAC0811A8DE578001A2EF1 /* RelocationManagerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RelocationManagerTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		50FAC0821A8DE579001A2EF1 /* BoxViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxViewControllerTests.swift; sourceTree = "<group>"; };
@@ -673,6 +675,7 @@
 			children = (
 				5063CE291A9B262E00F94449 /* CoreDataTestCase.swift */,
 				5063CE271A9B260100F94449 /* TestDomainEventPublisher.swift */,
+				50F73FD81AB837D3002F3004 /* TestServiceLocator.swift */,
 				50B081261AADAB6E00E24120 /* TestDomainRegistry.swift */,
 				501963161AA711560041DFD8 /* TestProvisioningService.swift */,
 				50B081301AADB79200E24120 /* TestIntegerIdGenerator.swift */,
@@ -1095,6 +1098,7 @@
 				50CA19A41AA5BE07006C254E /* ManageItemsTests.swift in Sources */,
 				5063CE2A1A9B262E00F94449 /* CoreDataTestCase.swift in Sources */,
 				50D215C71A9B479300059B36 /* BoxTests.swift in Sources */,
+				50F73FD91AB837D3002F3004 /* TestServiceLocator.swift in Sources */,
 				50DBEDB91AB18E0900AE58CB /* DissolveBoxTests.swift in Sources */,
 				5060FCC61AAEF64C00C8818E /* ManagedItemTests.swift in Sources */,
 				5062F8C11A9C9400005F45FB /* DistributeItemTests.swift in Sources */,

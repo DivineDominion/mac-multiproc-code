@@ -10,7 +10,7 @@ import Foundation
 
 public class ManageBoxes {
     public lazy var provisioningService: ProvisioningService = DomainRegistry.sharedInstance.provisioningService()
-    public lazy var boxRepository: BoxRepository = ServiceLocator.boxRepository()
+    public lazy var boxRepository: BoxRepository = DomainRegistry.sharedInstance.boxRepository()
     public lazy var dissolvingService: DissolveBox = DomainRegistry.sharedInstance.dissolveBox()
     
     public init() { }

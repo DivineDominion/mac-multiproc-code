@@ -67,23 +67,23 @@ public class Box: NSObject {
         return Item(itemId: itemId, title: title, boxId: boxId)
     }
     
-    public func itemsCount(itemProvider: ProvidesBoxItems) -> Int {
-        return itemProvider.items(boxId: boxId).count
-    }
-    
     public func isFull(itemProvider: ProvidesBoxItems) -> Bool {
-        return remainingCapacity(itemProvider) <= 0
+        return remainingCapacity(takingItemsFrom: itemProvider) <= 0
     }
     
     public func isEmpty(itemProvider: ProvidesBoxItems) -> Bool {
-        return remainingCapacity(itemProvider) == capacity.rawValue
+        return remainingCapacity(takingItemsFrom: itemProvider) == capacity.rawValue
     }
     
-    public func remainingCapacity(itemProvider: ProvidesBoxItems) -> Int {
+    public func remainingCapacity(takingItemsFrom itemProvider: ProvidesBoxItems) -> Int {
         let capacity = self.capacity.rawValue
         let load = itemsCount(itemProvider)
         
         return capacity - load
+    }
+    
+    public func itemsCount(itemProvider: ProvidesBoxItems) -> Int {
+        return itemProvider.count(boxId: boxId)
     }
     
     public func lock() {

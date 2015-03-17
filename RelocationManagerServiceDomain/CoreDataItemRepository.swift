@@ -44,6 +44,10 @@ public class CoreDataItemRepository: NSObject, ItemRepository {
         }
     }
     
+    public func count(#boxId: BoxId) -> Int {
+        return items(boxId: boxId).count
+    }
+    
     public func items(#boxId: BoxId) -> [Item] {
         let allItems = allManagedItems()
         let itemsMatchingBox = allItems.filter { managedItem -> Bool in

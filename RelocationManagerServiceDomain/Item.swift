@@ -37,6 +37,7 @@ public func ==(lhs: ItemId, rhs: ItemId) -> Bool {
 
 public protocol ProvidesBoxItems {
     func items(#boxId: BoxId) -> [Item]
+    func count(#boxId: BoxId) -> Int
 }
 
 public protocol ItemRepository: ProvidesBoxItems {

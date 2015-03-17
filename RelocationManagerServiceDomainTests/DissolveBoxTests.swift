@@ -34,7 +34,8 @@ class DissolveBoxTests: XCTestCase {
     lazy var itemRepository: ItemRepository = self.boxFactory.itemRepository
     let distributionService = TestDistributeItem()
     
-    lazy var service: DissolveBox = DissolveBox(distributionService: self.distributionService, boxRepository: self.boxRepository, itemRepository: self.itemRepository)
+    lazy var service: DissolveBox = DissolveBox(boxRepository: self.boxRepository, itemRepository: self.itemRepository, distributionService: self.distributionService)
+    
     
     override func setUp() {
         super.setUp()
@@ -45,6 +46,7 @@ class DissolveBoxTests: XCTestCase {
         DomainEventPublisher.resetSharedInstance()
         super.tearDown()
     }
+    
     
     func testDissolve_DelegatesToDistributionService() {
         let box = boxFactory.fullBox()

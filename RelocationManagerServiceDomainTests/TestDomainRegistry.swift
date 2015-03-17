@@ -11,17 +11,7 @@ import Foundation
 import RelocationManagerServiceDomain
 
 class TestDomainRegistry: DomainRegistry {
-    
-    var testBoxRepository = NullBoxRepository()
-    override func boxRepository() -> BoxRepository {
-        return testBoxRepository
-    }
-    
-    var testItemRepository = NullItemRepository()
-    override func itemRepository() -> ItemRepository {
-        return testItemRepository
-    }
-    
+        
     var testProvisioningService = NullProvisioningService()
     override func provisioningService() -> ProvisioningService {
         return testProvisioningService

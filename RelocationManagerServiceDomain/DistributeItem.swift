@@ -87,7 +87,7 @@ public class DistributeItem: RedistributesItems {
     }
     
     func remainingCapacity(box: Box) -> Int {
-        return box.remainingCapacity(itemRepository)
+        return box.remainingCapacity(takingItemsFrom: itemRepository)
     }
     
     func moveItems(box: Box) {

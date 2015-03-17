@@ -21,7 +21,7 @@ public class DissolveBox {
     let boxRepository: BoxRepository
     let itemRepository: ItemRepository
     
-    public init(distributionService: DistributeItem, boxRepository: BoxRepository, itemRepository: ItemRepository) {
+    public init(boxRepository: BoxRepository, itemRepository: ItemRepository, distributionService: DistributeItem) {
         self.distributionService = distributionService
         self.boxRepository = boxRepository
         self.itemRepository = itemRepository

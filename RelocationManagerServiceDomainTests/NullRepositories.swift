@@ -28,5 +28,6 @@ class NullItemRepository: ItemRepository {
     func addItem(item: Item) { }
     func items() -> [Item] { return [] }
     func items(#boxId: BoxId) -> [Item] { return [] }
+    func count(#boxId: BoxId) -> Int { return items(boxId: boxId).count }
     func count() -> Int { return 0 }
 }
