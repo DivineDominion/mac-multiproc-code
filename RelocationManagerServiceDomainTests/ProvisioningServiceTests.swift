@@ -88,10 +88,13 @@ class ProvisioningServiceTests: XCTestCase {
         XCTAssertFalse(identityServiceDouble.didObtainItemId)
     }
     
-    func testProvisionItem_CallsItemFactory() {
+    func testProvisionItem_CallsItemFactoryWithIdentityService() {
         provisionIrrelevantItem()
         
         XCTAssertTrue(boxDouble.didCreateItem)
+        if boxDouble.didCreateItem && boxDouble.identityServiceUsed !== identityServiceDouble {
+            XCTFail("wrong identity service used")
+        }
     }
     
     func testProvisionItem_AddsItemToRepo() {
@@ -125,28 +128,30 @@ class ProvisioningServiceTests: XCTestCase {
     // MARK: Test Doubles
     
     class TestBoxRepository: NullBoxRepository {
-        var lastBoxAdded: Box?
+        private(set) var lastBoxAdded: Box?
         override func addBox(box: Box) {
             lastBoxAdded = box
         }
     }
     
     class TestItemRepository: NullItemRepository {
-        var lastItemAdded: Item?
+        private(set) var lastItemAdded: Item?
         override func addItem(item: Item) {
             lastItemAdded = item
         }
     }
 
     class TestBox: Box {
-        init() {
-            super.init(boxId: BoxId(0), capacity: .Medium, title: "irrelevant")
+        convenience init() {
+            self.init(boxId: BoxId(0), capacity: .Medium, title: "irrelevant")
         }
         
         lazy var itemStub: Item = Item(itemId: ItemId(204), title: "irrelevant", boxId: self.boxId)
-        var didCreateItem = false
+        private(set) var didCreateItem = false
+        private(set) var identityServiceUsed: IdentityService? = nil
         override func item(itemTitle: String, identityService: IdentityService) -> Item {
             didCreateItem = true
+            identityServiceUsed = identityService
             return itemStub
         }
     }

@@ -27,9 +27,21 @@ public class DissolveBox {
         self.itemRepository = itemRepository
     }
     
-    public func dissolve(box: Box) {
-        box.dissolve(distributionService)
+    public func dissolve(boxId: BoxId) {
+        if let box = boxRepository.box(boxId: boxId) {
+            emptyBox(box)
+            removeBox(box)
+            return
+        }
         
+        eventPublisher.publish(BoxRemovalFailed(boxId: boxId))
+    }
+    
+    func emptyBox(box: Box) {
+        box.dissolve(distributionService)
+    }
+    
+    func removeBox(box: Box) {
         if !box.isEmpty(itemRepository) {
             eventPublisher.publish(BoxRemovalFailed(boxId: box.boxId))
             return

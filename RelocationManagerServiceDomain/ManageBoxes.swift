@@ -10,7 +10,6 @@ import Foundation
 
 public class ManageBoxes {
     
-    public lazy var boxRepository: BoxRepository = ServiceLocator.boxRepository()
     public lazy var provisioningService: ProvisioningService = DomainRegistry.sharedInstance.provisioningService()
     public lazy var dissolvingService: DissolveBox = DomainRegistry.sharedInstance.dissolveBox()
     
@@ -24,8 +23,6 @@ public class ManageBoxes {
     
     public func removeBox(boxIdentifier: IntegerId) {
         let boxId = BoxId(boxIdentifier)
-        if let box = boxRepository.box(boxId: boxId) {
-            dissolvingService.dissolve(box)
-        }
+        dissolvingService.dissolve(boxId)
     }
 }

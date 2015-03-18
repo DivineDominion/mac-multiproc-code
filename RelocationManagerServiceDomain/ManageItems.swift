@@ -15,8 +15,6 @@ public class ManageItems {
     
     public init() { }
     
-    // MARK: Create/delete Item
-    
     public func distributeItem(title: String) {
         distributionService.distribute(itemTitle: title)
     }

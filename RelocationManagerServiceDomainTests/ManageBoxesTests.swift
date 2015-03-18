@@ -13,32 +13,84 @@ import RelocationManagerServiceDomain
 
 class ManageBoxesTests: XCTestCase {
     
-    let provisioningService = TestProvisioningService(boxRepository: NullBoxRepository(), itemRepository: NullItemRepository())
+    let registry = TestDomainRegistry()
+    let provisioningDouble = TestProvisioningService(boxRepository: NullBoxRepository(), itemRepository: NullItemRepository())
+    let dissolvingDouble = TestDissolveBox()
     
-    lazy var service: ManageBoxes = {
-        let service = ManageBoxes()
-        service.provisioningService = self.provisioningService
-        return service
-    }()
+    let service = ManageBoxes()
     
-    // MARK: Provision Box
     
-    func testProvisionBox_WithValidCapacity_ProvisionsBox() {
+    override func setUp() {
+        super.setUp()
+
+        registry.testProvisioningService = provisioningDouble
+        registry.testDissolveBox = dissolvingDouble
+        DomainRegistry.setSharedInstance(registry)
+    }
+    
+    override func tearDown() {
+        DomainRegistry.resetSharedInstance()
+        
+        super.tearDown()
+    }
+    
+    
+    // MARK: Order Box
+    
+    func testOrderBox_WithValidCapacity_ProvisionsBox() {
         let title = "The Box"
         let capacity = BoxCapacity.Medium.rawValue
         
         service.orderBox(title, capacity: capacity)
         
-        XCTAssertTrue(provisioningService.didProvisionBox)
-        if provisioningService.didProvisionBox {
-            XCTAssertEqual(provisioningService.provisionedBoxTitle!, title)
-            XCTAssertEqual(provisioningService.provisionedBoxCapacity!, capacity)
+        XCTAssertTrue(provisioningDouble.didProvisionBox)
+        if provisioningDouble.didProvisionBox {
+            XCTAssertEqual(provisioningDouble.provisionedBoxTitle!, title)
+            XCTAssertEqual(provisioningDouble.provisionedBoxCapacity!, capacity)
         }
     }
     
-    func testProvisionBox_WithInvalidCapacity_DoesNotProvisionBox() {
+    func testOrderBox_WithInvalidCapacity_DoesNotProvisionBox() {
         service.orderBox("irrelevant", capacity: 1000)
         
-        XCTAssertFalse(provisioningService.didProvisionBox)
+        XCTAssertFalse(provisioningDouble.didProvisionBox)
+    }
+    
+    
+    // MARK: Remove Box
+    
+    func testRemoveBox_DelegatesToDissolvingService() {
+        service.removeBox(1234)
+        
+        XCTAssert(dissolvingDouble.dissolvedBox == BoxId(1234))
+    }
+    
+    
+    // MARK: - 
+    // MARK: Test Doubles
+    
+    class TestDissolveBox: NullDissolveBox {
+        init() {
+            super.init(boxRepository: NullBoxRepository(), itemRepository: NullItemRepository(), distributionService: NullDistributeItem())
+        }
+        
+        private(set) var dissolvedBox: BoxId? = nil
+        override func dissolve(boxId: BoxId) {
+            dissolvedBox = boxId
+        }
+    }
+    
+    
+    class TestProvisioningService: NullProvisioningService {
+        override func provisionItem(title: String, inBox box: Box) { }
+        
+        var provisionedBoxTitle: String?
+        var provisionedBoxCapacity: Int?
+        var didProvisionBox = false
+        override func provisionBox(title: String, capacity: BoxCapacity) {
+            provisionedBoxTitle = title
+            provisionedBoxCapacity = capacity.rawValue
+            didProvisionBox = true
+        }
     }
 }

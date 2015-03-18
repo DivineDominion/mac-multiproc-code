@@ -12,7 +12,7 @@
 		500925C71A91FDA1007BE727 /* BoxCreationWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 500925C51A91FDA1007BE727 /* BoxCreationWindowController.xib */; };
 		501963131AA7107E0041DFD8 /* ManageBoxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963121AA7107E0041DFD8 /* ManageBoxes.swift */; };
 		501963151AA710FE0041DFD8 /* ManageBoxesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963141AA710FE0041DFD8 /* ManageBoxesTests.swift */; };
-		501963171AA711560041DFD8 /* TestProvisioningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963161AA711560041DFD8 /* TestProvisioningService.swift */; };
+		501963171AA711560041DFD8 /* NullProvisioningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963161AA711560041DFD8 /* NullProvisioningService.swift */; };
 		501963191AA712280041DFD8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501963181AA712280041DFD8 /* Endpoint.swift */; };
 		5019631B1AA712C60041DFD8 /* DomainEventSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019631A1AA712C60041DFD8 /* DomainEventSubscription.swift */; };
 		501963201AA722A30041DFD8 /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019631F1AA722A30041DFD8 /* ConnectionController.swift */; };
@@ -74,6 +74,7 @@
 		5063CE281A9B260100F94449 /* TestDomainEventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE271A9B260100F94449 /* TestDomainEventPublisher.swift */; };
 		5063CE2A1A9B262E00F94449 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063CE291A9B262E00F94449 /* CoreDataTestCase.swift */; };
 		506CC44F1AB99F9F00B335AA /* NullRemoveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC44E1AB99F9F00B335AA /* NullRemoveItem.swift */; };
+		506CC4511AB9B01E00B335AA /* NullDissolveBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC4501AB9B01E00B335AA /* NullDissolveBox.swift */; };
 		507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D52D11A6D0252008F44D1 /* AppDelegate.swift */; };
 		507D52D71A6D0252008F44D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D61A6D0252008F44D1 /* Images.xcassets */; };
 		507D52DA1A6D0252008F44D1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D81A6D0252008F44D1 /* MainMenu.xib */; };
@@ -169,7 +170,7 @@
 		500925C51A91FDA1007BE727 /* BoxCreationWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoxCreationWindowController.xib; sourceTree = "<group>"; };
 		501963121AA7107E0041DFD8 /* ManageBoxes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageBoxes.swift; sourceTree = "<group>"; };
 		501963141AA710FE0041DFD8 /* ManageBoxesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageBoxesTests.swift; sourceTree = "<group>"; };
-		501963161AA711560041DFD8 /* TestProvisioningService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestProvisioningService.swift; sourceTree = "<group>"; };
+		501963161AA711560041DFD8 /* NullProvisioningService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullProvisioningService.swift; sourceTree = "<group>"; };
 		501963181AA712280041DFD8 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		5019631A1AA712C60041DFD8 /* DomainEventSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainEventSubscription.swift; sourceTree = "<group>"; };
 		5019631F1AA722A30041DFD8 /* ConnectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionController.swift; sourceTree = "<group>"; };
@@ -211,6 +212,7 @@
 		5063CE271A9B260100F94449 /* TestDomainEventPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDomainEventPublisher.swift; sourceTree = "<group>"; };
 		5063CE291A9B262E00F94449 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
 		506CC44E1AB99F9F00B335AA /* NullRemoveItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullRemoveItem.swift; sourceTree = "<group>"; };
+		506CC4501AB9B01E00B335AA /* NullDissolveBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullDissolveBox.swift; sourceTree = "<group>"; };
 		507D52CC1A6D0252008F44D1 /* RelocationManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelocationManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D52D01A6D0252008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		507D52D11A6D0252008F44D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -570,6 +572,17 @@
 			name = Domain;
 			sourceTree = "<group>";
 		};
+		506CC4521AB9B0CD00B335AA /* Null Domain Services */ = {
+			isa = PBXGroup;
+			children = (
+				501963161AA711560041DFD8 /* NullProvisioningService.swift */,
+				50B081221AADAB3300E24120 /* NullDistributeItem.swift */,
+				506CC44E1AB99F9F00B335AA /* NullRemoveItem.swift */,
+				506CC4501AB9B01E00B335AA /* NullDissolveBox.swift */,
+			);
+			name = "Null Domain Services";
+			sourceTree = "<group>";
+		};
 		507D52C31A6D0252008F44D1 = {
 			isa = PBXGroup;
 			children = (
@@ -690,15 +703,13 @@
 			isa = PBXGroup;
 			children = (
 				5063CE291A9B262E00F94449 /* CoreDataTestCase.swift */,
-				5063CE271A9B260100F94449 /* TestDomainEventPublisher.swift */,
 				50F73FD81AB837D3002F3004 /* TestServiceLocator.swift */,
-				50B081261AADAB6E00E24120 /* TestDomainRegistry.swift */,
-				501963161AA711560041DFD8 /* TestProvisioningService.swift */,
+				50CA19A51AA5C1F6006C254E /* NullRepositories.swift */,
 				50B081301AADB79200E24120 /* TestIntegerIdGenerator.swift */,
 				50ABEA9E1A9B21E600E573E5 /* Info.plist */,
-				50CA19A51AA5C1F6006C254E /* NullRepositories.swift */,
-				50B081221AADAB3300E24120 /* NullDistributeItem.swift */,
-				506CC44E1AB99F9F00B335AA /* NullRemoveItem.swift */,
+				5063CE271A9B260100F94449 /* TestDomainEventPublisher.swift */,
+				50B081261AADAB6E00E24120 /* TestDomainRegistry.swift */,
+				506CC4521AB9B0CD00B335AA /* Null Domain Services */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1111,12 +1122,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				501963171AA711560041DFD8 /* TestProvisioningService.swift in Sources */,
+				501963171AA711560041DFD8 /* NullProvisioningService.swift in Sources */,
 				5063CE231A9B244000F94449 /* ProvisioningServiceTests.swift in Sources */,
 				50EC77311AB996B60000DCBA /* RemoveItemTests.swift in Sources */,
 				5063CE221A9B244000F94449 /* ManagedBoxTests.swift in Sources */,
 				50B0812F1AADB75D00E24120 /* CoreDataItemRepositoryTests.swift in Sources */,
 				5063CE201A9B244000F94449 /* PersistentStackTests.swift in Sources */,
+				506CC4511AB9B01E00B335AA /* NullDissolveBox.swift in Sources */,
 				50CA19A41AA5BE07006C254E /* ManageItemsTests.swift in Sources */,
 				5063CE2A1A9B262E00F94449 /* CoreDataTestCase.swift in Sources */,
 				50D215C71A9B479300059B36 /* BoxTests.swift in Sources */,

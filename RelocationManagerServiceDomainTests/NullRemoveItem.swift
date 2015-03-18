@@ -11,8 +11,8 @@ import Foundation
 import RelocationManagerServiceDomain
 
 class NullRemoveItem: RemoveItem {
-    init() {
-        super.init(itemRepository: NullItemRepository())
+    convenience init() {
+        self.init(itemRepository: NullItemRepository())
     }
     
     override func remove(itemId: ItemId, fromBox boxId: BoxId) { }
