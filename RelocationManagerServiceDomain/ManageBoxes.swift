@@ -17,12 +17,17 @@ public class ManageBoxes {
     
     public func orderBox(label: String, capacity: Int) {
         if let boxCapacity = BoxCapacity(rawValue: capacity) {
-            provisioningService.provisionBox(label, capacity: boxCapacity)
+            ServiceLocator.unitOfWork().execute {
+                self.provisioningService.provisionBox(label, capacity: boxCapacity)
+            }
         }
     }
     
     public func removeBox(boxIdentifier: IntegerId) {
         let boxId = BoxId(boxIdentifier)
-        dissolvingService.dissolve(boxId)
+        
+        ServiceLocator.unitOfWork().execute {
+            self.dissolvingService.dissolve(boxId)
+        }
     }
 }

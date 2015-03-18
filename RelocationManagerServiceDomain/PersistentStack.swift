@@ -36,7 +36,7 @@ public class PersistentStack: NSObject {
             return
         }
         
-        let managedObjectContext = NSManagedObjectContext()
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         self.managedObjectContext = managedObjectContext
     }

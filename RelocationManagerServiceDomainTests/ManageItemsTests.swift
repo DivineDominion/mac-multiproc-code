@@ -20,22 +20,19 @@ class ManageItemsTests: XCTestCase {
     let removalDouble = TestRemoveItem()
     let registry = TestDomainRegistry()
     
-    let publisher = DomainEventPublisher(notificationCenter: NSNotificationCenter())
-
-    
     override func setUp() {
         super.setUp()
+        
+        NullServiceLocator.registerAsSharedInstance()
         
         registry.testDistributeItem = distributionDouble
         registry.testRemoveItem = removalDouble
         DomainRegistry.setSharedInstance(registry)
-        
-        DomainEventPublisher.setSharedInstance(publisher)
     }
     
     override func tearDown() {
-        DomainEventPublisher.resetSharedInstance()
         DomainRegistry.resetSharedInstance()
+        NullServiceLocator.resetSharedInstance()
         
         super.tearDown()
     }

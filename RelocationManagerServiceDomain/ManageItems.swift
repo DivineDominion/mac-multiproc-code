@@ -16,13 +16,17 @@ public class ManageItems {
     public init() { }
     
     public func distributeItem(title: String) {
-        distributionService.distribute(itemTitle: title)
+        ServiceLocator.unitOfWork().execute {
+            self.distributionService.distribute(itemTitle: title)
+        }
     }
     
     public func removeItem(itemIdentifier: IntegerId, fromBoxIdentifier boxIdentifier: IntegerId) {
         let itemId = ItemId(itemIdentifier)
         let boxId = BoxId(boxIdentifier)
         
-        removalService.remove(itemId, fromBox: boxId)
+        ServiceLocator.unitOfWork().execute {
+            self.removalService.remove(itemId, fromBox: boxId)
+        }
     }
 }

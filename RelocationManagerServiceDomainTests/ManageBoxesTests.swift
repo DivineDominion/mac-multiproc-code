@@ -23,6 +23,8 @@ class ManageBoxesTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
+        NullServiceLocator.registerAsSharedInstance()
+        
         registry.testProvisioningService = provisioningDouble
         registry.testDissolveBox = dissolvingDouble
         DomainRegistry.setSharedInstance(registry)
@@ -30,6 +32,7 @@ class ManageBoxesTests: XCTestCase {
     
     override func tearDown() {
         DomainRegistry.resetSharedInstance()
+        NullServiceLocator.resetSharedInstance()
         
         super.tearDown()
     }

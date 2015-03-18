@@ -8,20 +8,33 @@
 
 import Cocoa
 
+private struct ServiceLocatorStatic {
+    static var singleton: ServiceLocator? = nil
+    static var onceToken: dispatch_once_t = 0
+}
+
 public class ServiceLocator {
+    
+    public init() { }
     public class var sharedInstance: ServiceLocator {
-        struct Static {
-            static let instance: ServiceLocator = ServiceLocator()
+        
+        if ServiceLocatorStatic.singleton == nil {
+            dispatch_once(&ServiceLocatorStatic.onceToken) {
+                self.setSharedInstance(ServiceLocator())
+            }
         }
-        return Static.instance
+        
+        return ServiceLocatorStatic.singleton!
     }
     
+    /// Reset the static `sharedInstance`, for example for testing
     public class func resetSharedInstance() {
-        sharedInstance.reset()
+        ServiceLocatorStatic.singleton = nil
+        ServiceLocatorStatic.onceToken = 0
     }
     
-    func reset() {
-        managedObjectContext = nil
+    public class func setSharedInstance(instance: ServiceLocator) {
+        ServiceLocatorStatic.singleton = instance
     }
     
     var managedObjectContext: NSManagedObjectContext?
@@ -31,14 +44,30 @@ public class ServiceLocator {
         self.managedObjectContext = managedObjectContext
     }
     
-    //MARK: Repository Access
+    func guardManagedObjectContext() {
+        assert(managedObjectContext != nil, "managedObjectContext must be set up")
+    }
+    
+    // MARK: Transaction
+    
+    public class func unitOfWork() -> UnitOfWork {
+        return sharedInstance.unitOfWork()
+    }
+    
+    public func unitOfWork() -> UnitOfWork {
+        guardManagedObjectContext()
+        return UnitOfWork(managedObjectContext: managedObjectContext!)
+    }
+    
+    
+    // MARK: Repository Access
     
     public class func boxRepository() -> BoxRepository {
         return sharedInstance.boxRepository()
     }
     
     public func boxRepository() -> BoxRepository {
-        assert(managedObjectContext != nil, "managedObjectContext must be set up")
+        guardManagedObjectContext()
         return CoreDataBoxRepository(managedObjectContext: managedObjectContext!)
     }
     
@@ -48,7 +77,7 @@ public class ServiceLocator {
     }
     
     public func itemRepository() -> ItemRepository {
-        assert(managedObjectContext != nil, "managedObjectContext must be set up")
+        guardManagedObjectContext()
         return CoreDataItemRepository(managedObjectContext: managedObjectContext!)
     }
 }
