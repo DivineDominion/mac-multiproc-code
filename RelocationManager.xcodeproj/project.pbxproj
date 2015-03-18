@@ -79,6 +79,9 @@
 		509CD15C1A92012C00EDEABD /* BoxCreationWindowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509CD15B1A92012C00EDEABD /* BoxCreationWindowControllerTests.swift */; };
 		509CD15E1A9208E000EDEABD /* BoxOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509CD15D1A9208E000EDEABD /* BoxOrder.swift */; };
 		509CD1601A9209D100EDEABD /* CreateBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509CD15F1A9209D100EDEABD /* CreateBoxTests.swift */; };
+		50A3081B1AB98DE4007D5B5C /* IdentityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3081A1AB98DE4007D5B5C /* IdentityService.swift */; };
+		50A3081C1AB98DE4007D5B5C /* IdentityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3081A1AB98DE4007D5B5C /* IdentityService.swift */; };
+		50A3081E1AB98DF7007D5B5C /* IdentityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3081D1AB98DF7007D5B5C /* IdentityServiceTests.swift */; };
 		50A4F6271A9CDA2300A32A5E /* ManageItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A4F6261A9CDA2300A32A5E /* ManageItems.swift */; };
 		50A4F6281A9CDA2300A32A5E /* ManageItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A4F6261A9CDA2300A32A5E /* ManageItems.swift */; };
 		50A4F6291A9CDA2F00A32A5E /* ServiceCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019FEA31A8CC97C007D5A09 /* ServiceCommunication.swift */; };
@@ -217,6 +220,8 @@
 		509CD15B1A92012C00EDEABD /* BoxCreationWindowControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxCreationWindowControllerTests.swift; sourceTree = "<group>"; };
 		509CD15D1A9208E000EDEABD /* BoxOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxOrder.swift; sourceTree = "<group>"; };
 		509CD15F1A9209D100EDEABD /* CreateBoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBoxTests.swift; sourceTree = "<group>"; };
+		50A3081A1AB98DE4007D5B5C /* IdentityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityService.swift; sourceTree = "<group>"; };
+		50A3081D1AB98DF7007D5B5C /* IdentityServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityServiceTests.swift; sourceTree = "<group>"; };
 		50A4F6261A9CDA2300A32A5E /* ManageItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageItems.swift; sourceTree = "<group>"; };
 		50A4F62A1A9CDA6400A32A5E /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		50ABEA631A92185E00E573E5 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
@@ -349,6 +354,7 @@
 			children = (
 				50D215C41A9B388500059B36 /* DistributeItem.swift */,
 				5063CE0F1A9B240400F94449 /* ProvisioningService.swift */,
+				50A3081A1AB98DE4007D5B5C /* IdentityService.swift */,
 				50DBEDB51AB17F0700AE58CB /* DissolveBox.swift */,
 			);
 			name = Services;
@@ -487,6 +493,7 @@
 				5062F8C01A9C9400005F45FB /* DistributeItemTests.swift */,
 				5063CE1F1A9B244000F94449 /* ProvisioningServiceTests.swift */,
 				50DBEDB81AB18E0900AE58CB /* DissolveBoxTests.swift */,
+				50A3081D1AB98DF7007D5B5C /* IdentityServiceTests.swift */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -1028,6 +1035,7 @@
 				501963371AA75E320041DFD8 /* Item.swift in Sources */,
 				50B0812C1AADB40600E24120 /* CoreDataItemRepository.swift in Sources */,
 				5019632B1AA75E320041DFD8 /* ManagedEntity.swift in Sources */,
+				50A3081B1AB98DE4007D5B5C /* IdentityService.swift in Sources */,
 				501963291AA75E320041DFD8 /* RelocationManager.xcdatamodel in Sources */,
 				50B081291AADB3A600E24120 /* IdGenerator.swift in Sources */,
 				50DBEDB61AB17F0700AE58CB /* DissolveBox.swift in Sources */,
@@ -1080,6 +1088,7 @@
 				5063CE161A9B240400F94449 /* DomainEventPublisher.swift in Sources */,
 				5063CE1A1A9B240400F94449 /* Box.swift in Sources */,
 				5063CE071A9B23D000F94449 /* PersistentStack.swift in Sources */,
+				50A3081C1AB98DE4007D5B5C /* IdentityService.swift in Sources */,
 				5063CE0A1A9B23D100F94449 /* ManagedBox.swift in Sources */,
 				501963131AA7107E0041DFD8 /* ManageBoxes.swift in Sources */,
 				5019631B1AA712C60041DFD8 /* DomainEventSubscription.swift in Sources */,
@@ -1101,6 +1110,7 @@
 				50F73FD91AB837D3002F3004 /* TestServiceLocator.swift in Sources */,
 				50DBEDB91AB18E0900AE58CB /* DissolveBoxTests.swift in Sources */,
 				5060FCC61AAEF64C00C8818E /* ManagedItemTests.swift in Sources */,
+				50A3081E1AB98DF7007D5B5C /* IdentityServiceTests.swift in Sources */,
 				5062F8C11A9C9400005F45FB /* DistributeItemTests.swift in Sources */,
 				50B081311AADB79200E24120 /* TestIntegerIdGenerator.swift in Sources */,
 				50208E691A9B2CBA00F39A88 /* CoreDataBoxRepositoryTests.swift in Sources */,

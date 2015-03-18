@@ -12,31 +12,37 @@ import XCTest
 import RelocationManagerServiceDomain
 
 class ProvisioningServiceTests: XCTestCase {
-    class TestBoxRepository: NullBoxRepository {
-        
-        var lastBoxAdded: Box?
-        override func addBox(box: Box) {
-            lastBoxAdded = box
-        }
-    }
     
-    class TestItemRepository: NullItemRepository {
-        
-        var lastItemAdded: Item?
-        override func addItem(item: Item) {
-            lastItemAdded = item
-        }
-    }
-    
-    let boxRepository = TestBoxRepository()
-    let itemRepository = TestItemRepository()
     let publisher = MockDomainEventPublisher()
-    lazy var provisioningService: ProvisioningService = ProvisioningService(boxRepository: self.boxRepository, itemRepository: self.itemRepository)
     
+    let boxRepoDouble = TestBoxRepository()
+    let itemRepoDouble = TestItemRepository()
+    lazy var provisioningService: ProvisioningService = ProvisioningService(boxRepository: self.boxRepoDouble, itemRepository: self.itemRepoDouble)
+    
+    class TestIdentityService: IdentityService {
+        init() {
+            super.init(boxRepository: NullBoxRepository(), itemRepository: NullItemRepository())
+        }
+        
+        var didObtainBoxId = false
+        override func nextBoxId() -> BoxId {
+            didObtainBoxId = true
+            return super.nextBoxId()
+        }
+        
+        var didObtainItemId = false
+        override func nextItemId() -> ItemId {
+            didObtainItemId = true
+            return super.nextItemId()
+        }
+    }
+    
+    let identityServiceDouble = TestIdentityService()
     
     override func setUp() {
         super.setUp()
         DomainEventPublisher.setSharedInstance(publisher)
+        provisioningService.identityService = identityServiceDouble
     }
     
     override func tearDown() {
@@ -50,10 +56,16 @@ class ProvisioningServiceTests: XCTestCase {
         provisioningService.provisionBox("irrelevant", capacity: .Small)
     }
     
+    func testProbisionBox_ObtainsBoxId() {
+        provisionIrrelevantBox()
+        
+        XCTAssertTrue(identityServiceDouble.didObtainBoxId)
+    }
+    
     func testProvisionBox_AddsBoxToRepo() {
         provisionIrrelevantBox()
         
-        XCTAssertNotNil(boxRepository.lastBoxAdded)
+        XCTAssertNotNil(boxRepoDouble.lastBoxAdded)
     }
     
     func testProvisionBox_PublishesDomainEvent() {
@@ -63,21 +75,79 @@ class ProvisioningServiceTests: XCTestCase {
     }
     
     // MARK: Provisioning Items
-
+    
+    let boxDouble = TestBox()
+    
     func provisionIrrelevantItem() {
-        let box = Box(boxId: BoxId(0), capacity: .Medium, title: "irrelevant")
-        provisioningService.provisionItem("irrelevant", inBox: box)
+        provisioningService.provisionItem("irrelevant", inBox: boxDouble)
+    }
+    
+    func testProvisionItem_DoesNotObtainItemId() {
+        provisionIrrelevantItem()
+        
+        XCTAssertFalse(identityServiceDouble.didObtainItemId)
+    }
+    
+    func testProvisionItem_CallsItemFactory() {
+        provisionIrrelevantItem()
+        
+        XCTAssertTrue(boxDouble.didCreateItem)
     }
     
     func testProvisionItem_AddsItemToRepo() {
         provisionIrrelevantItem()
         
-        XCTAssertNotNil(itemRepository.lastItemAdded)
+        let expectedItem = boxDouble.itemStub
+        if let lastItemAdded = itemRepoDouble.lastItemAdded {
+            XCTAssertEqual(lastItemAdded, expectedItem)
+        } else {
+            XCTFail("item not added to repo")
+        }
     }
     
     func testProvisionItem_PublishesDomainEvent() {
         provisionIrrelevantItem()
         
         XCTAssert(publisher.lastPublishedEvent != nil)
+        if let event = publisher.lastPublishedEvent as? ItemProvisioned {
+            let expectedItemId = boxDouble.itemStub.itemId
+            XCTAssertEqual(event.itemId, expectedItemId)
+            
+            let expectedItemTitle = boxDouble.itemStub.title
+            XCTAssertEqual(event.title, expectedItemTitle)
+        } else {
+            XCTFail("wrong event")
+        }
+    }
+    
+    
+    // MARK: -
+    // MARK: Test Doubles
+    
+    class TestBoxRepository: NullBoxRepository {
+        var lastBoxAdded: Box?
+        override func addBox(box: Box) {
+            lastBoxAdded = box
+        }
+    }
+    
+    class TestItemRepository: NullItemRepository {
+        var lastItemAdded: Item?
+        override func addItem(item: Item) {
+            lastItemAdded = item
+        }
+    }
+
+    class TestBox: Box {
+        init() {
+            super.init(boxId: BoxId(0), capacity: .Medium, title: "irrelevant")
+        }
+        
+        lazy var itemStub: Item = Item(itemId: ItemId(204), title: "irrelevant", boxId: self.boxId)
+        var didCreateItem = false
+        override func item(itemTitle: String, identityService: IdentityService) -> Item {
+            didCreateItem = true
+            return itemStub
+        }
     }
 }

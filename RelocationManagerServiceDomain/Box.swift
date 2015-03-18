@@ -61,8 +61,8 @@ public class Box: NSObject {
         self.title = title
     }
     
-    public func item(itemTitle: String, provisioningService: ProvisioningService) -> Item {
-        let itemId = provisioningService.nextItemId()
+    public func item(itemTitle: String, identityService: IdentityService) -> Item {
+        let itemId = identityService.nextItemId()
         return Item(itemId: itemId, title: title, boxId: boxId)
     }
     

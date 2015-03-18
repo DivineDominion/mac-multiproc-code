@@ -15,6 +15,7 @@ public class ProvisioningService {
     
     let boxRepository: BoxRepository
     let itemRepository: ItemRepository
+    public lazy var identityService: IdentityService = IdentityService(boxRepository: self.boxRepository, itemRepository: self.itemRepository)
     
     public init(boxRepository: BoxRepository, itemRepository: ItemRepository) {
         self.boxRepository = boxRepository
@@ -22,7 +23,7 @@ public class ProvisioningService {
     }
     
     public func provisionBox(title: String, capacity: BoxCapacity) {
-        let boxId = boxRepository.nextId()
+        let boxId = identityService.nextBoxId()
         let box = Box(boxId: boxId, capacity: capacity, title: title)
         
         boxRepository.addBox(box)
@@ -31,14 +32,10 @@ public class ProvisioningService {
     }
     
     public func provisionItem(title: String, inBox box: Box) {
-        let item = box.item(title, provisioningService: self)
+        let item = box.item(title, identityService: identityService)
         
         itemRepository.addItem(item)
         
         eventPublisher.publish(ItemProvisioned(itemId: item.itemId, title: item.title))
-    }
-    
-    public func nextItemId() -> ItemId {
-        return itemRepository.nextId()
     }
 }
