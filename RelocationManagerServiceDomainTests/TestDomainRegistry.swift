@@ -21,4 +21,9 @@ class TestDomainRegistry: DomainRegistry {
     override func distributeItem() -> DistributeItem {
         return testDistributeItem
     }
+    
+    var testRemoveItem = NullRemoveItem()
+    override func removeItem() -> RemoveItem {
+        return testRemoveItem
+    }
 }

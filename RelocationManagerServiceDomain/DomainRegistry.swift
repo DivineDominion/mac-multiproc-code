@@ -52,6 +52,10 @@ public class DomainRegistry {
         return DissolveBox(boxRepository: boxRepository(), itemRepository: itemRepository(), distributionService: distributeItem())
     }
     
+    public func removeItem() -> RemoveItem {
+        return RemoveItem(itemRepository: itemRepository())
+    }
+    
     // MARK: Repositories
     
     private func boxRepository() -> BoxRepository {

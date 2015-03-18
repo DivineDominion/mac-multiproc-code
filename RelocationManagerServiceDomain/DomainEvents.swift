@@ -21,6 +21,7 @@ public enum DomainEventType: String {
     case BoxItemsRedistributionFailed = "Box Items Redistribution Failed"
 
     case ItemRemoved = "Item Removed"
+    case ItemRemovalFailed = "Item RemovalFailed"
 
     var name: String {
         return self.rawValue
@@ -134,6 +135,47 @@ public struct ItemRemoved: DomainEvent {
         return [
             "item" : [
                 "id" : itemId.number
+            ]
+        ]
+    }
+    
+    public func notification() -> NSNotification {
+        return NSNotification(name: self.dynamicType.eventType.name, object: nil, userInfo: userInfo())
+    }
+}
+
+public struct ItemRemovalFailed: DomainEvent {
+    public static var eventType: DomainEventType {
+        return DomainEventType.ItemRemovalFailed
+    }
+    
+    public let itemId: ItemId
+    public let boxId: BoxId
+    
+    public init(itemId: ItemId, boxId: BoxId) {
+        self.itemId = itemId
+        self.boxId = boxId
+    }
+    
+    public init(userInfo: UserInfo) {
+        let boxData = userInfo["box"] as UserInfo
+        let boxIdData = boxData["id"] as NSNumber
+        let boxId = BoxId(boxIdData)
+
+        let itemData = userInfo["item"] as UserInfo
+        let itemIdData = itemData["id"] as NSNumber
+        let itemId = ItemId(itemIdData)
+        
+        self.init(itemId: itemId, boxId: boxId)
+    }
+    
+    public func userInfo() -> UserInfo {
+        return [
+            "item" : [
+                "id" : itemId.number
+            ],
+            "box" : [
+                "id" : boxId.number
             ]
         ]
     }

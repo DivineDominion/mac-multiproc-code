@@ -10,8 +10,8 @@ import Foundation
 
 public class ManageItems {
  
-    public lazy var itemRepository: ItemRepository = ServiceLocator.itemRepository()
     public lazy var distributionService: DistributeItem = DomainRegistry.sharedInstance.distributeItem()
+    public lazy var removalService: RemoveItem = DomainRegistry.sharedInstance.removeItem()
     
     public init() { }
     
@@ -25,8 +25,6 @@ public class ManageItems {
         let itemId = ItemId(itemIdentifier)
         let boxId = BoxId(boxIdentifier)
         
-        if let item = itemRepository.item(itemId: itemId) {
-            ///// TODO add remove event in domain: box.removeItem(item, repo)
-        }
+        removalService.remove(itemId, fromBox: boxId)
     }
 }

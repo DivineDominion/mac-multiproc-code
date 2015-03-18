@@ -13,20 +13,11 @@ import RelocationManagerServiceDomain
 
 /// Integration Tests
 class ManageItemsTests: XCTestCase {
-    class TestDistributeItem: NullDistributeItem {
-        var didDistributeItem = false
-        var itemTitle: String?
-        override func distribute(itemTitle title: String) {
-            
-            self.itemTitle = title
-            didDistributeItem = true
-        }
-    }
     
     lazy var service: ManageItems = ManageItems()
     
-    let distributionService = TestDistributeItem()
-    let provisioningService: TestProvisioningService = TestProvisioningService()
+    let distributionDouble = TestDistributeItem()
+    let removalDouble = TestRemoveItem()
     let registry = TestDomainRegistry()
     
     let publisher = DomainEventPublisher(notificationCenter: NSNotificationCenter())
@@ -35,7 +26,8 @@ class ManageItemsTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        registry.testDistributeItem = distributionService
+        registry.testDistributeItem = distributionDouble
+        registry.testRemoveItem = removalDouble
         DomainRegistry.setSharedInstance(registry)
         
         DomainEventPublisher.setSharedInstance(publisher)
@@ -55,9 +47,48 @@ class ManageItemsTests: XCTestCase {
         
         service.distributeItem(itemTitle)
         
-        XCTAssertTrue(distributionService.didDistributeItem)
-        if distributionService.didDistributeItem {
-            XCTAssertEqual(distributionService.itemTitle!, itemTitle)
+        XCTAssertTrue(distributionDouble.didDistributeItem)
+        if distributionDouble.didDistributeItem {
+            XCTAssertEqual(distributionDouble.itemTitle!, itemTitle)
+        }
+    }
+    
+    // MARK: Remove Item
+    
+    func testRemoveItem_DelegatesToRemovalService() {
+        service.removeItem(123, fromBoxIdentifier: 456)
+        
+        if let removal = removalDouble.lastRemoval {
+            XCTAssertEqual(removal.itemId, ItemId(123))
+            XCTAssertEqual(removal.boxId, BoxId(456))
+        } else {
+            XCTFail("removal not invoked")
+        }
+    }
+    
+    
+    // MARK: -
+    // MARK: Test Doubles
+    
+    class TestDistributeItem: NullDistributeItem {
+        var didDistributeItem = false
+        var itemTitle: String?
+        override func distribute(itemTitle title: String) {
+            
+            self.itemTitle = title
+            didDistributeItem = true
+        }
+    }
+    
+    class TestRemoveItem: NullRemoveItem {
+        struct LastRemoval {
+            let itemId: ItemId
+            let boxId: BoxId
+        }
+        
+        var lastRemoval: LastRemoval? = nil
+        override func remove(itemId: ItemId, fromBox boxId: BoxId) {
+            lastRemoval = LastRemoval(itemId: itemId, boxId: boxId)
         }
     }
 }
