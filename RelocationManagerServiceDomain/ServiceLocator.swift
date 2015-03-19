@@ -54,11 +54,17 @@ public class ServiceLocator {
         return sharedInstance.unitOfWork()
     }
     
-    // TODO: move ErrorHandler into persistent stack
-    var errorHandler = ErrorHandler()
     public func unitOfWork() -> UnitOfWork {
         guardManagedObjectContext()
-        return UnitOfWork(managedObjectContext: managedObjectContext!, errorHandler: errorHandler)
+        return UnitOfWork(managedObjectContext: managedObjectContext!, errorHandler: errorHandler())
+    }
+    
+    public class func errorHandler() -> HandlesError {
+        return sharedInstance.errorHandler()
+    }
+    
+    public func errorHandler() -> HandlesError {
+         return ErrorHandler()
     }
     
     

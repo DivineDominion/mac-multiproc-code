@@ -12,9 +12,13 @@ import XCTest
 import RelocationManagerServiceDomain
 
 class TestPersistentStack: PersistentStack {
-    override func defaultStoreOptions() -> Dictionary<String, String> {
+    init(storeURL: NSURL, modelURL: NSURL) {
+        super.init(storeURL: storeURL, modelURL: modelURL, errorHandler: TestErrorHandler())
+    }
+    
+    override func defaultStoreOptions() -> [String : String] {
         // Prevent iCloud usage (if set up in default options)
-        return Dictionary<String, String>()
+        return [String: String]()
     }
 }
 

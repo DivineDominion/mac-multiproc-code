@@ -31,3 +31,23 @@ func logDetailledErrors(error: NSError) {
         NSLog("  \(error.userInfo)")
     }
 }
+
+func wrapError(error: NSError?, # message: String) -> NSError {
+    return wrapError(error, message: message, reason: nil)
+}
+
+func wrapError(error: NSError?, # message: String, # reason: String?) -> NSError {
+    var userInfo: [NSString: AnyObject] = [
+        NSLocalizedDescriptionKey: message,
+    ]
+    
+    if let reason = reason {
+        userInfo[NSLocalizedFailureReasonErrorKey] = reason
+    }
+    
+    if let underlyingError = error {
+        userInfo[NSUnderlyingErrorKey] = error
+    }
+    
+    return NSError(domain: kErrorDomain, code: 999, userInfo: nil)
+}

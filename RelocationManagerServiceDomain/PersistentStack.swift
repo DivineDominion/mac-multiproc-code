@@ -14,16 +14,18 @@ let kErrorDomain = "de.christiantietze.RelocationManager.Service"
 
 public class PersistentStack: NSObject {
     let storeType = NSSQLiteStoreType
-    let storeURL:NSURL
-    let modelURL:NSURL
+    let storeURL: NSURL
+    let modelURL: NSURL
+    let errorHandler: HandlesError
 
     public var managedObjectContext: NSManagedObjectContext?
     
     // TODO forbid init()
     
-    public init(storeURL:NSURL, modelURL:NSURL) {
+    public init(storeURL: NSURL, modelURL: NSURL, errorHandler: HandlesError) {
         self.storeURL = storeURL
         self.modelURL = modelURL
+        self.errorHandler = errorHandler
         
         super.init()
         
@@ -41,16 +43,9 @@ public class PersistentStack: NSObject {
         self.managedObjectContext = managedObjectContext
     }
     
-    public lazy var managedObjectModel: NSManagedObjectModel = {
-        // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource(kDefaultModelName, withExtension: "mom")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
-    }()
-    
+    /// Optional attribute because file operation could fail.
     public lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
-        // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. (The directory for the store is created, if necessary.) This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         var error: NSError? = nil
-        var failureReason = "There was an error creating or loading the application's saved data."
         
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
@@ -58,18 +53,19 @@ public class PersistentStack: NSObject {
         var store = coordinator!.addPersistentStoreWithType(self.storeType, configuration: nil, URL: self.storeURL, options: storeOptions, error: &error)
         
         if store == nil {
-            let dict = NSMutableDictionary()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            if error != nil {
-                dict[NSUnderlyingErrorKey] = error
-            }
-            error = NSError(domain: kErrorDomain, code: 9999, userInfo: dict)
-            NSApplication.sharedApplication().presentError(error!)
+            let error = wrapError(error, message: "Failed to initialize the application's saved data", reason: "There was an error creating or loading the application's saved data.")
+            self.errorHandler.handle(error)
+            
             return nil
         }
         
         return coordinator
+    }()
+    
+    /// Required attribute because it's fatal if the `managedObjectModel` cannot be loaded.
+    public lazy var managedObjectModel: NSManagedObjectModel = {
+        let modelURL = NSBundle.mainBundle().URLForResource(kDefaultModelName, withExtension: "mom")!
+        return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
     
@@ -88,24 +84,22 @@ public class PersistentStack: NSObject {
             
             var error: NSError? = nil
             if moc.hasChanges && !moc.save(&error) {
-                NSApplication.sharedApplication().presentError(error!)
-                
-                NSLog("Failed to save to data store: \(error!.localizedDescription)")
-                logDetailledErrors(error!)
+                let error = wrapError(error, message: "Failed to save to data store")
+                errorHandler.handle(error)
             }
         }
     }
     
     public func undoManager() -> NSUndoManager? {
-        // Returns the NSUndoManager for the application. In this case, the manager returned is that of the managed object context for the application.
         if let moc = self.managedObjectContext {
             return moc.undoManager
         }
+        
         return nil
     }
     
-    public func defaultStoreOptions() -> Dictionary<String, String> {
-        let opts = Dictionary<String, String>()
+    public func defaultStoreOptions() -> [String: String] {
+        let opts = [String: String]()
         return opts
     }
     
@@ -128,11 +122,11 @@ public class PersistentStack: NSObject {
         
         var error: NSError? = nil
         if !moc.save(&error) {
-            NSLog("Failed to save to data store: \(error!.localizedDescription)")
-            logDetailledErrors(error!)
+            let error = wrapError(error, message: "Failed to save to data store")
+            errorHandler.handle(error)
             
             // Customize this code block to include application-specific recovery steps.
-            let result = sender.presentError(error!)
+            let result = sender.presentError(error)
             if (result) {
                 return .TerminateCancel
             }

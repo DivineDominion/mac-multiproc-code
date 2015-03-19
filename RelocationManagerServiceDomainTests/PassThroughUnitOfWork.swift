@@ -12,7 +12,7 @@ import XCTest
 
 import RelocationManagerServiceDomain
 
-class NullErrorHandler: HandlesError {
+class TestErrorHandler: HandlesError {
     func handle(error: NSError?) {
         if let error = error {
             XCTFail("unexpected error occured: \(error.localizedDescription)")
@@ -24,7 +24,7 @@ class NullErrorHandler: HandlesError {
 
 class PassThroughUnitOfWork: UnitOfWork {
     init() {
-        super.init(managedObjectContext: NSManagedObjectContext(), errorHandler: NullErrorHandler())
+        super.init(managedObjectContext: NSManagedObjectContext(), errorHandler: TestErrorHandler())
     }
     
     override func execute(closure: () -> ()) {

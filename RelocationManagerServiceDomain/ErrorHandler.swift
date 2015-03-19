@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 public protocol HandlesError {
     func handle(error: NSError?)
@@ -15,7 +16,8 @@ public protocol HandlesError {
 public class ErrorHandler: HandlesError {
     public func handle(error: NSError?) {
         if let error = error {
-            NSLog("Error occured: ", error.localizedDescription)
+            NSLog("Error occured: \(error.localizedDescription)")
+            logDetailledErrors(error)
         }
     }
 }
