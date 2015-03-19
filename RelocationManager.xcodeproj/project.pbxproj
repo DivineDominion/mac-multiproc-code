@@ -78,6 +78,8 @@
 		506CC4541AB9B69C00B335AA /* UnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC4531AB9B69C00B335AA /* UnitOfWork.swift */; };
 		506CC4551AB9B69C00B335AA /* UnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC4531AB9B69C00B335AA /* UnitOfWork.swift */; };
 		506CC4571AB9BE9C00B335AA /* PassThroughUnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC4561AB9BE9C00B335AA /* PassThroughUnitOfWork.swift */; };
+		506CC4591AB9C50300B335AA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC4581AB9C50300B335AA /* ErrorHandler.swift */; };
+		506CC45A1AB9C50300B335AA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC4581AB9C50300B335AA /* ErrorHandler.swift */; };
 		507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D52D11A6D0252008F44D1 /* AppDelegate.swift */; };
 		507D52D71A6D0252008F44D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D61A6D0252008F44D1 /* Images.xcassets */; };
 		507D52DA1A6D0252008F44D1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D81A6D0252008F44D1 /* MainMenu.xib */; };
@@ -218,6 +220,7 @@
 		506CC4501AB9B01E00B335AA /* NullDissolveBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullDissolveBox.swift; sourceTree = "<group>"; };
 		506CC4531AB9B69C00B335AA /* UnitOfWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitOfWork.swift; sourceTree = "<group>"; };
 		506CC4561AB9BE9C00B335AA /* PassThroughUnitOfWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughUnitOfWork.swift; sourceTree = "<group>"; };
+		506CC4581AB9C50300B335AA /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		507D52CC1A6D0252008F44D1 /* RelocationManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelocationManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D52D01A6D0252008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		507D52D11A6D0252008F44D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -552,6 +555,7 @@
 				5063CE241A9B250100F94449 /* RelocationManager.xcdatamodel */,
 				5063CE021A9B23D000F94449 /* PersistentStack.swift */,
 				506CC4531AB9B69C00B335AA /* UnitOfWork.swift */,
+				506CC4581AB9C50300B335AA /* ErrorHandler.swift */,
 				5063CE0C1A9B23D700F94449 /* Entities */,
 			);
 			name = "Core Data";
@@ -1062,6 +1066,7 @@
 				501963271AA75E320041DFD8 /* Connection.swift in Sources */,
 				501963371AA75E320041DFD8 /* Item.swift in Sources */,
 				50B0812C1AADB40600E24120 /* CoreDataItemRepository.swift in Sources */,
+				506CC4591AB9C50300B335AA /* ErrorHandler.swift in Sources */,
 				5019632B1AA75E320041DFD8 /* ManagedEntity.swift in Sources */,
 				50A3081B1AB98DE4007D5B5C /* IdentityService.swift in Sources */,
 				501963291AA75E320041DFD8 /* RelocationManager.xcdatamodel in Sources */,
@@ -1093,6 +1098,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506CC45A1AB9C50300B335AA /* ErrorHandler.swift in Sources */,
 				50A4F62C1A9CDA6400A32A5E /* ServiceLocator.swift in Sources */,
 				501963251AA75A150041DFD8 /* ClientEvents.swift in Sources */,
 				5063CE0B1A9B23D100F94449 /* ManagedItem.swift in Sources */,

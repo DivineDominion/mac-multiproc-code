@@ -8,12 +8,23 @@
 
 import Foundation
 import CoreData
+import XCTest
 
 import RelocationManagerServiceDomain
 
+class NullErrorHandler: HandlesError {
+    func handle(error: NSError?) {
+        if let error = error {
+            XCTFail("unexpected error occured: \(error.localizedDescription)")
+        } else {
+            XCTFail("unexpected error handling invoked")
+        }
+    }
+}
+
 class PassThroughUnitOfWork: UnitOfWork {
     init() {
-        super.init(managedObjectContext: NSManagedObjectContext())
+        super.init(managedObjectContext: NSManagedObjectContext(), errorHandler: NullErrorHandler())
     }
     
     override func execute(closure: () -> ()) {
