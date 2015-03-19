@@ -9,7 +9,8 @@
 import Cocoa
 import CoreData
 
-public let kDefaultModelName: String = "RelocationManager"
+public let kDefaultModelName  = "RelocationManager"
+public let kDefaultStoreName = "ItemModel.sqlite"
 let kErrorDomain = "de.christiantietze.RelocationManager.Service"
 
 public class PersistentStack: NSObject {
