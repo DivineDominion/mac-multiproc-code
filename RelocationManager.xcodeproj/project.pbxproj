@@ -82,8 +82,8 @@
 		506CC45A1AB9C50300B335AA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC4581AB9C50300B335AA /* ErrorHandler.swift */; };
 		506CC45C1ABAC24300B335AA /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC45B1ABAC24300B335AA /* Dependencies.swift */; };
 		506CC45D1ABAC24300B335AA /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC45B1ABAC24300B335AA /* Dependencies.swift */; };
-		506CC45F1ABAC2A600B335AA /* ServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC45E1ABAC2A600B335AA /* ServiceDelegate.swift */; };
-		506CC4601ABAC2A600B335AA /* ServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC45E1ABAC2A600B335AA /* ServiceDelegate.swift */; };
+		506CC45F1ABAC2A600B335AA /* PrepareConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC45E1ABAC2A600B335AA /* PrepareConnection.swift */; };
+		506CC4601ABAC2A600B335AA /* PrepareConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CC45E1ABAC2A600B335AA /* PrepareConnection.swift */; };
 		507D52D21A6D0252008F44D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D52D11A6D0252008F44D1 /* AppDelegate.swift */; };
 		507D52D71A6D0252008F44D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D61A6D0252008F44D1 /* Images.xcassets */; };
 		507D52DA1A6D0252008F44D1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507D52D81A6D0252008F44D1 /* MainMenu.xib */; };
@@ -226,7 +226,7 @@
 		506CC4561AB9BE9C00B335AA /* PassThroughUnitOfWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughUnitOfWork.swift; sourceTree = "<group>"; };
 		506CC4581AB9C50300B335AA /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		506CC45B1ABAC24300B335AA /* Dependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
-		506CC45E1ABAC2A600B335AA /* ServiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceDelegate.swift; sourceTree = "<group>"; };
+		506CC45E1ABAC2A600B335AA /* PrepareConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepareConnection.swift; sourceTree = "<group>"; };
 		507D52CC1A6D0252008F44D1 /* RelocationManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelocationManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D52D01A6D0252008F44D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		507D52D11A6D0252008F44D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -572,7 +572,7 @@
 			children = (
 				50A4F62A1A9CDA6400A32A5E /* ServiceLocator.swift */,
 				506CC45B1ABAC24300B335AA /* Dependencies.swift */,
-				506CC45E1ABAC2A600B335AA /* ServiceDelegate.swift */,
+				506CC45E1ABAC2A600B335AA /* PrepareConnection.swift */,
 				501963211AA725B90041DFD8 /* Connection */,
 				5063CE0D1A9B23E200F94449 /* Core Data */,
 			);
@@ -1099,7 +1099,7 @@
 				5019632F1AA75E320041DFD8 /* ManageBoxes.swift in Sources */,
 				50A308201AB9947B007D5B5C /* RemoveItem.swift in Sources */,
 				5019632C1AA75E320041DFD8 /* CoreDataBoxRepository.swift in Sources */,
-				506CC45F1ABAC2A600B335AA /* ServiceDelegate.swift in Sources */,
+				506CC45F1ABAC2A600B335AA /* PrepareConnection.swift in Sources */,
 				50A4F62B1A9CDA6400A32A5E /* ServiceLocator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1110,7 +1110,7 @@
 			files = (
 				506CC45A1AB9C50300B335AA /* ErrorHandler.swift in Sources */,
 				50A4F62C1A9CDA6400A32A5E /* ServiceLocator.swift in Sources */,
-				506CC4601ABAC2A600B335AA /* ServiceDelegate.swift in Sources */,
+				506CC4601ABAC2A600B335AA /* PrepareConnection.swift in Sources */,
 				501963251AA75A150041DFD8 /* ClientEvents.swift in Sources */,
 				5063CE0B1A9B23D100F94449 /* ManagedItem.swift in Sources */,
 				5063CE171A9B240400F94449 /* DomainEvents.swift in Sources */,

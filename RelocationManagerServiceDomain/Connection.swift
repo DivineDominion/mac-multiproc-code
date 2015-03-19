@@ -9,11 +9,9 @@
 import Foundation
 
 public class Connection {
-    let endpoint: Endpoint
     let client: UsesBoxesAndItems
     
-    public init(endpoint: Endpoint, client: UsesBoxesAndItems) {
-        self.endpoint = endpoint
+    public init(client: UsesBoxesAndItems) {
         self.client = client
     }
     

@@ -12,6 +12,8 @@ public class Endpoint: NSObject, ManagesBoxesAndItems {
     let manageBoxes = ManageBoxes()
     let manageItems = ManageItems()
     
+    // MARK: Commands
+    
     public func orderBox(label: String, capacity: Int) {
         manageBoxes.orderBox(label, capacity: capacity)
     }

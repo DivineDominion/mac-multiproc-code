@@ -1,5 +1,5 @@
 //
-//  ServiceDelegate.swift
+//  PrepareConnection.swift
 //  RelocationManager
 //
 //  Created by Christian Tietze on 19/03/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ServiceDelegate : NSObject, NSXPCListenerDelegate {
+class PrepareConnection: NSObject, NSXPCListenerDelegate {
     func listener(listener: NSXPCListener!, shouldAcceptNewConnection newConnection: NSXPCConnection!) -> Bool {
         
         // TODO endpoint is retained; make it so that it contains the connection
@@ -33,7 +33,7 @@ class ServiceDelegate : NSObject, NSXPCListenerDelegate {
                 ServiceLocator.errorHandler().handle(error)
             } as UsesBoxesAndItems
             
-            let connection = Connection(endpoint: endpoint, client: listener)
+            let connection = Connection(client: listener)
             let connectionController = ConnectionController(connection: connection)
         }
         

@@ -9,8 +9,9 @@
 import Foundation
 
 class Dependencies {
-    let bundle = NSBundle.mainBundle()
-    let delegate = ServiceDelegate()
+    let connectionService = PrepareConnection()
+    
+    init() { }
     
     func setUp() -> Dependencies? {
         setUpCoreData()
@@ -26,10 +27,14 @@ class Dependencies {
         return nil
     }
     
+    var bundle: NSBundle {
+        return NSBundle.mainBundle()
+    }
+    
     private func setUpListener() {
         let bundleId = bundle.bundleIdentifier!
         let listener = NSXPCListener(machServiceName: bundleId)
-        listener.delegate = delegate
+        listener.delegate = connectionService
         listener.resume()
     }
     
