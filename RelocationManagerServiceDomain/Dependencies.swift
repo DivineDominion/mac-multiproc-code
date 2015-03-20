@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Dependencies: NSObject, NSXPCListenerDelegate {
+class Dependencies: NSObject {
     
     var bundle: NSBundle {
         return NSBundle.mainBundle()
@@ -52,10 +52,9 @@ class Dependencies: NSObject, NSXPCListenerDelegate {
         listener.delegate = self
         listener.resume()
     }
-    
-    
-    // MARK: -
-    // MARK: XPC Connection Delegate
+}
+
+extension Dependencies: NSXPCListenerDelegate {
     
     func listener(listener: NSXPCListener, shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
         

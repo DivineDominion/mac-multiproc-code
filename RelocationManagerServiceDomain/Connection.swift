@@ -8,15 +8,9 @@
 
 import Foundation
 
-extension DispatchClient {
-    class func create(connection: Connection) -> DispatchClient {
-        return DispatchClient(client: connection.remoteObjectProxy())
-    }
-}
-
 // Internal scope because it's just a thin wrapper around `NSXPCConnection`.
 // No need to unit test.
-class Connection: ConnectsToClient {
+class Connection {
     
     let service: NSXPCConnection
     
@@ -31,6 +25,9 @@ class Connection: ConnectsToClient {
             service.invalidate()
         } as UsesBoxesAndItems
     }
+}
+
+extension Connection: ConnectsToClient {
     
     func open() {
         service.resume()
@@ -41,6 +38,7 @@ class Connection: ConnectsToClient {
     }
     
     func send(event: ClientEvent) {
-        DispatchClient.create(self).send(event)
+        let client = remoteObjectProxy()
+        DispatchClient(client: client).send(event)
     }
 }

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public class Endpoint: NSObject, ManagesBoxesAndItems {
+public class Endpoint: NSObject {
     
     let manageBoxes: ManageBoxes
     let manageItems: ManageItems
@@ -21,8 +21,9 @@ public class Endpoint: NSObject, ManagesBoxesAndItems {
         self.manageBoxes = manageBoxes
         self.manageItems = manageItems
     }
-    
-    // MARK: Commands
+}
+
+extension Endpoint: ManagesBoxesAndItems {
     
     public func orderBox(label: String, capacity: Int) {
         manageBoxes.orderBox(label, capacity: capacity)
