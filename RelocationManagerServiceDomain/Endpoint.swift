@@ -9,8 +9,18 @@
 import Cocoa
 
 public class Endpoint: NSObject, ManagesBoxesAndItems {
-    let manageBoxes = ManageBoxes()
-    let manageItems = ManageItems()
+    
+    let manageBoxes: ManageBoxes
+    let manageItems: ManageItems
+    
+    convenience override init() {
+        self.init(manageBoxes: ManageBoxes(), manageItems: ManageItems())
+    }
+    
+    public init(manageBoxes: ManageBoxes, manageItems: ManageItems) {
+        self.manageBoxes = manageBoxes
+        self.manageItems = manageItems
+    }
     
     // MARK: Commands
     

@@ -8,35 +8,53 @@
 
 import Foundation
 
-class PrepareConnection: NSObject, NSXPCListenerDelegate {
-    func listener(listener: NSXPCListener!, shouldAcceptNewConnection newConnection: NSXPCConnection!) -> Bool {
+class PrepareConnection {
+    init() { }
+    
+    private let endpoint = Endpoint()
+    
+    private var connection: NSXPCConnection?
+    
+    func prepare(connection: NSXPCConnection) -> PrepareConnection {
         
-        // TODO endpoint is retained; make it so that it contains the connection
-        let endpoint = Endpoint()
+        connection.exportedInterface = NSXPCInterface(`protocol`: ManagesBoxesAndItems.self)
+        connection.exportedObject = endpoint
+    
+        connection.remoteObjectInterface = NSXPCInterface(`protocol`: UsesBoxesAndItems.self)
+        self.connection = connection
         
-        newConnection.exportedInterface = NSXPCInterface(`protocol`: ManagesBoxesAndItems.self)
-        newConnection.exportedObject = endpoint
-        
-        newConnection.remoteObjectInterface = NSXPCInterface(`protocol`: UsesBoxesAndItems.self)
-        
-        // TODO handle invalidation inside connection controller
-        newConnection.invalidationHandler = {
-            NSLog("invalidated")
-        }
-        NSLog("accepting connection")
-        newConnection.resume()
-        
-        
-        dispatch_async(dispatch_get_global_queue(0, 0)) {
-            // TODO create listener as part of a new connection
-            let listener = newConnection.remoteObjectProxyWithErrorHandler { error in
-                ServiceLocator.errorHandler().handle(error)
-            } as UsesBoxesAndItems
-            
-            let connection = Connection(client: listener)
-            let connectionController = ConnectionController(connection: connection)
-        }
-        
-        return true
+        return self
     }
+    
+    private var invalidationHandler: (() -> ())?
+    
+    func onInvalidation(invalidationHandler: () -> ()) -> PrepareConnection {
+        
+        self.invalidationHandler = invalidationHandler
+        
+        return self
+    }
+    
+    func build() -> ConnectionController? {
+        
+        if let connection = connection {
+            return buildConnectionController(connection)
+        }
+        
+        return nil
+    }
+    
+    private func buildConnectionController(connection: NSXPCConnection) -> ConnectionController {
+        
+        if let invalidationHandler = invalidationHandler {
+            connection.invalidationHandler = {
+                dispatch_async_main {
+                    invalidationHandler()
+                }
+            }
+        }
+        
+        return ConnectionController(connection: Connection(service: connection))
+    }
+
 }

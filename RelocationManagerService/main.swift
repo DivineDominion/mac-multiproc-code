@@ -9,7 +9,9 @@
 import Cocoa
 
 if let dependencies = Dependencies().setUp() {
+    // Actually run the service code (and never return)
     NSRunLoop.currentRunLoop().run()
+} else {
+    NSLog("Couldn't start the XPC service")
+    exit(EXIT_FAILURE)
 }
-
-// TODO present failure when store wasn't set up and setUp() didn't work

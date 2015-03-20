@@ -8,12 +8,26 @@
 
 import Foundation
 
+public protocol ConnectsToClient {
+    func open()
+    func close()
+    func send(event: ClientEvent)
+}
+
 public class ConnectionController {
-    let connection: Connection
+    let connection: ConnectsToClient
     
-    public init(connection: Connection) {
+    public init(connection: ConnectsToClient) {
         self.connection = connection
         self.subscribeToItemDistributionFailed()
+    }
+    
+    func openConnection() {
+        connection.open()
+    }
+    
+    func closeConnection() {
+        connection.close()
     }
     
     func send(event: ClientEvent) {
