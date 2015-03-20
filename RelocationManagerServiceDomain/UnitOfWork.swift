@@ -22,16 +22,15 @@ public class UnitOfWork {
     /// Synchronously execute `closure` to sequentially perform transactions.
     public func execute(closure: () -> ()) {
         var error: NSError? = nil
-        var success = false
         
         managedObjectContext.performBlock {
             closure()
             
-            success = self.managedObjectContext.save(&error)
-        }
-        
-        if !success {
-            errorHandler.handle(error)
+            let success = self.managedObjectContext.save(&error)
+            
+            if !success {
+                self.errorHandler.handle(error)
+            }
         }
     }
 }
