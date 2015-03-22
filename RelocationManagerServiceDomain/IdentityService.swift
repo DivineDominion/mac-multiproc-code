@@ -9,8 +9,8 @@
 import Foundation
 
 public class IdentityService {
-    let boxRepository: BoxRepository
-    let itemRepository: ItemRepository
+    private let boxRepository: BoxRepository
+    private let itemRepository: ItemRepository
     
     public init(boxRepository: BoxRepository, itemRepository: ItemRepository) {
         self.boxRepository = boxRepository
