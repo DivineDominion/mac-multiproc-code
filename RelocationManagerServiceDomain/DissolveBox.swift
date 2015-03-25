@@ -30,7 +30,7 @@ public class DissolveBox {
     public func dissolve(boxId: BoxId) {
         if let box = boxRepository.box(boxId: boxId) {
             emptyBox(box)
-            removeBox(box)
+            removeBoxIfEmpty(box)
             return
         }
         
@@ -41,7 +41,7 @@ public class DissolveBox {
         box.dissolve(distributionService)
     }
     
-    func removeBox(box: Box) {
+    func removeBoxIfEmpty(box: Box) {
         if !box.isEmpty(itemRepository) {
             eventPublisher.publish(BoxRemovalFailed(boxId: box.boxId))
             return

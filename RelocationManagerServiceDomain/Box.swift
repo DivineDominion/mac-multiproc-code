@@ -8,20 +8,25 @@
 
 import Cocoa
 
-public struct BoxId: Equatable, DebugPrintable, Identifiable {
-    public var identifier: IntegerId { return _identifier }
-    private var _identifier: IntegerId
+public struct BoxId: Identifiable, Equatable, Hashable {
+    public let identifier: IntegerId
     
     public var number: NSNumber { return NSNumber(longLong: identifier) }
     
     public init(_ identifier: IntegerId) {
-        _identifier = identifier
+        self.identifier = identifier
     }
     
     init(_ identifierNumber: NSNumber) {
-        _identifier = identifierNumber.longLongValue
+        self.identifier = identifierNumber.longLongValue
     }
     
+    public var hashValue: Int {
+        return self.identifier.hashValue
+    }
+}
+
+extension BoxId: DebugPrintable {
     public var debugDescription: String {
         return "BoxId: \(identifier)"
     }

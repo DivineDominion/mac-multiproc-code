@@ -9,7 +9,7 @@
 import Cocoa
 
 if let dependencies = Dependencies().setUp() {
-    // Actually run the service code (and never return)
+    // Actually run the service (and never return)
     NSRunLoop.currentRunLoop().run()
 } else {
     NSLog("Couldn't start the XPC service")

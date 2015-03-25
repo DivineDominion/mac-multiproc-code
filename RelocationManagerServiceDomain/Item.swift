@@ -8,26 +8,27 @@
 
 import Cocoa
 
-public struct ItemId: Equatable, Hashable, DebugPrintable, Identifiable {
-    public var identifier: IntegerId { return _identifier }
-    private var _identifier: IntegerId
+public struct ItemId: Identifiable, Equatable, Hashable {
+    public let identifier: IntegerId
     
     public var number: NSNumber { return NSNumber(longLong: identifier) }
     
     public init(_ identifier: IntegerId) {
-        _identifier = identifier
+        self.identifier = identifier
     }
     
     init(_ identifierNumber: NSNumber) {
-        _identifier = identifierNumber.longLongValue
-    }
-    
-    public var debugDescription: String {
-        return "ItemId: \(identifier)"
+        self.identifier = identifierNumber.longLongValue
     }
     
     public var hashValue: Int {
-        return self._identifier.hashValue
+        return self.identifier.hashValue
+    }
+}
+
+extension ItemId: DebugPrintable {
+    public var debugDescription: String {
+        return "ItemId: \(identifier)"
     }
 }
 
