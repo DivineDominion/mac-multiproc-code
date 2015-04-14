@@ -83,7 +83,7 @@ public class CoreDataItemRepository: NSObject, ItemRepository {
             return []
         }
         
-        return results as [ManagedItem]
+        return results as! [ManagedItem]
     }
     
     public func removeItem(#itemId: ItemId) {

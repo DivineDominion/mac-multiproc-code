@@ -29,7 +29,7 @@ public class ManagedItem: NSManagedObject, ManagedEntity {
     }
     
     public class func insertManagedItem(item: Item,inManagedObjectContext managedObjectContext:NSManagedObjectContext) {
-        let managedItem = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext) as ManagedItem
+        let managedItem = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext) as! ManagedItem
         
         managedItem.item = item
     }
@@ -95,10 +95,10 @@ public class ManagedItem: NSManagedObject, ManagedEntity {
         }
         
         if keyPath == "title" {
-            let newTitle = change[NSKeyValueChangeNewKey] as String
+            let newTitle = change[NSKeyValueChangeNewKey] as! String
             self.title = newTitle
         } else if keyPath == "boxIdentifier" {
-            let newIdentifier = change[NSKeyValueChangeNewKey] as NSNumber
+            let newIdentifier = change[NSKeyValueChangeNewKey] as! NSNumber
             self.managedBoxId = newIdentifier
         }
     }

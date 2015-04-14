@@ -30,7 +30,7 @@ public enum DomainEventType: String {
 
 public protocol DomainEvent {
     /// The `DomainEventType` to identify this kind of DomainEvent
-    class var eventType: DomainEventType { get }
+    static var eventType: DomainEventType { get }
     
     init(userInfo: UserInfo)
     func userInfo() -> UserInfo
@@ -53,10 +53,10 @@ public struct BoxProvisioned: DomainEvent {
     }
     
     public init(userInfo: UserInfo) {
-        let boxData = userInfo["box"] as UserInfo
-        let boxIdData = boxData["id"] as NSNumber
-        let boxCapacity = boxData["capacity"] as Int
-        let boxTitle = boxData["title"] as String
+        let boxData = userInfo["box"] as! UserInfo
+        let boxIdData = boxData["id"] as! NSNumber
+        let boxCapacity = boxData["capacity"] as! Int
+        let boxTitle = boxData["title"] as! String
         
         self.init(boxId: BoxId(boxIdData), capacity: boxCapacity, title: boxTitle)
     }
@@ -90,9 +90,9 @@ public struct ItemProvisioned: DomainEvent {
     }
     
     public init(userInfo: UserInfo) {
-        let itemData = userInfo["item"] as UserInfo
-        let itemIdData = itemData["id"] as NSNumber
-        let itemTitle = itemData["title"] as String
+        let itemData = userInfo["item"] as! UserInfo
+        let itemIdData = itemData["id"] as! NSNumber
+        let itemTitle = itemData["title"] as! String
         
         self.init(itemId: ItemId(itemIdData), title: itemTitle)
     }
@@ -124,8 +124,8 @@ public struct ItemRemoved: DomainEvent {
     }
     
     public init(userInfo: UserInfo) {
-        let itemData = userInfo["item"] as UserInfo
-        let itemIdData = itemData["id"] as NSNumber
+        let itemData = userInfo["item"] as! UserInfo
+        let itemIdData = itemData["id"] as! NSNumber
         let itemId = ItemId(itemIdData)
         
         self.init(itemId: itemId)
@@ -158,12 +158,12 @@ public struct ItemRemovalFailed: DomainEvent {
     }
     
     public init(userInfo: UserInfo) {
-        let boxData = userInfo["box"] as UserInfo
-        let boxIdData = boxData["id"] as NSNumber
+        let boxData = userInfo["box"] as! UserInfo
+        let boxIdData = boxData["id"] as! NSNumber
         let boxId = BoxId(boxIdData)
 
-        let itemData = userInfo["item"] as UserInfo
-        let itemIdData = itemData["id"] as NSNumber
+        let itemData = userInfo["item"] as! UserInfo
+        let itemIdData = itemData["id"] as! NSNumber
         let itemId = ItemId(itemIdData)
         
         self.init(itemId: itemId, boxId: boxId)
@@ -197,8 +197,8 @@ public struct ItemDistributionFailed: DomainEvent {
     }
     
     public init(userInfo: UserInfo) {
-        let itemData = userInfo["item"] as UserInfo
-        let itemTitle = itemData["title"] as String
+        let itemData = userInfo["item"] as! UserInfo
+        let itemTitle = itemData["title"] as! String
         
         self.init(itemTitle: itemTitle)
     }
@@ -228,8 +228,8 @@ public struct BoxRemoved: DomainEvent {
     }
     
     public init(userInfo: UserInfo) {
-        let boxData = userInfo["box"] as UserInfo
-        let boxIdData = boxData["id"] as NSNumber
+        let boxData = userInfo["box"] as! UserInfo
+        let boxIdData = boxData["id"] as! NSNumber
         let boxId = BoxId(boxIdData)
         
         self.init(boxId: boxId)
@@ -260,8 +260,8 @@ public struct BoxRemovalFailed: DomainEvent {
     }
     
     public init(userInfo: UserInfo) {
-        let boxData = userInfo["box"] as UserInfo
-        let boxIdData = boxData["id"] as NSNumber
+        let boxData = userInfo["box"] as! UserInfo
+        let boxIdData = boxData["id"] as! NSNumber
         let boxId = BoxId(boxIdData)
         
         self.init(boxId: boxId)
@@ -292,8 +292,8 @@ public struct BoxItemsRedistributionFailed: DomainEvent {
     }
     
     public init(userInfo: UserInfo) {
-        let boxData = userInfo["box"] as UserInfo
-        let boxIdData = boxData["id"] as NSNumber
+        let boxData = userInfo["box"] as! UserInfo
+        let boxIdData = boxData["id"] as! NSNumber
         let boxId = BoxId(boxIdData)
         
         self.init(boxId: boxId)

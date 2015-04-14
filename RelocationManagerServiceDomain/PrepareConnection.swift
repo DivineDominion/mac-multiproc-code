@@ -17,10 +17,10 @@ class PrepareConnection {
     
     func prepare(connection: NSXPCConnection) -> PrepareConnection {
         
-        connection.exportedInterface = NSXPCInterface(`protocol`: ManagesBoxesAndItems.self)
+        connection.exportedInterface = NSXPCInterface(`withProtocol`: ManagesBoxesAndItems.self)
         connection.exportedObject = endpoint
     
-        connection.remoteObjectInterface = NSXPCInterface(`protocol`: UsesBoxesAndItems.self)
+        connection.remoteObjectInterface = NSXPCInterface(`withProtocol`: UsesBoxesAndItems.self)
         self.connection = connection
         
         return self

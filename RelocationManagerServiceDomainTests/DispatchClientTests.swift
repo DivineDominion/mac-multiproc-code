@@ -15,7 +15,7 @@ class DispatchClientTests: XCTestCase {
 
     class TestClient: UsesBoxesAndItems {
         var lastAppliedEvent: NSDictionary?
-        func apply(eventRepresentation: NSDictionary) {
+        @objc func apply(eventRepresentation: NSDictionary) {
             lastAppliedEvent = eventRepresentation
         }
     }

@@ -52,7 +52,7 @@ public class DomainEventPublisher {
     public func publish(event: DomainEvent) {
         notificationCenter.postNotification(event.notification())
     }
-    
+        
     public func subscribe<T: DomainEvent>(eventKind: T.Type, usingBlock block: (T!) -> Void) -> DomainEventSubscription {
         
         let mainQueue = NSOperationQueue.mainQueue()

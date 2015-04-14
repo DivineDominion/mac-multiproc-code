@@ -31,7 +31,7 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
     
     public class func insertManagedBox(box: Box, inManagedObjectContext managedObjectContext: NSManagedObjectContext) {
         
-        let managedBox = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext) as ManagedBox
+        let managedBox = NSEntityDescription.insertNewObjectForEntityForName(entityName(), inManagedObjectContext: managedObjectContext) as! ManagedBox
         
         managedBox.box = box
     }
@@ -86,7 +86,7 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
     }()
     
     func associatedItems() -> [Item] {
-        let managedItems = self.items.allObjects as [ManagedItem]
+        let managedItems = self.items.allObjects as! [ManagedItem]
         return managedItems.map() { (item: ManagedItem) -> Item in
             return item.item
         }
@@ -106,7 +106,7 @@ public class ManagedBox: NSManagedObject, ManagedEntity {
         }
         
         if keyPath == "title" {
-            let newTitle = change[NSKeyValueChangeNewKey] as String
+            let newTitle = change[NSKeyValueChangeNewKey] as! String
             self.title = newTitle
         }
     }

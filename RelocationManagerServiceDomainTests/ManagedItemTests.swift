@@ -29,7 +29,7 @@ class ManagedItemTests: CoreDataTestCase {
         ManagedBox.insertManagedBox(box, inManagedObjectContext: context)
         
         let request = NSFetchRequest(entityName: ManagedBox.entityName())
-        let allBoxes = context.executeFetchRequest(request, error: nil) as [ManagedBox]?
+        let allBoxes = context.executeFetchRequest(request, error: nil) as! [ManagedBox]?
         
         return allBoxes?.first
     }
@@ -44,7 +44,7 @@ class ManagedItemTests: CoreDataTestCase {
     
     func allItems() -> [ManagedItem]? {
         let request = NSFetchRequest(entityName: ManagedItem.entityName())
-        return context.executeFetchRequest(request, error: nil) as [ManagedItem]?
+        return context.executeFetchRequest(request, error: nil) as! [ManagedItem]?
     }
     
     // MARK: Insertion

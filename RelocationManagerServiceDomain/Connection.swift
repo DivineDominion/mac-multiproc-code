@@ -23,7 +23,7 @@ class Connection {
         return service.remoteObjectProxyWithErrorHandler { error in
             ServiceLocator.errorHandler().handle(error)
             service.invalidate()
-        } as UsesBoxesAndItems
+        } as! UsesBoxesAndItems
     }
 }
 
